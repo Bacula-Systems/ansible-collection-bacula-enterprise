@@ -1,0 +1,13 @@
+---
+keys:
+  - build: release
+    bee_packages_signature:
+      - BaculaSystems-Public-Signature.asc
+      - BaculaSystems-Public-Signature-08-2017.asc
+  - build: beta
+    bee_packages_signature:
+      - BaculaSystems-Public-Signature.asc
+      - BaculaSystems-Public-Signature-08-2017.asc
+  - build: nightly
+    bee_packages_signature:
+      - nightly-misc/BaculaSystems-Nightly-Signature.asc

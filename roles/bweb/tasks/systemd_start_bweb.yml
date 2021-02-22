@@ -1,0 +1,6 @@
+- name: auto-start BWeb during boot time and start BWeb
+  systemd:
+    name: bweb
+    state: started
+    enabled: true
+    daemon_reload: true

@@ -1,0 +1,14 @@
+---
+bweb_repo_dependencies:
+  OracleLinux7-optional-latest:
+    repository_id: ol7_optional_latest
+    bweb_version: 12.3
+    operator: ge
+    os_distribution: OracleLinux
+    os_distribution_major_version: 7
+  OracleLinux-developer-epel:
+    repository_id: ol7_developer_EPEL
+    bweb_version: 12.3
+    operator: ge
+    os_distribution: OracleLinux
+    os_distribution_major_version: 7

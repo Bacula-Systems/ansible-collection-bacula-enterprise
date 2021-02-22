@@ -1,0 +1,5 @@
+repo_filename: Bacula-Enterprise-dag
+description: Bacula Systems dag for BWeb repository
+sles_version: sles124
+architecture: 64
+auto_import_keys: yes

@@ -1,0 +1,10 @@
+---
+    - include: apt-repository_add_repo_file.yml
+    - include: apt_install_bee_sdplugin.yml
+    - include: "{{ item }}"
+      with_first_found:
+        - files:
+          - "All-platforms_config_{{ sdplugin }}_sd.yml"
+          skip: true
+    - include: apt_list_packages_build.yml
+    - include: systemd_restart_sd.yml

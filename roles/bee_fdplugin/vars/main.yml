@@ -1,0 +1,129 @@
+---
+fdplugins:
+  bcloud:
+    name: bcloud
+    directory: bcloud
+    package_name: bacula-enterprise-bcloud-service
+
+  db2:
+    name: db2
+    directory: db2
+    package_name: bacula-enterprise-db2-plugin
+
+  delta:
+    name: delta
+    directory: delta
+    package_name: bacula-enterprise-delta
+
+  docker:
+    name: docker
+    directory: docker
+    package_name: bacula-enterprise-docker-plugin
+
+  hdfs:
+    name: hdfs
+    directory: hdfs
+    package_name: bacula-enterprise-hdfs-plugin
+
+  kubernetes:
+    name: kubernetes
+    directory: kubernetes
+    package_name: bacula-enterprise-kubernetes-plugin
+
+  kubernetes-tools:
+    name: kubernetes-tools
+    directory: kubernetes
+    package_name: bacula-enterprise-kubernetes-tools
+
+  kvm:
+    name: kvm
+    directory: kvm
+    package_name: bacula-enterprise-kvm-plugin
+
+  ldap:
+    directory: ldap
+    name: ldap
+    package_name: bacula-enterprise-ldap-plugin
+
+  mysql:
+    directory: mysql
+    name: mysql
+    package_name: bacula-enterprise-mysql-plugin
+
+  ndmp:
+    directory: ndmp
+    name: ndmp
+    package_name: bacula-enterprise-ndmp
+
+  netapp-hfc:
+    directory: netapp-hfc
+    name: netapp-hfc
+    package_name: bacula-enterprise-netapp-hfc
+
+  oracle:
+    name: oracle
+    directory: oracle
+    package_name: bacula-enterprise-oracle
+
+  postgresql:
+    directory: postgresql
+    name: postgresql
+    package_name: bacula-enterprise-postgresql-plugin
+
+  proxmox:
+    directory: proxmox
+    name: proxmox
+    package_name: bacula-enterprise-proxmox-plugin
+
+  rhv:
+    directory: rhv
+    name: rhv
+    package_name: bacula-enterprise-rhv-plugin
+
+  sap-hana:
+    directory: sap-hana
+    name: sap-hana
+    package_name: bacula-enterprise-sap-hana-plugin
+
+  single-item-restore:
+    name: single-item-restore
+    directory: single-item-restore
+    package_name: bacula-enterprise-single-item-restore
+
+  snapshot:
+    name: snapshot
+    directory: snapshot
+    package_name: bacula-enterprise-snapshot
+
+  swift:
+    name: swift
+    directory: swift
+    package_name: bacula-enterprise-swift-plugin
+
+  sybase:
+    name: sybase
+    directory: sybase
+    package_name: bacula-enterprise-sybase-plugin
+
+  vsphere:
+    name: vsphere
+    directory: vsphere
+    package_name: bacula-enterprise-vsphere
+
+  xenserver:
+    name: xenserver
+    directory: xenserver
+    package_name: bacula-enterprise-xenserver-plugin
+
+# This is the dictionary to add any package dependency that
+# need to be installed before the plugin packages
+# The following entries are an example of the structure and
+# they cannot be removed. They can be modified though.
+# Valid operator values are: eq, le, lt, ge, gt
+
+fdplugins_dependencies:
+  - plugin_name: 
+    dependencies:
+       - package_dependency_name: 
+         bee_version:
+         operator: le
