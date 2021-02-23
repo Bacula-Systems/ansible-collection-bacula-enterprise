@@ -1,0 +1,71 @@
+---
+- hosts: "{{ client_hostname }}"
+  tasks:
+
+  - name: Install and configure Bacula File Daemon
+    import_role:
+      name: bacula.bacula_enterprise.bee_fdonly
+
+  - name: get the File Daemon password used to communicate with Director in the bacula-fd.conf file, we will use the same
+    shell: "grep ^[[:space:]]*Password -m 1 /opt/bacula/etc/bacula-fd.conf | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
+    register: current_fd_password
+
+  - name: set the dir_fd_password
+    set_fact:
+      current_fd_password: "{{ current_fd_password.stdout }}"
+  - debug: msg="{{ current_fd_password }}"
+
+- hosts: localhost
+  tasks:
+  - name: fail following tasks if director_hostname is not defined
+    fail: msg="director_hostname not provided, skipping remote Director configuration."
+    when: director_hostname is not defined
+
+- hosts: "{{ director_hostname }}"
+  gather_facts: yes
+  tasks:
+
+  - name: Set client_name based on client_hostname if client_name is not defined
+    set_fact:
+      client_name: "{{ client_hostname.split('.')[0] }}-fd"
+    when: client_name is not defined
+
+  - name: get the Catalog name used by the Director
+    shell: "grep 'Catalog {' /opt/bacula/etc/bacula-dir.conf -A 1 -m 1 | grep Name | tr -d ' ' | cut -d \"=\" -f2"
+    register: catalog_name
+
+  - name: set the catalog_name value
+    set_fact:
+      catalog_name: "{{ catalog_name.stdout }}"
+
+  - name: get the first JobDefs resource name used in the bacula-dir.conf configuration file
+    shell: "grep 'JobDefs {' /opt/bacula/etc/bacula-dir.conf -A 1 -m 1 | grep Name | tr -d ' ' | cut -d \"=\" -f2"
+    register: jobdefs_name
+
+  - name: set the jobdefs_name value
+    set_fact:
+      jobdefs_name: "{{ jobdefs_name.stdout }}"
+
+  - name: get the dir_fd_password
+    set_fact:
+      dir_fd_password: "{{ hostvars[client_hostname].current_fd_password }}"
+
+  - name: generate the resource definition to be included in the bacula-dir.conf file
+    template:
+      src: "/root/.ansible/collections/ansible_collections/bacula/bacula_enterprise/roles/bee_fdonly/templates/client_conf_in_bacula_dir.j2"
+      dest: "/opt/bacula/etc/conf.d/director/{{ client_name }}-client.conf"
+      owner: root
+      group: bacula
+      mode: '0660'
+
+  - name: reload Director configuration
+    shell: echo "reload" | /opt/bacula/bin/bconsole
+    register: reload_result
+  - debug:  msg="{{ reload_result.stdout.split('\n') }}"
+  - debug:  msg="{{ reload_result.stderr.split('\n') }}"
+
+  - name: status client in Director
+    shell: echo "status client={{ client_name }}" | /opt/bacula/bin/bconsole
+    register: status_result
+  - debug:  msg="{{ status_result.stdout.split('\n') }}"
+  - debug:  msg="{{ status_result.stderr.split('\n') }}"
