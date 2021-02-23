@@ -10,7 +10,7 @@ This collection has been tested against following Ansible versions: **>=2.9,<2.1
 
 Before using the Bacula Enterprise collection, you need to install it with the Ansible Galaxy CLI:
 
-    ansible-galaxy collection install bacula-bacula_enterprise-1.0.0.tar.gz
+    ansible-galaxy collection install bacula.bacula_enterprise
 
 ## Roles
 
@@ -48,25 +48,25 @@ The following variables must be set in the playbook or by using `--extra-vars`, 
 
 The following examples use the playbooks in the `tests` directory of the Bacula Enterprise collection.
 
-To deploy Bacula Enterprise Edition `12.6.0` in the `baculadir.domain.com` host:
+1. To deploy Bacula Enterprise Edition (Director, Storage Daemon and File Daemon) `12.6.0` in the `baculadir.domain.com` host:
 
-`ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee.yml --extra-vars "director_hostname=baculadir.domain.com bee_version=12.6.0"`
+```ansible-playbook -i inventory tests/bee.yml --extra-vars "director_hostname=baculadir.domain.com bee_version=12.6.0"```
 
-To install a remote Bacula Enterprise Edition File Daemon only version `12.6.0` in the `client.domain.com` host and deploy the client configuration in the `baculadir.domain.com-dir` Director in the `baculadir.domain.com` host:
+2. To install a remote Bacula Enterprise Edition File Daemon only version `12.6.0` in the `client.domain.com` host and deploy the client configuration in the `baculadir.domain.com-dir` Director in the `baculadir.domain.com` host:
 
-`ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_fdonly.yml --extra-vars "client_hostname=client.domain.com client_name=bacula-fd bee_version=12.6.0 director_hostname=baculadir.domain.com"`
+```ansible-playbook -i inventory tests/bee_fdonly.yml --extra-vars "client_hostname=client.domain.com client_name=bacula-fd bee_version=12.6.0 director_hostname=baculadir.domain.com"```
 
-To install a Bacula Enterprise Edition File Daemon Plugin `12.6.0` in the remote client in the `client.domain.com` host and deploy the plugin configuration (basic FileSet, not including plugin options in most of the cases) in the `baculadir.domain.com-dir` Director in the `baculadir.domain.com` host:
+3. To install a Bacula Enterprise Edition File Daemon Plugin `12.6.0` in the remote client in the `client.domain.com` host and deploy the plugin configuration (basic FileSet, not including plugin options in most of the cases) in the `baculadir.domain.com-dir` Director in the `baculadir.domain.com` host:
 
 `ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_fdplugin.yml --extra-vars "client_hostname=client.domain.com client_name=bacula-fd bee_version=12.6.0 fdplugin=mysql director_hostname=baculadir.domain.com"`
 
-To install a Bacula Enterprise Edition Storage Daemon Plugin `12.6.0` in the `baculadir.domain.com` (the same host as Director above):
+4. To install a Bacula Enterprise Edition Storage Daemon Plugin `12.6.0` in the `baculadir.domain.com` (the same host as Director above):
 
 `ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_sdplugin.yml --extra-vars "storage_hostname=baculadir.domain.com storage_name=bacula-dedup-sd bee_version=12.6.0 sdplugin=dedup volumes_directory=/mnt/dedup/volumes director_hostname=baculadir.domain.com"`
 
 `ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_sdplugin.yml --extra-vars '{"storage_hostname":"baculadir.domain.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"12.6.0", "sdplugin":"dedup2",  "volumes_directory":"/mnt/dedup/volumes",  "dedup_directories":"["/opt/bacula/dedup2/index", "/opt/bacula/dedup2/containers"],  "director_hostname":"baculadir.domain.com"}'`
 
-To install a remote Bacula Enterprise Edition Storage Daemon Plugin `12.6.0` in the `bacula_dedup.domain.com` host (Bacula Enterprise Edition will be installed and Director and File Daemon services must be manually stopped and disabled):
+5. To install a remote Bacula Enterprise Edition Storage Daemon Plugin `12.6.0` in the `bacula_dedup.domain.com` host (Bacula Enterprise Edition will be installed and Director and File Daemon services must be manually stopped and disabled):
 
 `ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_sdplugin.yml --extra-vars "storage_hostname=bacula_dedup.domain.com storage_name=bacula-dedup-sd bee_version=12.6.0 sdplugin=dedup director_hostname=baculadir.domain.com director_name=baculadir.domain.com-dir"`
 
@@ -84,4 +84,4 @@ remote_tmp = ~/.ansible/tmp
 All the roles will trigger the operating system update/upgrade as this is strongly recommended by Bacula Systems before installing Bacula Enterprise Edition.
 
 ## Licensing
-
+License: BSD 2-Clause; see file LICENSE
