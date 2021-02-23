@@ -1,0 +1,7 @@
+- name: start bacula-fd service
+  systemd:
+    name: bacula-fd
+    state: started
+  register: bacula_fd_status
+- debug: msg="{{ bacula_fd_status.name }} status is {{ bacula_fd_status.state }}, PID is {{ bacula_fd_status.status.ExecMainPID }}.\n \
+         PID is {{ bacula_fd_status.status.ExecMainPID }}, ExecMainStatus is {{ bacula_fd_status.status.ExecMainStatus }}."

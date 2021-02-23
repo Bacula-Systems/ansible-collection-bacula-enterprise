@@ -1,0 +1,38 @@
+Autochanger {
+  Name = {{ sdplugin }}-Chgr
+  Device = {{ sdplugin }}-Chgr-Dev0, {{ sdplugin }}-Chgr-Dev1
+  Changer Command = ""
+  Changer Device = /dev/null
+}
+
+Device {
+  Name = {{ sdplugin }}-Chgr-Dev0
+  DriveIndex = 0
+  Device Type = {{ sdplugin }}
+  Media Type = {{ sdplugin }}-volume
+  Archive Device = "{{ volumes_directory }}"
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  FileAlignment = 4K
+  PaddingSize = 4K
+  Maximum Concurrent Jobs = 1
+}
+
+Device {
+  Name = {{ sdplugin }}-Chgr-Dev1
+  DriveIndex = 1
+  Device Type = {{ sdplugin }}
+  Media Type = {{ sdplugin }}-volume
+  Archive Device = "{{ volumes_directory }}"
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  FileAlignment = 4K
+  PaddingSize = 4K
+  Maximum Concurrent Jobs = 1
+}
