@@ -1,4 +1,0 @@
-- name: update packages, not upgrade service pack
-  zypper:
-    name: '*'
-    state: latest

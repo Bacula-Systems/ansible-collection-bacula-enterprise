@@ -1,9 +1,0 @@
-- name: confirm new configurations are reloaded
-  service:
-    name: bweb
-    state: reloaded
-- name: auto-start BWeb during boot time and start BWeb
-  service:
-    name: bweb
-    state: started
-    enabled: yes

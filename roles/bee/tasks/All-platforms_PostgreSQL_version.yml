@@ -1,6 +1,0 @@
-- name: Collect PostgreSQL version 
-  become: yes
-  become_user: postgres
-  shell: psql --version
-  register: postgresql_version
-- debug: msg="{{ postgresql_version.stdout }}"

@@ -1,5 +1,0 @@
-repo_filename: Bacula-Enterprise-Edition
-description: Bacula Enterprise Edition repository
-sles_version: sles152
-architecture: 64
-auto_import_keys: yes

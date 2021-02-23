@@ -1,5 +1,0 @@
-- name: stop bacula-dir service 
-  systemd:
-    name: bacula-dir
-    enabled: no
-    state: stopped

@@ -1,5 +1,0 @@
-repo_filename: Bacula-Enterprise-Edition-{{ fdplugin }}
-description: Bacula Enterprise Edition {{ fdplugin }} repository
-sles_version: sles151
-architecture: 64
-auto_import_keys: yes

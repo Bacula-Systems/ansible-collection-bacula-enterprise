@@ -1,5 +1,0 @@
----
-dl_area: https://www.baculasystems.com/dl/@@customer@
-dedup_directories:
-  - /opt/bacula/dedup/index
-  - /opt/bacula/dedup/containers

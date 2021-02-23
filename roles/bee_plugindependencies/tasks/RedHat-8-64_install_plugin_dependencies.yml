@@ -1,2 +1,0 @@
----
-  - include: yum_install_plugin_dependencies.yml
