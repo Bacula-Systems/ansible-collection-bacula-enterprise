@@ -50,7 +50,7 @@ The following examples use the playbooks in the `tests` directory of the Bacula 
 
 1. To deploy Bacula Enterprise Edition (Director, Storage Daemon and File Daemon) `12.6.0` in the `baculadir.domain.com` host:
 
-```ansible-playbook -i inventory tests/bee.yml --extra-vars "director_hostname=baculadir.domain.com bee_version=12.6.0"```
+> ansible-playbook -i inventory tests/bee.yml --extra-vars "director_hostname=baculadir.domain.com bee_version=12.6.0"
 
 2. To install a remote Bacula Enterprise Edition File Daemon only version `12.6.0` in the `client.domain.com` host and deploy the client configuration in the `baculadir.domain.com-dir` Director in the `baculadir.domain.com` host:
 
