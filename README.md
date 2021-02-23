@@ -29,11 +29,15 @@ Please set the repository URL for Bacula Enterprise Edition packages, `dl_area` 
 
 You can use the following command to modify all `dl_area` values:
 
-`find /root/.ansible/collections/ansible_collections/bacula/bacula_enterprise/roles/ -name main.yml -ls -exec sed -i 's/@@customer@/<your_customer_download_area_here>/g' {} \;`
+> find /root/.ansible/collections/ansible_collections/bacula/bacula_enterprise/roles/ -name main.yml -ls -exec sed -i 's/@@customer@/<your_customer_download_area_here>/g' {} \;
 
 The Bacula Client and the Bacula Storage will use the password used by the Director {} resource present in the bacula-fd.conf and bacula-sd.conf files, respectively, to communicate with the remote Director provided in the deployment.
 
 The following variables must be set in the playbook or by using `--extra-vars`, for example, they are not defined in the roles: `bee_version, director_hostname, client_hostname, client_name`, `storage_hostname` and `storage_name`.
+
+Variable | Description
+-------- | ---------------------
+bee_version | the Bacula Enterprise Edition version, for example, `12.6.0`.
 
 * **bee_version**: the Bacula Enterprise Edition version, for example, `12.6.0`.
 * **director_hostname**: the FQDN of the Director host, for example, `baculadir.domain.com`. The name of the Director is, by default, the hostname + "-dir". In this example, the Director name will be `baculadir-dir`.
