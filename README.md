@@ -14,12 +14,14 @@ Before using the Bacula Enterprise collection, you need to install it with the A
 
 ## Roles
 
-* **bee**: install Bacula Enterprise Edition - PostgreSQL Catalog. This role may install PostgreSQL required packages if not present in the host.
-* **bee_fdonly**: install Bacula File Daemon only. This is a Bacula Client.
-* **bee_sdonly**: Install a Bacula Storage. This role follows the recommended procedure to install Bacula Enterprise Edition and stop/disable the Director.
-* **bee_fdplugin**: install a Bacula Enterprise Plugin in a Bacula Client host. Please note it is required to have a Bacula File Daemon installed and running before installing the File Daemon Plugin.
-* **bee_sdplugin**: install a Bacula Enterprise Plugin in a Bacula Storage host. Please note it is required to have a Bacula Storage Daemon installed and running before installing the Storage Daemon Plugin.
-* **bee_plugindependencies**: install Plugins required dependencies. This role is required and used by both the *bee_fdplugin* and the *bee_sdplugin* roles.
+Role | Description
+-------- | ---------------------
+bee | install Bacula Enterprise Edition - PostgreSQL Catalog. This role may install PostgreSQL required packages if not present in the host.
+bee_fdonly | install Bacula File Daemon only. This is a Bacula Client.
+bee_sdonly | Install a Bacula Storage. This role follows the recommended procedure to install Bacula Enterprise Edition and stop/disable the Director.
+bee_fdplugin | install a Bacula Enterprise Plugin in a Bacula Client host. Please note it is required to have a Bacula File Daemon installed and running before installing the File Daemon Plugin.
+bee_sdplugin | install a Bacula Enterprise Plugin in a Bacula Storage host. Please note it is required to have a Bacula Storage Daemon installed and running before installing the Storage Daemon Plugin.
+bee_plugindependencies | install Plugins required dependencies. This role is required and used by both the *bee_fdplugin* and the *bee_sdplugin* roles.
 
 ### Roles Variables
 
