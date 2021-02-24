@@ -69,9 +69,9 @@ The following examples use the playbooks in the `tests` directory of the Bacula 
 
 > ansible-playbook -i inventory tests/bee_sdplugin.yml --extra-vars '{"storage_hostname":"baculadir.domain.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"12.6.1", "sdplugin":"dedup",  "volumes_directory":"/mnt/dedup/data/volumes",  "dedup_directories":"["/mnt/dedup/index", "/mnt/dedup/data/containers"],  "director_hostname":"baculadir.domain.com"}'
 
-5) To install a remote Bacula Enterprise Edition Storage Daemon Plugin `12.6.1` in the `bacula_dedup.domain.com` host (Bacula Enterprise Edition will be installed and Director and File Daemon services must be manually stopped and disabled):
+5) To install a remote Bacula Enterprise Edition Storage Daemon only `12.6.1` in the `bacula_sd.domain.com` host (Bacula Enterprise Edition will be installed and Director and File Daemon services must be manually stopped and disabled):
 
-> ansible-playbook -i inventory tests/bee_sdplugin.yml --extra-vars "storage_hostname=bacula_dedup.domain.com storage_name=bacula-dedup-sd bee_version=12.6.1 sdplugin=dedup director_hostname=baculadir.domain.com director_name=baculadir.domain.com-dir"
+> ansible-playbook -i inventory tests/bee_sdonly.yml --extra-vars "storage_hostname=bacula_sd.domain.com storage_name=bacula-remote-sd bee_version=12.6.1 director_hostname=baculadir.domain.com director_name=baculadir.domain.com-dir"
 
 ## Requirements
 
