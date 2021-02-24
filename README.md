@@ -31,7 +31,7 @@ Please set the repository URL for Bacula Enterprise Edition packages, `dl_area` 
 
 You can use the following command to modify all `dl_area` values:
 
-> find /root/.ansible/collections/ansible_collections/bacula/bacula_enterprise/roles/ -name main.yml -ls -exec sed -i 's/@@customer@/<your_customer_download_area_here>/g' {} \;
+> find /root/.ansible/collections/ansible_collections/bacula/bacula_enterprise/roles/ -name main.yml -ls -exec sed -i 's/@@customer@/<your_customer_download_area_here>/g' {} \\;
 
 The Bacula Client and the Bacula Storage will use the password used by the Director {} resource present in the bacula-fd.conf and bacula-sd.conf files, respectively, to communicate with the remote Director provided in the deployment.
 
@@ -61,17 +61,17 @@ The following examples use the playbooks in the `tests` directory of the Bacula 
 
 3) To install a Bacula Enterprise Edition File Daemon Plugin `12.6.0` in the remote client in the `client.domain.com` host and deploy the plugin configuration (basic FileSet, not including plugin options in most of the cases) in the `baculadir.domain.com-dir` Director in the `baculadir.domain.com` host:
 
-> ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_fdplugin.yml --extra-vars "client_hostname=client.domain.com client_name=bacula-fd bee_version=12.6.0 fdplugin=mysql director_hostname=baculadir.domain.com"
+> ansible-playbook -i inventory tests/bee_fdplugin.yml --extra-vars "client_hostname=client.domain.com client_name=bacula-fd bee_version=12.6.0 fdplugin=mysql director_hostname=baculadir.domain.com"
 
 4) To install a Bacula Enterprise Edition Storage Daemon Plugin `12.6.0` in the `baculadir.domain.com` (the same host as Director above):
 
-> ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_sdplugin.yml --extra-vars "storage_hostname=baculadir.domain.com storage_name=bacula-dedup-sd bee_version=12.6.0 sdplugin=dedup volumes_directory=/mnt/dedup/volumes director_hostname=baculadir.domain.com"
+> ansible-playbook -i inventory tests/bee_sdplugin.yml --extra-vars "storage_hostname=baculadir.domain.com storage_name=bacula-dedup-sd bee_version=12.6.0 sdplugin=dedup volumes_directory=/mnt/dedup/volumes director_hostname=baculadir.domain.com"
 
-> ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_sdplugin.yml --extra-vars '{"storage_hostname":"baculadir.domain.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"12.6.0", "sdplugin":"dedup2",  "volumes_directory":"/mnt/dedup/volumes",  "dedup_directories":"["/opt/bacula/dedup2/index", "/opt/bacula/dedup2/containers"],  "director_hostname":"baculadir.domain.com"}'
+> ansible-playbook -i inventory tests/bee_sdplugin.yml --extra-vars '{"storage_hostname":"baculadir.domain.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"12.6.0", "sdplugin":"dedup2",  "volumes_directory":"/mnt/dedup/volumes",  "dedup_directories":"["/opt/bacula/dedup2/index", "/opt/bacula/dedup2/containers"],  "director_hostname":"baculadir.domain.com"}'
 
 5) To install a remote Bacula Enterprise Edition Storage Daemon Plugin `12.6.0` in the `bacula_dedup.domain.com` host (Bacula Enterprise Edition will be installed and Director and File Daemon services must be manually stopped and disabled):
 
-> ansible-playbook -i /path/to/inventory/inventory /path/to/plays/bee_sdplugin.yml --extra-vars "storage_hostname=bacula_dedup.domain.com storage_name=bacula-dedup-sd bee_version=12.6.0 sdplugin=dedup director_hostname=baculadir.domain.com director_name=baculadir.domain.com-dir"
+> ansible-playbook -i inventory tests/bee_sdplugin.yml --extra-vars "storage_hostname=bacula_dedup.domain.com storage_name=bacula-dedup-sd bee_version=12.6.0 sdplugin=dedup director_hostname=baculadir.domain.com director_name=baculadir.domain.com-dir"
 
 ## Requirements
 
