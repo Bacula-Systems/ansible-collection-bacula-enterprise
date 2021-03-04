@@ -35,7 +35,7 @@ You can use the following command to modify all `dl_area` values:
 
 The Bacula Client and the Bacula Storage will use the password used by the Director {} resource present in the bacula-fd.conf and bacula-sd.conf files, respectively, to communicate with the remote Director provided in the deployment.
 
-The following variables must be set in the playbook or by using `--extra-vars`, for example, they are not defined in the roles: `bee_version, director_hostname, client_hostname, client_name`, `storage_hostname` and `storage_name`.
+The following variables must be set in the playbook, inventory file or by using `--extra-vars`, depending on the role used: `bee_version, director_hostname, client_hostname, client_name`, `storage_hostname`, `storage_name`, `volumes_directory` and `dedup_directories`.
 
 Variable | Description
 -------- | ---------------------
