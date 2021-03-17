@@ -1,0 +1,6 @@
+---
+directors:
+  hosts:
+    baculadir.domain.com:
+      director_hostname: baculadir.domain.com
+      bee_version: 12.6.1
