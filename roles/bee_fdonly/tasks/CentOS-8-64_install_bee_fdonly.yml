@@ -7,3 +7,4 @@
     - include: systemd_config_firewalld.yml
     - include: systemd_restart_fd.yml
     - include: yum_list_packages_build.yml
+    - include: All-platforms_config_fdonly_dir.yml

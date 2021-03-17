@@ -7,6 +7,7 @@
     - include: apt_install_postgresql.yml
     - include: apt_install_bee.yml
     - include: apt_list_packages_build.yml
-    - include: All-platforms_include_all_configs.yml
+    - include: All-platforms_config_sdonly.yml
     - include: service_restart_sd.yml
     - include: service_disable_stop_Director.yml
+    - include: All-platforms_config_sdonly_dir.yml

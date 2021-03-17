@@ -22,3 +22,4 @@
           errors: ignore
       loop_control:
         loop_var: platform_install_file
+    - include: All-platforms_config_fdplugin_dir.yml

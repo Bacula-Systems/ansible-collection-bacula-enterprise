@@ -5,6 +5,11 @@
       register: result
       failed_when: result.status != 200
 
+    - name: Set director_hostname to the storage_hostname if director_hostname is not defined
+      set_fact:
+        director_hostname: "{{ storage_hostname }}"
+      when: director_hostname is not defined
+
     - name: Set director_name based on director_hostname if director_name is not defined
       set_fact:
         director_name: "{{ director_hostname.split('.')[0] }}-dir"
@@ -20,3 +25,5 @@
         - files:
           - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_bee_sdplugin.yml"
           errors: ignore
+
+    - include: All-platforms_config_sdplugin_dir.yml
