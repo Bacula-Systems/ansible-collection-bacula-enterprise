@@ -1,5 +1,5 @@
 ---
-- hosts: directors
+- hosts: "{{ director_hostname }}"
   remote_user: root
   tasks:
   - name: Install Bacula Enterprise Edition - PostgreSQL Catalog

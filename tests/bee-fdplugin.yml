@@ -1,5 +1,5 @@
 ---
-- hosts: clients
+- hosts: "{{ client_hostname }}"
   tasks:
   - name: Install File Daemon, if not installed
     import_role:

@@ -1,5 +1,5 @@
 ---
-- hosts: storages
+- hosts: "{{ storage_hostname }}"
   tasks:
   - name: Install Plugin Dependencies
     import_role:

@@ -1,6 +1,6 @@
 ---
 directors:
   hosts:
-    baculadir.domain.com:
-      director_hostname: baculadir.domain.com
-      bee_version: 12.6.1
+    baculadir.example.com:
+      director_hostname: baculadir.example.com
+      bee_version: 12.6.3
