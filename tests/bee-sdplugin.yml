@@ -3,7 +3,7 @@
   tasks:
   - name: Install Plugin Dependencies
     import_role:
-      name: bacula.bacula_enterprise.bee_plugindependencies
+      name: baculasystems.bacula_enterprise.bee_plugindependencies
   - name: Install the Storage Daemon Plugin
     import_role:
-      name: bacula.bacula_enterprise.bee_sdplugin
+      name: baculasystems.bacula_enterprise.bee_sdplugin

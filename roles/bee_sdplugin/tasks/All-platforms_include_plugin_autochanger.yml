@@ -1,3 +1,11 @@
+- name: create volumes directory
+  file:
+    path: "{{ volumes_directory }}"
+    state: directory
+    owner: bacula
+    group: bacula
+    mode: '0755'
+
 - name: Modify the Storage name, if defined
   ansible.builtin.replace:
     path: /opt/bacula/etc/bacula-sd.conf
@@ -9,7 +17,7 @@
 - name: generate the autochanger resource definition to be included in the bacula-sd.conf file
   template:
     src: "{{ sdplugin }}_conf_in_bacula_sd.j2"
-    dest: "/opt/bacula/etc/conf.d/storage/{{ storage_name }}-{{ sdplugin }}-autochanger-devices.conf"
+    dest: "/opt/bacula/etc/ansible.conf.d/storage/{{ storage_name }}-{{ sdplugin }}-autochanger-devices.conf"
     owner: bacula
     group: bacula
     mode: '0660'
@@ -25,7 +33,7 @@
 - name: include director in the bacula-sd.conf file if director is a different host
   template:
     src: "director_conf_in_bacula_sd.j2"
-    dest: "/opt/bacula/etc/conf.d/storage/{{ director_name }}.conf"
+    dest: "/opt/bacula/etc/ansible.conf.d/storage/{{ director_name }}.conf"
     owner: root
     group: bacula
     mode: '0660'

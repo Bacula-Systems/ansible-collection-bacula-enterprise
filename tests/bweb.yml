@@ -3,21 +3,4 @@
   tasks:
   - name: Install BWeb Management Suite
     import_role:
-      name: bacula.bacula_enterprise.bweb
-  - get_url:
-      url: http://localhost:9180
-      dest: /tmp
-    register: result_from_local_host
-  - debug:
-      msg: "Connected to {{ result_from_local_host.url }}... HTTP request: {{ result_from_local_host.status_code }} - {{ result_from_local_host.msg }}"
-- hosts: localhost
-  gather_facts: no
-  remote_user: root
-  tasks:
-  - name: Check if connection is allowed from a remote host, we use the Ansible host as remote host.
-    get_url:
-      url: "http://{{ vm_name }}.{{ domain }}:9180"
-      dest: /tmp
-    register: result_from_remote_host
-  - debug:
-      msg: "Connected to {{ result_from_remote_host.url }}... HTTP request: {{ result_from_remote_host.status_code }} - {{ result_from_remote_host.msg }}"
+      name: baculasystems.bacula_enterprise.bweb

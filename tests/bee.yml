@@ -4,4 +4,4 @@
   tasks:
   - name: Install Bacula Enterprise Edition - PostgreSQL Catalog
     import_role:
-      name: bacula.bacula_enterprise.bee
+      name: baculasystems.bacula_enterprise.bee

@@ -9,7 +9,7 @@
 - name: generate the autochanger resource definition to be included in the bacula-dir.conf file
   template:
     src: "autochanger_conf_in_bacula_dir.j2"
-    dest: "/opt/bacula/etc/conf.d/director/{{ storage_name }}-{{ sdplugin }}-autochanger.conf"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ storage_name }}-{{ sdplugin }}-autochanger.conf"
     owner: bacula
     group: bacula
     mode: '0660'

@@ -6,5 +6,6 @@
         - files:
           - "All-platforms_config_{{ sdplugin }}_sd.yml"
           skip: true
+    - include: All-platforms_include_plugin_autochanger.yml
     - include: yum_list_packages_build.yml
     - include: service_restart_sd.yml

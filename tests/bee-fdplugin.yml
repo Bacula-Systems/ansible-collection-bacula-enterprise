@@ -3,10 +3,10 @@
   tasks:
   - name: Install File Daemon, if not installed
     import_role:
-      name: bacula.bacula_enterprise.bee_fdonly
+      name: baculasystems.bacula_enterprise.bee_fdonly
   - name: Install Plugin dependencies
     import_role:
-      name: bacula.bacula_enterprise.bee_plugindependencies
+      name: baculasystems.bacula_enterprise.bee_plugindependencies
   - name: Install the File Daemon Plugin
     import_role:
-      name: bacula.bacula_enterprise.bee_fdplugin
+      name: baculasystems.bacula_enterprise.bee_fdplugin
