@@ -1,6 +1,6 @@
-# Bacula Enterprise Collection for Ansible - bacula.bacula_enterprise
+# Bacula Enterprise Collection for Ansible - baculasystems.bacula_enterprise
 
-An Ansible Collection of roles to install one or more of the Bacula Enterprise Edition Director, (using PostgreSQL catalog), a Bacula File Daemon (FD) only, FD plugins, SD plugins, and BWeb in RHEL/CentOS/Debian/Ubuntu/OracleLinux/SLES Linux distributions.
+An Ansible Collection of roles to install one or more of the following Bacula Enterprise Edition components: A Director (using a PostgreSQL catalog), a File Daemon (FD) only, a Storage Daemon (SD) only, FD plugins, SD plugins, and/or BWeb in RHEL/CentOS/Debian/Ubuntu/OracleLinux/SLES Linux distributions.
 
 ## Ansible version compatibility
 
@@ -28,7 +28,7 @@ Bacula Systems strongly recommends having a fully patched system before installi
 
 Before using the Bacula Enterprise collection, it must be installed with the Ansible Galaxy command:
 
-> \# ansible-galaxy collection install bacula.bacula_enterprise
+> \# ansible-galaxy collection install baculasystems.bacula_enterprise
 
 ## Roles
 
@@ -49,7 +49,7 @@ Please set your Bacula Enterprise Edition subscription's repository URL (downloa
 
 You may use the following command to set all `dl_area` values at once:
 
-> \# find /root/.ansible/collections/ansible_collections/bacula/bacula_enterprise/roles/ -name main.yml -exec sed -i 's/@@customer@/<your_download_area_string>/g' {} \\;
+> \# find /root/.ansible/collections/ansible_collections/baculasystems/bacula_enterprise/roles/ -name main.yml -exec sed -i 's/@@customer@/<your_download_area_string>/g' {} \\;
 
 The Bacula Clients (File Daemons) and the Bacula Storage Daemons will use the password used by the Director {} resource present in the bacula-fd.conf and bacula-sd.conf files respectively to communicate with the remote Director provided in the deployment.
 
@@ -58,12 +58,12 @@ The variables in the following table must be set in a playbook, in an inventory 
 
 Variable | Description
 -------- | ---------------------
-bee_version | the Bacula Enterprise Edition version, for example: `12.6.3`.
-director_hostname | the FQDN of the Director host, for example: `baculadir.example.com`. The name of the Director is, by default, the hostname + "-dir". In this example, the Director name will be `baculadir-dir`.
-client_hostname | the FQDN of the Client host, for example, `baculaclient.example.com`.
-client_name | the name of the File Daemon/Client. For example, `baculaclient1-fd`. If not specified, the `client_name` will be automatically created using the `client_hostname` + `-fd`.
-storage_hostname | the FQDN of the Storage host, for example, `baculasd1.example.com`.
-storage_name | the name of the Storage. For example, `baculasd1-sd`. If not specified, the `storage_name` will be the `storage_hostname + `-sd`.
+bee_version | the Bacula Enterprise Edition version, for example: `12.6.3`
+director_hostname | the FQDN of the Director host, for example: `baculadir.example.com`. The name of the Director is, by default, the hostname + "-dir". In this example, the Director name will be `baculadir-dir`
+client_hostname | the FQDN of the Client host, for example, `baculaclient.example.com`
+client_name | the name of the File Daemon/Client. For example, `baculaclient1-fd`. If not specified, the `client_name` will be automatically created using the `client_hostname` + `-fd`
+storage_hostname | the FQDN of the Storage host, for example, `baculasd1.example.com`
+storage_name | the name of the Storage. For example, `baculasd1-sd`. If not specified, the `storage_name` will be the `storage_hostname` + `-sd`
 volumes_directory | this variable will be required when using the `bee-sdonly` and `bee-sdplugin` roles. This is where the Bacula volumes will be stored. It is the value used in the SD Device resource(s) `Archive Device = xxxx` directive(s).
 dedup_directories | these are the Dedup Index and the Dedup Containers directories required when using the `bee-sdplugin` role to install the GED plugin. If not defined, the default values are `/opt/bacula/dedup/index` and `/opt/bacula/dedup/containers`. They may be modified using `--extra-vars='{"dedup_directories": [/mnt/dedup/index, /mnt/dedup/containers]}'`. Please note the first directory will be used for the Dedup Index and the second one for the Dedup Containers.
 
@@ -83,14 +83,14 @@ This is the `tests/bee.yml` file referenced in the command line above:
   tasks:
   - name: Install Bacula Enterprise Edition - PostgreSQL Catalog
     import_role:
-      name: bacula.bacula_enterprise.bee
+      name: baculasystems.bacula_enterprise.bee
 ```
 
 2) Using an inventory file to install two remote Bacula Enterprise Edition version `12.6.3` File Daemon to the hosts `client1.example.com` and `client2.example.com`, and deploy the two clients' resource definitions in the Director's configuration on the `baculadir.example.com` host, first an inventory file needs to be created:
 
 Note: In this example, please be sure to edit the `tests/clients.yaml` inventory file to match your environment.
 
-The `clients.yaml` inventory file:
+The `tests/clients.yaml` inventory file (edit to match systems in your environment):
 ```
 ---
 clients:
@@ -118,10 +118,10 @@ This is the `tests/bee-fdonly.yml` playbook referenced in the command line above
 
   - name: Install and configure Bacula File Daemon
     import_role:
-      name: bacula.bacula_enterprise.bee_fdonly
+      name: baculasystems.bacula_enterprise.bee_fdonly
 ```
 
-3) To install the MySQL Bacula Enterprise Edition File Daemon Plugin version `12.6.3` in the remote client on the `client1.example.com` host, and deploy the plugin configuration (basic FileSet, not including plugin options in most of the cases) in the Director's configuration on the `baculadir.example.com` host, using the --extra_vars command line option:
+3) To install the Bacula Enterprise Edition MySQL File Daemon Plugin version `12.6.3` in the remote client on the `client1.example.com` host, and deploy the plugin configuration (basic FileSet, not including plugin options in most of the cases) in the Director's configuration on the `baculadir.example.com` host, using the --extra_vars command line option:
 
 > \# ansible-playbook tests/bee-fdplugin.yml -i client1.example.com, --extra-vars "client_hostname=client1.example.com client_name=client1-fd bee_version=12.6.3 fdplugin=mysql director_hostname=baculadir.example.com"
 
@@ -134,20 +134,18 @@ This is the `tests/bee-fdplugin.yml` playbook referenced in the commmand line ab
   tasks:
   - name: Install File Daemon, if not installed
     import_role:
-      name: bacula.bacula_enterprise.bee_fdonly
+      name: baculasystems.bacula_enterprise.bee_fdonly
   - name: Install Plugin dependencies
     import_role:
-      name: bacula.bacula_enterprise.bee_plugindependencies
+      name: baculasystems.bacula_enterprise.bee_plugindependencies
   - name: Install the File Daemon Plugin
     import_role:
-      name: bacula.bacula_enterprise.bee_fdplugin
+      name: baculasystems.bacula_enterprise.bee_fdplugin
 ```
 
-4) To install two remote Bacula Enterprise Edition version `12.6.3` Storage Daemons to the hosts `storage1.example.com` and `storage2.example.com`, using an inventory file. Bacula Enterprise Edition DIR, SD, and FD compnents will be installed and the Bacula Director service will be automatically disabled. First an inventory file needs to be created:
+4) In the example, two remote Bacula Enterprise Edition version `12.6.3` Storage Daemons will be deployed to the hosts `storage1.example.com` and `storage2.example.com`, using an inventory file. Bacula Enterprise Edition DIR, SD, and FD compnents will also be installed and the Bacula Director service will be automatically disabled. First an inventory file needs to be created:
 
-Note: In this example, please be sure to edit the `tests/storages.yaml` inventory file to match your environment.
-
-Example `tests/storages.yaml` inventory file:
+The `tests/storages.yaml` inventory file (edit to match systems in your environment):
 ```
 ---
 storages:
@@ -162,7 +160,7 @@ storages:
     volumes_directory: /opt/bacula/volumes
 ```
 
-Then, to deploy the two Bacula Storage Daemons to the two hosts using the `bee-sdonly.yml` playbook and the above `storages.yaml` inventory file:
+Then, to deploy the two Bacula Storage Daemons to the two hosts using the `tests/bee-sdonly.yml` playbook and the above `tests/storages.yaml` inventory file:
 
 > \# ansible-playbook -i tests/storages.yaml tests/bee-sdonly.yml
 
@@ -174,12 +172,12 @@ This is the `tests/bee-sdonly.yml` playbook referenced in the command line above
 
   - name: Install and configure Bacula Storage Daemon only
     import_role:
-      name: bacula.bacula_enterprise.bee_sdonly
+      name: baculasystems.bacula_enterprise.bee_sdonly
 ```
 
-5) To install a Bacula Enterprise Edition Storage Daemon Plugin version `12.6.3` on the `storage1.example.com` host (deployed in the example 4 above), using the --extra_vars command line option:
+5) To install a Bacula Enterprise Edition dedup (GED) Storage Daemon Plugin version `12.6.3` on the `storage1.example.com` host (deployed in the example 4 above), using the --extra_vars command line option:
 
-> \# ansible-playbook -i storage1.example.com, --extra-vars '{"storage_hostname":"storage1.example.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"12.6.3", "sdplugin":"dedup",  "volumes_directory":"/mnt/dedup/data/volumes",  "dedup_directories":"["/mnt/dedup/index", "/mnt/dedup/data/containers"],  "director_hostname":"baculadir.example.com"}'
+> \# ansible-playbook -i storage1.example.com, tests/bee-sdplugin.yml --extra-vars '{"storage_hostname":"storage1.example.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"12.6.3", "sdplugin":"dedup",  "volumes_directory":"/mnt/dedup/data/volumes",  "dedup_directories":["/mnt/dedup/index", "/mnt/dedup/data/containers"],  "director_hostname":"baculadir.example.com"}'
 
 This is the `tests/bee-sdplugin.yml` playbook referenced in the command line above:
 ```
@@ -188,10 +186,10 @@ This is the `tests/bee-sdplugin.yml` playbook referenced in the command line abo
   tasks:
   - name: Install Plugin Dependencies
     import_role:
-      name: bacula.bacula_enterprise.bee_plugindependencies
+      name: baculasystems.bacula_enterprise.bee_plugindependencies
   - name: Install the Storage Daemon Plugin
     import_role:
-      name: bacula.bacula_enterprise.bee_sdplugin
+      name: baculasystems.bacula_enterprise.bee_sdplugin
 ```
 
 **Please note all the examples above can use an inventory file and/or --extra-vars or you may modify the playbooks to use any variable assignment allowed in Ansible.**
