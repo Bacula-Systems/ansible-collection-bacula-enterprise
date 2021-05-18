@@ -45,6 +45,11 @@ fdplugins:
     name: ldap
     package_name: bacula-enterprise-ldap-plugin
 
+  m365:
+    directory: m365
+    name: m365
+    package_name: bacula-enterprise-m365-plugin
+
   mysql:
     directory: mysql
     name: mysql
@@ -59,6 +64,11 @@ fdplugins:
     directory: netapp-hfc
     name: netapp-hfc
     package_name: bacula-enterprise-netapp-hfc
+
+  openshift:
+    name: openshift
+    directory: openshift
+    package_name: bacula-enterprise-openshift-plugin
 
   oracle:
     name: oracle

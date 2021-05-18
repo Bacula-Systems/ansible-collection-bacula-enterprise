@@ -1,7 +1,7 @@
 ---
     - include: yum-repository_add_repo_file.yml 
-#    - include: yum_install_dependencies.yml
     - include: yum_install_bweb.yml
     - include: systemd_start_bweb.yml
     - include: systemd_config_firewalld.yml
     - include: yum_list_packages_build.yml
+    - include: check_connection.yml

@@ -1,0 +1,9 @@
+---
+- name: Check if connection is allowed from a remote host, the Ansible vm
+  get_url:
+    url: "http://{{ director_hostname }}:9180"
+    dest: /tmp
+  register: result_from_remote_host
+- debug:
+    msg: "Connected to {{ result_from_remote_host.url }}... HTTP request: {{ result_from_remote_host.status_code }} - {{ result_from_remote_host.msg }}"
+  delegate_to: localhost

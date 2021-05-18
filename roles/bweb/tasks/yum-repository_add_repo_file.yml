@@ -13,7 +13,6 @@
     enabled: "{{ enabled }}"
     protect: "{{ protect }}"
     gpgcheck: "{{ gpgcheck }}"
-  when: build == "release"
 - name: gather variables for dag repository
   include_vars: "{{ repo_item }}"
   with_first_found:

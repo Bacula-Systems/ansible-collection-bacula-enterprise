@@ -6,6 +6,19 @@
     group: bacula
     mode: '0755'
 
+- name: create ansible.conf.d and ansible.conf.d/storage directories, if they don't exist
+  file:
+    path: "{{ directories }}"
+    state: directory
+    mode: '0770'
+    owner: bacula
+    group: bacula
+  loop:
+    - /opt/bacula/etc/ansible.conf.d
+    - /opt/bacula/etc/ansible.conf.d/storage
+  loop_control:
+    loop_var: directories
+
 - name: Modify the Storage name, if defined
   ansible.builtin.replace:
     path: /opt/bacula/etc/bacula-sd.conf
@@ -22,6 +35,14 @@
     group: bacula
     mode: '0660'
 
+- name: include the line to include the Autochanger configuration in the ansible.conf.d directory in the bacula-sd.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-sd.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Autochanger {{ storage_name }}-{{ sdplugin }} in bacula-sd.conf"
+    block: |
+      @/opt/bacula/etc/ansible.conf.d/storage/{{ storage_name }}-{{ sdplugin }}-autochanger-devices.conf
+
 - name: get the Storage Daemon password used to communicate with Director in the bacula-sd.conf file
   shell: "grep ^[[:space:]]*Password -m 1 /opt/bacula/etc/bacula-sd.conf | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
   register: current_sd_password
@@ -37,4 +58,13 @@
     owner: root
     group: bacula
     mode: '0660'
+  when: director_hostname is defined and storage_hostname != director_hostname
+
+- name: include the line to include the Director configuration in the ansible.conf.d directory in the bacula-sd.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-sd.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Add Director {{ director_name }} to the bacula-sd.conf file"
+    block: |
+      @/opt/bacula/etc/ansible.conf.d/storage/{{ director_name }}.conf
   when: director_hostname is defined and storage_hostname != director_hostname

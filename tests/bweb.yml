@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ vm_name }}.{{ domain }}"
+- hosts: "{{ director_hostname }}"
   tasks:
   - name: Install BWeb Management Suite
     import_role:

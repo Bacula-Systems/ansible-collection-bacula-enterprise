@@ -3,3 +3,4 @@
     - include: apt_install_bweb.yml
     - include: systemd_start_bweb.yml
     - include: apt_list_packages_build.yml
+    - include: check_connection.yml

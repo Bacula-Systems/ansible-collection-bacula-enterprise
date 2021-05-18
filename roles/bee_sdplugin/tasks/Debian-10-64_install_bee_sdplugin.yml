@@ -8,6 +8,7 @@
           skip: true
       loop_control:
         loop_var: file_item
-    - include: All-platforms_include_plugin_autochanger.yml
+    - include: All-platforms_config_sdplugin.yml
     - include: apt_list_packages_build.yml
     - include: systemd_restart_sd.yml
+    - include: All-platforms_config_sdplugin_dir.yml

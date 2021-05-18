@@ -130,6 +130,12 @@ plugins_dependencies:
          add_repo: no
          os_distribution: CentOS
          os_distribution_major_version: 8
+       - package_dependency_name: python3
+         bee_version: 10.2.0
+         operator: ge
+         add_repo: no
+         os_distribution: CentOS
+         os_distribution_major_version: 7
        - package_dependency_name: wget
          bee_version: 10.2.0
          operator: ge

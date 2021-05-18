@@ -11,3 +11,4 @@
         loop_var: fdplugin_config_file
     - include: service_restart_fd.yml
     - include: apt_list_packages_build.yml
+    - include: All-platforms_config_fdplugin_dir.yml

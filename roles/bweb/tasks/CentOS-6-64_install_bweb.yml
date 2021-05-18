@@ -3,3 +3,4 @@
     - include: yum_install_bweb.yml
     - include: service_start_bweb.yml
     - include: yum_list_packages_build.yml
+    - include: check_connection.yml

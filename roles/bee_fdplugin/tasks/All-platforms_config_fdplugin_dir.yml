@@ -10,18 +10,8 @@
   set_fact:
     dir_fd_password: "{{ current_fd_password.stdout }}"
 
-- name: get the Catalog name used by the Director
-  shell: "grep 'Catalog {' /opt/bacula/etc/bacula-dir.conf -A 1 -m 1 | grep Name | tr -d ' ' | cut -d \"=\" -f2"
-  register: catalog_name
-  delegate_to: "{{ director_hostname }}"
-
-- name: set the catalog_name value
-  set_fact:
-    catalog_name: "{{ catalog_name.stdout }}"
-  delegate_to: "{{ director_hostname }}"
-
 - name: get the JobDefs resource name used in the configuration files (DefaultJob until 12.2.4 version, BackupsToDisk from 12.4 version)
-  shell: "grep 'JobDefs {' /opt/bacula/etc/bacula-dir.conf -A 1 -m 1 | grep Name | tr -d ' ' | cut -d \"=\" -f2"
+  shell: "grep -r 'JobDefs {' /opt/bacula/etc -A 1 -m 1 | grep Name | head -1 | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
   register: jobdefs_name
   delegate_to: "{{ director_hostname }}"
 
@@ -30,14 +20,38 @@
     jobdefs_name: "{{ jobdefs_name.stdout }}"
   delegate_to: "{{ director_hostname }}"
 
+- name: create ansible.conf.d, ansible.conf.d/director and ansible.conf.d/director/clients directories, if they don't exist
+  file:
+    path: "{{ directories }}"
+    state: directory
+    mode: '0770'
+    owner: bacula
+    group: bacula
+  loop:
+    - /opt/bacula/etc/ansible.conf.d
+    - /opt/bacula/etc/ansible.conf.d/director
+    - /opt/bacula/etc/ansible.conf.d/director/clients
+  loop_control:
+    loop_var: directories
+  delegate_to: "{{ director_hostname }}"
+
 - name: generate the job and fileset plugin to be included in the bacula-dir.conf file
   template:
     src: "{{ fdplugin }}_jobs_filesets.j2"
-    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ client_name }}-{{ fdplugin }}_jobs_filesets.conf"
-    owner: root
+    dest: "/opt/bacula/etc/ansible.conf.d/director/clients/{{ client_name }}-{{ fdplugin }}_jobs_filesets.conf"
+    owner: bacula
     group: bacula
     mode: '0660'
   ignore_errors: yes
+  delegate_to: "{{ director_hostname }}"
+
+- name: include the line to include the jobs and filesets configuration files in the ansible.conf.d directory in the bacula-dir.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-dir.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Jobs and FileSets - {{ client_name }}-{{ fdplugin }} in the bacula-dir.conf file"
+    block: |
+      @/opt/bacula/etc/ansible.conf.d/director/clients/{{ client_name }}-{{ fdplugin }}_jobs_filesets.conf
   delegate_to: "{{ director_hostname }}"
 
 - name: reload Director configuration

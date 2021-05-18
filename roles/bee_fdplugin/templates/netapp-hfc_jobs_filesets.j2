@@ -10,9 +10,6 @@ Job {
 FileSet {
   Name = "{{ fdplugin }}-All-{{ client_name }}-fileset"
   Include {
-    Options {
-      Signature = MD5
-    }
-    Plugin: "sap:"
+    Plugin = "netapp-hfc:"
   }
 }
