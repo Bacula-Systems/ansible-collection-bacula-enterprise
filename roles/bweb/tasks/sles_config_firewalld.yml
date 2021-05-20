@@ -1,0 +1,4 @@
+- name: configure firewalld
+  shell: "sudo firewall-cmd --permanent --zone=public --add-port=9180/tcp"
+- name: reload firewalld
+  shell: "sudo firewall-cmd --reload"

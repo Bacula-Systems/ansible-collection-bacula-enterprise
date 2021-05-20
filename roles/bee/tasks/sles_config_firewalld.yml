@@ -1,0 +1,12 @@
+- name: configure firewalld
+  shell: "firewall-cmd --permanent --zone=public --add-port={{ port_number }}/tcp"
+  become: yes
+  become_user: root
+  with_items:
+    - 9101
+    - 9102
+    - 9103
+  loop_control:
+    loop_var: port_number
+- name: reload firewalld
+  shell: "sudo firewall-cmd --reload"

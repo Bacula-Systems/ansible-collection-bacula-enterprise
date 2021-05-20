@@ -1,0 +1,18 @@
+#- name: include packages dependencies dictionary
+#  include_vars: bweb_packages_dependencies.yml
+#- name: install BWeb packages dependencies
+#  yum:
+#    name: "{{ item.value.package_name}}"
+#    state: latest
+#  loop: "{{ lookup('dict', bweb_packages_dependencies) }}"
+#  when:
+#    - "bee_version is version(item.value.bweb_version, item.value.operator) and item.value.os_distribution == ansible_distribution"
+#    - "item.value.os_distribution_major_version == ansible_distribution_major_version|int"
+- name: include repository dependencies dictionary
+  include_vars: bweb_repo_dependencies.yml
+- name: enable BWeb dependency repository
+  shell: "yum-config-manager --enable {{ item.value.repository_id }}"
+  loop: "{{ lookup('dict', bweb_repo_dependencies, wantlist=True) }}"
+  when:
+    - "bee_version is version(item.value.bweb_version, item.value.operator) and item.value.os_distribution == ansible_distribution"
+    - "item.value.os_distribution_major_version == ansible_distribution_major_version|int"
