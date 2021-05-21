@@ -147,7 +147,7 @@ This is the `tests/bee-fdplugin.yml` playbook referenced in the commmand line ab
       name: baculasystems.bacula_enterprise.bee_fdplugin
 ```
 
-4) In the example, two remote Bacula Enterprise Edition version `12.6.4` Storage Daemons will be deployed to the hosts `storage1.example.com` and `storage2.example.com`, using an inventory file. Bacula Enterprise Edition DIR, SD, and FD compnents will also be installed and the Bacula Director service will be automatically disabled. First an inventory file needs to be created:
+4) In the example, two remote Bacula Enterprise Edition version `12.6.4` Storage Daemons will be deployed to the hosts `storage1.example.com` and `storage2.example.com`, using an inventory file. Bacula Enterprise Edition DIR, SD, and FD components will also be installed and the Bacula Director service will be automatically disabled. First an inventory file needs to be created:
 
 The `tests/storages.yaml` inventory file (edit to match systems in your environment):
 ```
