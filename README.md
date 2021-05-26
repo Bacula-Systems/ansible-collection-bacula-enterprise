@@ -243,4 +243,4 @@ This is the `tests/bee.yml` file referenced in the command line above:
 
 ## Licensing
 
-License: BSD 2-Clause; see file LICENSE
+License: Copyright (C) 2000-2020 Kern Sibbald / BSD 2-Clause; see file [LICENSE](./LICENSE)

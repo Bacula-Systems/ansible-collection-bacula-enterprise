@@ -17,6 +17,7 @@ readme: README.md
 # @nicks:irc/im.site#channel'
 authors:
 - Ana Machado <info@baculasystems.com>
+- Bill Arlofski <info@baculasystems.com>
 
 
 ### OPTIONAL but strongly recommended
@@ -25,8 +26,7 @@ description: An Ansible Collection of roles to install Bacula Enterprise Edition
 
 # Either a single license or a list of licenses for content inside of a collection. Ansible Galaxy currently only
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'
-license:
-- Copyright (C) 2000-2020 Kern Sibbald / License: BSD 2-Clause; see file LICENSE
+# license:
 
 # The path to the license file for the collection. This path is relative to the root of the collection. This key is
 # mutually exclusive with 'license'
@@ -44,7 +44,7 @@ tags: [baculasystems, bacula_enterprise]
 dependencies: { "ansible.posix": ">=1.1.1" }
 
 # The URL of the originating SCM repository
-repository: https://github.com/Bacula-Systems/ansible-collection-bacula-enterprise
+# repository: https://github.com/Bacula-Systems/ansible-collection-bacula-enterprise
 
 # The URL to any online docs
 # documentation: http://docs.baculasystems.com
