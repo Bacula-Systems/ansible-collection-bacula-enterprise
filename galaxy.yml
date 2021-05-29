@@ -44,7 +44,7 @@ tags: [baculasystems, bacula_enterprise]
 dependencies: { "ansible.posix": ">=1.1.1" }
 
 # The URL of the originating SCM repository
-# repository: https://github.com/Bacula-Systems/ansible-collection-bacula-enterprise
+repository: https://github.com/Bacula-Systems/ansible-collection-bacula-enterprise
 
 # The URL to any online docs
 # documentation: http://docs.baculasystems.com
