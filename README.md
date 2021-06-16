@@ -4,13 +4,13 @@ An Ansible Collection of roles to install one or more of the following Bacula En
 
 ## Ansible version compatibility
 
-This collection has been tested against following Ansible versions: **>=2.9,<2.10**.
+This collection has been tested against following Ansible versions: **>=2.9,<2.11**.
 
 ## Requirements
 
 - A valid Bacula Systems subscription is required to make use of this Ansible Collection.
 
-- The `jmespath` library package must be installed on the Ansible host running the playbook (eg: `apt install python3-jmespath` on Debian 10). This is needed for the `json_query` filter.
+- The `jmespath` library package must be installed on the Ansible host running the playbook (eg: `apt install python3-jmespath` on Debian 10). This is needed for the `json_query` filter. This requirement is included in the requirements.txt file available in the collection.
 
 - The `remote_tmp` variable should be set in your Ansible configuration to avoid the warning:
 
