@@ -1,7 +1,7 @@
 - name: gather variables
   include_vars: "{{ repo_item }}"
   with_first_found:
-  - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}-repo.yml"
+  - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ ansible_userspace_bits }}-repo.yml"
   loop_control:
     loop_var: repo_item
 - name: Add BEE APT repository
@@ -17,7 +17,7 @@
     update_cache: yes
     allow_unauthenticated: no
   register: apt_update_result
-- debug:  msg="{{ apt_update_result.stdout.split('\n') }}"
+- debug: msg="{{ apt_update_result.stdout.split('\n') }}"
   when: apt_update_result.stdout is defined
-- debug:  msg="{{ apt_update_result.stderr.split('\n') }}"
+- debug: msg="{{ apt_update_result.stderr.split('\n') }}"
   when: apt_update_result.stderr is defined

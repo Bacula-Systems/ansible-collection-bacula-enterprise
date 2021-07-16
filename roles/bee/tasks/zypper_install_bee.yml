@@ -4,8 +4,8 @@
 # adding the new repo file and using this same role to update
 - name: install Bacula Enteprise Edition postgresql
   zypper:
-    name: bacula-enterprise-postgresql
-    state: latest
+name: bacula-enterprise-postgresql
+state: latest
   register: result
 - debug: msg="{{ result.stderr.split('\n') }}"
   when: result.stderr is defined

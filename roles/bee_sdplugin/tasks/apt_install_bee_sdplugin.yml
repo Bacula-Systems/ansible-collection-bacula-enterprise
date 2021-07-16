@@ -4,15 +4,15 @@
 # adding the new repo file and using this same role to update
 - name: get plugin variables
   set_fact:
-    sdplugin_package_name: "{{ sdplugins_item.value.package_name}}"
+sdplugin_package_name: "{{ sdplugins_item.value.package_name}}"
   loop: "{{ sdplugins|dict2items }}"
   loop_control:
-    loop_var: sdplugins_item
+loop_var: sdplugins_item
   when: sdplugins_item.key == sdplugin
 - name: install Bacula Enteprise Edition plugin for Storage Daemon
   apt:
-    name: "{{ sdplugin_package_name }}"
-    state: present
+name: "{{ sdplugin_package_name }}"
+state: present
   register: result
 - debug: msg="{{ result.stderr.split('\n') }}"
   when: result.stderr is defined

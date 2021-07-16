@@ -4,8 +4,8 @@
 # adding the new repo file and using this same role to update
 - name: install Bacula Enteprise Edition File Daemon
   apt:
-    name: bacula-enterprise-client
-    state: latest
+name: bacula-enterprise-client
+state: latest
   register: result
 - debug: msg="{{ result.stderr.split('\n') }}"
   when: result.stderr is defined

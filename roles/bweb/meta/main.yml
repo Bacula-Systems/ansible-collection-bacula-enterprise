@@ -1,0 +1,9 @@
+galaxy_info:
+  role_name: bweb
+  author: Ana Machado, Bill Arlofski
+  description: this role will install BWeb Management Suite in one or more hosts.
+  company: Bacula Systems SA
+  license: BSD 2-Clause
+  min_ansible_version: 2.9
+  galaxy_tags: []
+dependencies: []

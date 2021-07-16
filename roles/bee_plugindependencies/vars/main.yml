@@ -48,6 +48,12 @@ plugins_dependencies:
          bee_version: 12.0.0
          operator: ge
          add_repo: yes
+         os_distribution: OracleLinux
+         os_distribution_major_version: 8
+       - package_dependency_name: azure-cli
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
          os_distribution: RedHat
          os_distribution_major_version: 8
        - package_dependency_name: azure-cli
@@ -98,8 +104,70 @@ plugins_dependencies:
          add_repo: yes
          os_distribution: Ubuntu
          os_distribution_major_version: 16
+       - package_dependency_name: azure-cli
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: SLES
+         os_distribution_major_version: 15
+  - plugin_name: cloud-google
+    dependencies:
+       - package_dependency_name: google-cloud-sdk
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: CentOS
+         os_distribution_major_version: 7
+       - package_dependency_name: google-cloud-sdk
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: CentOS
+         os_distribution_major_version: 8
+       - package_dependency_name: google-cloud-sdk
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: RedHat
+         os_distribution_major_version: 8
+       - package_dependency_name: google-cloud-sdk
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: OracleLinux
+         os_distribution_major_version: 8
+       - package_dependency_name: google-cloud-sdk
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: SLES
+         os_distribution_major_version: 15
+       - package_dependency_name: google-cloud-sdk
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: Debian
+         os_distribution_major_version: 10
+       - package_dependency_name: google-cloud-sdk
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: Ubuntu
+         os_distribution_major_version: 20
+       - package_dependency_name: google-cloud-sdk
+         bee_version: 12.0.0
+         operator: ge
+         add_repo: yes
+         os_distribution: Ubuntu
+         os_distribution_major_version: 18
   - plugin_name: cloud-oracle
     dependencies:
+       - package_dependency_name: curl
+         bee_version: 10.2.0
+         operator: ge
+         add_repo: no
+         os_distribution: Debian
+         os_distribution_major_version: 10
        - package_dependency_name: wget
          bee_version: 10.2.0
          operator: ge
@@ -162,3 +230,41 @@ plugins_dependencies:
          add_repo: no
          os_distribution: CentOS
          os_distribution_major_version: 7
+  - plugin_name: m365
+    dependencies:
+       - package_dependency_name: powershell
+         bee_version: 12.7.0
+         operator: ge
+         add_repo: yes
+         os_distribution: CentOS
+         os_distribution_major_version: 7
+       - package_dependency_name: powershell
+         bee_version: 12.7.0
+         operator: ge
+         add_repo: yes
+         os_distribution: CentOS
+         os_distribution_major_version: 8
+       - package_dependency_name: powershell
+         bee_version: 12.7.0
+         operator: ge
+         add_repo: yes
+         os_distribution: RedHat
+         os_distribution_major_version: 8
+       - package_dependency_name: powershell
+         bee_version: 12.7.0
+         operator: ge
+         add_repo: yes
+         os_distribution: Ubuntu
+         os_distribution_major_version: 20
+       - package_dependency_name: powershell
+         bee_version: 12.7.0
+         operator: ge
+         add_repo: yes
+         os_distribution: Ubuntu
+         os_distribution_major_version: 18
+       - package_dependency_name: powershell
+         bee_version: 12.7.0
+         operator: ge
+         add_repo: yes
+         os_distribution: Debian
+         os_distribution_major_version: 10

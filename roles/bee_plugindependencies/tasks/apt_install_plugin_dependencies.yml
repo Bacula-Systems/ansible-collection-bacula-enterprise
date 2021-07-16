@@ -1,5 +1,7 @@
-- name: gather Plugin dependencies repository 
-  set_fact: add_repo_dependency="{{ dependency_item.1.package_dependency_name }}"
+- name: add Plugin dependencies repository and key if required
+  include: add_repo_dependency.yml
+  vars:
+    add_repo_dependency: "{{ dependency_item.1.package_dependency_name }}"
   loop: "{{ plugins_dependencies|subelements('dependencies') }}"
   loop_control:
     loop_var: dependency_item
@@ -7,9 +9,7 @@
     - "((sdplugin is defined and dependency_item.0.plugin_name == sdplugin) or (fdplugin is defined and dependency_item.0.plugin_name == fdplugin))"
     - "bee_version is version(dependency_item.1.bee_version, dependency_item.1.operator) and dependency_item.1.os_distribution == ansible_distribution"
     -  "dependency_item.1.os_distribution_major_version == ansible_distribution_major_version|int and dependency_item.1.add_repo == true"
-- name: add Plugin dependencies repository and key if required
-  include: "{{ ansible_distribution }}_add_{{ add_repo_dependency }}_repo.yml"
-  when: add_repo_dependency is defined
+
 - name: install Bacula Enteprise plugin for Storage/File Daemon dependencies
   apt:
     name: "{{ dependency_item.1.package_dependency_name }}"

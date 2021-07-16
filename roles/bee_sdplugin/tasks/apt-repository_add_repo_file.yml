@@ -24,7 +24,7 @@
   apt:
     update_cache: yes
   register: apt_update_result
-- debug:  msg="{{ apt_update_result.stdout.split('\n') }}"
+- debug: msg="{{ apt_update_result.stdout.split('\n') }}"
   when: apt_update_result.stdout is defined
-- debug:  msg="{{ apt_update_result.stderr.split('\n') }}"
+- debug: msg="{{ apt_update_result.stderr.split('\n') }}"
   when: apt_update_result.stderr is defined

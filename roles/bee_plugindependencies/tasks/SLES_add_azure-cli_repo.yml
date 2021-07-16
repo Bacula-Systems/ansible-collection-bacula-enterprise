@@ -1,0 +1,16 @@
+- name: import Microsoft key
+  shell: sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+- name: add azure-cli repo
+  community.general.zypper_repository:
+    name: azure-cli
+    repo: 'https://packages.microsoft.com/yumrepos/azure-cli'
+    description: 'Azure CLI'
+    state: present
+
+- name: install Azure CLI
+  community.general.zypper:
+    name: azure-cli
+    state: present
+    update_cache: yes
+    force_resolution: yes

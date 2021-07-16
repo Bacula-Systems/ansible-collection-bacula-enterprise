@@ -5,5 +5,5 @@
     state: present
   vars:
     packages:
-    - postgresql
-    - postgresql-client
+      - postgresql
+      - postgresql-client

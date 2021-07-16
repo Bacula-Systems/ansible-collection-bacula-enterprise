@@ -134,6 +134,6 @@ fdplugins:
 fdplugins_dependencies:
   - plugin_name: 
     dependencies:
-       - package_dependency_name: 
-         bee_version:
-         operator: le
+      - package_dependency_name: 
+        bee_version:
+        operator: le
