@@ -6,7 +6,7 @@
   with_first_found:
     - files:
       - "{{ fdplugin }}_config_fdplugin.yml"
-    skip: true
+      skip: true
   loop_control:
     loop_var: fdplugin_config_file
 - include: systemd_restart_fd.yml
