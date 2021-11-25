@@ -5,3 +5,4 @@
     state: enabled
     zone: public
     immediate: yes
+  ignore_errors: yes

@@ -6,5 +6,5 @@ clients:
     client2.example.com:
       client_hostname: client2.example.com
   vars:
-    bee_version: 12.6.3
+    bee_version: 12.8.3
     director_hostname: baculadir.example.com
