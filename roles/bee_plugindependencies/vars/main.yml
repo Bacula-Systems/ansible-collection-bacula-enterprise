@@ -162,6 +162,30 @@ plugins_dependencies:
          os_distribution_major_version: 18
   - plugin_name: cloud-oracle
     dependencies:
+       - package_dependency_name: python3-venv
+         bee_version: 10.2.0
+         operator: ge
+         add_repo: no
+         os_distribution: Debian
+         os_distribution_major_version: 11
+       - package_dependency_name: curl
+         bee_version: 10.2.0
+         operator: ge
+         add_repo: no
+         os_distribution: Debian
+         os_distribution_major_version: 11
+       - package_dependency_name: wget
+         bee_version: 10.2.0
+         operator: ge
+         add_repo: no
+         os_distribution: Debian
+         os_distribution_major_version: 11
+       - package_dependency_name: python3-venv
+         bee_version: 10.2.0
+         operator: ge
+         add_repo: no
+         os_distribution: Debian
+         os_distribution_major_version: 10
        - package_dependency_name: curl
          bee_version: 10.2.0
          operator: ge
