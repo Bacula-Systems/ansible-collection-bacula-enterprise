@@ -9,7 +9,7 @@
     path: "{{ dedup_directories_item }}"
     state: directory
     owner: bacula
-    group: disk
+    group: bacula
     mode: "0755"
     recurse: yes
   loop: "{{ dedup_directories }}"
