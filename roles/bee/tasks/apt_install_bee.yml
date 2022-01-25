@@ -7,5 +7,7 @@
     name: bacula-enterprise-postgresql
     state: present
   register: result
-- debug: msg="{{ result.stderr.split('\n') }}"
+
+- name: format error output
+  debug: msg="{{ result.stderr.split('\n') }}"
   when: result.stderr is defined
