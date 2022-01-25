@@ -3,4 +3,4 @@ directors:
   hosts:
     baculadir.example.com:
       director_hostname: baculadir.example.com
-      bee_version: 12.6.3
+      bee_version: 12.8.3
