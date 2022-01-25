@@ -6,8 +6,8 @@
     loop_var: file_item
   with_first_found:
     - files:
-      - "All-platforms_config_{{ sdplugin }}_sd.yml"
-    skip: true
+        - "All-platforms_config_{{ sdplugin }}_sd.yml"
+      skip: true
 - include: All-platforms_config_sdplugin.yml
 - include: yum_list_packages_build.yml
 - include: systemd_restart_sd.yml
