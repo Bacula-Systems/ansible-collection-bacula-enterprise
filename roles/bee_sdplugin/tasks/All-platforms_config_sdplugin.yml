@@ -63,8 +63,8 @@
 - name: include the line to include the Director configuration in the ansible.conf.d directory in the bacula-sd.conf file
   blockinfile:
     path: /opt/bacula/etc/bacula-sd.conf
-    insertafter: EOF
-    marker: "# {mark} ANSIBLE MANAGED BLOCK - Add Director {{ director_name }} to the bacula-sd.conf file"
+    insertafter: "@\/opt\/bacula\/etc\/ansible.conf.d\/storage\/{{ director_name }}.conf"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Add {{ director_name }} to the bacula-sd.conf"
     block: |
       @/opt/bacula/etc/ansible.conf.d/storage/{{ director_name }}.conf
   when: director_hostname is defined and storage_hostname != director_hostname
