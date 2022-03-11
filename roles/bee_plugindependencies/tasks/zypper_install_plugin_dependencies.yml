@@ -1,5 +1,5 @@
 - name: add Plugin dependencies repository and key if required
-  include: add_repo_dependency.yml
+  include_tasks: add_repo_dependency.yml
   vars:
     add_repo_dependency: "{{ dependency_item.1.package_dependency_name }}"
   loop: "{{ plugins_dependencies|subelements('dependencies') }}"

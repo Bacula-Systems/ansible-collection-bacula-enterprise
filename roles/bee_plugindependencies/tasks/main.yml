@@ -1,6 +1,6 @@
 ---
 - name: Include Bacula Enterprise Plugin Dependencies Installation file
-  include: "{{ item }}"
+  include_tasks: "{{ item }}"
   vars:
     params:
       files:

@@ -1,6 +1,6 @@
 ---
     - name: Include BWeb Management Suite Installation file
-      include: "{{ item }}"
+      include_tasks: "{{ item }}"
       vars:
         params:
           files:

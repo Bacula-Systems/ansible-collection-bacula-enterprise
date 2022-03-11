@@ -1,2 +1,2 @@
 ---
-  - include: zypper_install_plugin_dependencies.yml
+  - include_tasks: zypper_install_plugin_dependencies.yml
