@@ -1,11 +1,11 @@
 ---
-- include: apt_update_package_manager.yml
-- include: apt_install_additional_packages.yml
-- include: apt-key_install_bee_keys.yml
-- include: apt-repository_add_repo_file.yml
-- include: apt_update_and_upgrade_packages.yml
-- include: apt_install_postgresql.yml
-- include: apt_install_bee.yml
-- include: All-platforms_config_sdonly.yml
-- include: systemd_start_bee_services.yml
-- include: systemd_disable_stop_Director.yml
+- include_tasks: apt_update_package_manager.yml
+- include_tasks: apt_install_additional_packages.yml
+- include_tasks: apt-key_install_bee_keys.yml
+- include_tasks: apt-repository_add_repo_file.yml
+- include_tasks: apt_update_and_upgrade_packages.yml
+- include_tasks: apt_install_postgresql.yml
+- include_tasks: apt_install_bee.yml
+- include_tasks: All-platforms_config_sdonly.yml
+- include_tasks: systemd_start_bee_services.yml
+- include_tasks: systemd_disable_stop_Director.yml

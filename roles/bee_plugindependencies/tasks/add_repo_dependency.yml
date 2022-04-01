@@ -1,5 +1,5 @@
 - name: add Plugin dependencies repository and key if required
-  include: "{{ item }}"
+  include_tasks: "{{ item }}"
   vars:
     params:
       files:
