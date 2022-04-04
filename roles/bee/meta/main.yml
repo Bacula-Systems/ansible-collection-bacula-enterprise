@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 ---galaxy_info:
+=======
+galaxy_info:
+>>>>>>> 19f376f... added Debian 11 to bweb role
   role_name: bee
   author: Ana Machado, Bill Arlofski
   description: this role will install a Director, a Storage Daemon and a File Daemon in one or more hosts.

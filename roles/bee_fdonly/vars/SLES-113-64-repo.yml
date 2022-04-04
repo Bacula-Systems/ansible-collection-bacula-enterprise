@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 ---repo_filename: Bacula-Enterprise-Edition
+=======
+repo_filename: Bacula-Enterprise-Edition
+>>>>>>> 19f376f... added Debian 11 to bweb role
 description: Bacula Enterprise Edition repository
 sles_version: sles113
 architecture: 64

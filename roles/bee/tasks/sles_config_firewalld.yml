@@ -1,7 +1,11 @@
 ---
 - name: configure firewalld
+<<<<<<< HEAD
   shell: "firewall-cmd --permanent --zone=public \
           --add-port={{ port_number }}/tcp"
+=======
+  shell: "firewall-cmd --permanent --zone=public --add-port={{ port_number }}/tcp"
+>>>>>>> 19f376f... added Debian 11 to bweb role
   become: true
   become_user: root
   with_items:

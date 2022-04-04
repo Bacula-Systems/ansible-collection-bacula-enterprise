@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 ---repo_name: Bacula-Enterprise
+=======
+repo_name: Bacula-Enterprise
+>>>>>>> 19f376f... added Debian 11 to bweb role
 repo_filename: Bacula-Enterprise-Edition
 description: Bacula Enterprise Edition repository
 rhel_version: rhel6

@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 - name: Collect PostgreSQL version
+=======
+- name: Collect PostgreSQL version 
+>>>>>>> 19f376f... added Debian 11 to bweb role
   become: true
   become_user: postgres
   shell: psql --version

@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 - name: get plugin package name
+=======
+- name: get plugin package name 
+>>>>>>> 19f376f... added Debian 11 to bweb role
   set_fact:
     sdplugin_package_name: "{{ sdplugins_item.value.package_name}}"
   loop: "{{ sdplugins|dict2items }}"

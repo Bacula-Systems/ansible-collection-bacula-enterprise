@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 ---repo_filename: Bacula-Enterprise-dag
+=======
+repo_filename: Bacula-Enterprise-dag
+>>>>>>> 19f376f... added Debian 11 to bweb role
 description: Bacula Systems dag for BWeb repository
 sles_version: sles152
 architecture: 64

@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 ---repo_name: Bacula-Enterprise-dag
+=======
+repo_name: Bacula-Enterprise-dag
+>>>>>>> 19f376f... added Debian 11 to bweb role
 repo_filename: Bacula-Enterprise-dag
 description: Bacula Systems dag for BWeb repository
 rhel_version: rhel6

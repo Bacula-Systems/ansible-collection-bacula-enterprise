@@ -11,7 +11,11 @@
 - name: Update the list of products
   apt:
     update_cache: true
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 19f376f... added Debian 11 to bweb role
 - name: Install PowerShell
   apt:
     name: powershell

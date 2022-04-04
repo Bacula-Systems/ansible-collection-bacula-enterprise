@@ -1,4 +1,8 @@
 ---
+<<<<<<< HEAD
 ---repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
+=======
+repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
+>>>>>>> 19f376f... added Debian 11 to bweb role
 codename: xenial
 architecture: 64

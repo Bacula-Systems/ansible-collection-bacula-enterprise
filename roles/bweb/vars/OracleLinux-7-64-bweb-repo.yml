@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 ---repo_name: Bacula-Enterprise-bweb
+=======
+repo_name: Bacula-Enterprise-bweb
+>>>>>>> 19f376f... added Debian 11 to bweb role
 repo_filename: BWeb-Management-Suite
 description: BWeb Management Suite repository
 rhel_version: rhel7

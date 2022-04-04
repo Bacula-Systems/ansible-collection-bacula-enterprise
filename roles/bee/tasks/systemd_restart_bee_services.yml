@@ -8,8 +8,13 @@
   shell: "systemctl status bacula-dir"
   register: bacula_dir_status
   ignore_errors: true
+<<<<<<< HEAD
 - debug: msg="{{ bacula_dir_status.stdout.split('\n') }}"
 - debug: msg="{{ bacula_dir_status.stderr.split('\n') }}"
+=======
+- debug:  msg="{{ bacula_dir_status.stdout.split('\n') }}"
+- debug:  msg="{{ bacula_dir_status.stderr.split('\n') }}"
+>>>>>>> 19f376f... added Debian 11 to bweb role
 - name: restart bacula-fd service
   systemd:
     name: bacula-fd
@@ -19,8 +24,13 @@
   shell: "systemctl status bacula-fd"
   register: bacula_fd_status
   ignore_errors: true
+<<<<<<< HEAD
 - debug: msg="{{ bacula_fd_status.stdout.split('\n') }}"
 - debug: msg="{{ bacula_fd_status.stderr.split('\n') }}"
+=======
+- debug:  msg="{{ bacula_fd_status.stdout.split('\n') }}"
+- debug:  msg="{{ bacula_fd_status.stderr.split('\n') }}"
+>>>>>>> 19f376f... added Debian 11 to bweb role
 - name: restart bacula-sd service
   systemd:
     name: bacula-sd
@@ -30,5 +40,10 @@
   shell: "systemctl status bacula-sd"
   register: bacula_sd_status
   ignore_errors: true
+<<<<<<< HEAD
 - debug: msg="{{ bacula_sd_status.stdout.split('\n') }}"
 - debug: msg="{{ bacula_sd_status.stderr.split('\n') }}"
+=======
+- debug:  msg="{{ bacula_sd_status.stdout.split('\n') }}"
+- debug:  msg="{{ bacula_sd_status.stderr.split('\n') }}"
+>>>>>>> 19f376f... added Debian 11 to bweb role

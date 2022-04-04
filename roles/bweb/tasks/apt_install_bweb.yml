@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 ---# This task list will install the latest BWeb version
+=======
+# This task list will install the latest BWeb version
+>>>>>>> 19f376f... added Debian 11 to bweb role
 # available in the repository files added
 # This will allow the upgrade of existent BWeb install by
 # adding the new repo file and using this same role to update

@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 ---galaxy_info:
+=======
+galaxy_info:
+>>>>>>> 19f376f... added Debian 11 to bweb role
   role_name: bee_sdonly
   author: Ana Machado, Bill Arlofski
   description: this role will install a  Storage Daemon in one or more hosts.
