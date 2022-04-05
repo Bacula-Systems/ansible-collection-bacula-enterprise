@@ -1,3 +1,4 @@
+---
 #- name: include packages dependencies dictionary
 #  include_vars: bweb_packages_dependencies.yml
 #- name: install BWeb packages dependencies

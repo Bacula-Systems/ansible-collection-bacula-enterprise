@@ -1,3 +1,4 @@
+---
 - name: Download the Microsoft repository GPG keys
   get_url:
     url: "https://packages.microsoft.com/config/debian/{{ ansible_distribution_version }}/packages-microsoft-prod.deb"

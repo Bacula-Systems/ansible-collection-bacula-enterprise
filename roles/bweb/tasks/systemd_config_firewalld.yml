@@ -1,3 +1,4 @@
+---
 - name: configure firewalld
   ansible.posix.firewalld:
     port: 9180/tcp

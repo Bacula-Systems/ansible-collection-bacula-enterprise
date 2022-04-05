@@ -1,3 +1,4 @@
+---
 - name: Check if PostgreSQL database is initialized - check PGDATA is set
   shell: "sudo -Hiu postgres -- env | grep PGDATA"
   register: result_pgdata_set

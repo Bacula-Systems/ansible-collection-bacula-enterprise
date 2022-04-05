@@ -1,3 +1,4 @@
+---
 - name: restart bacula-sd service
   systemd:
     name: bacula-sd

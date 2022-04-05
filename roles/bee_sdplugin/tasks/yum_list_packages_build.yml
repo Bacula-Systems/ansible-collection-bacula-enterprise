@@ -1,3 +1,4 @@
+---
 - name: get plugin package name 
   set_fact:
     sdplugin_package_name: "{{ sdplugins_item.value.package_name}}"

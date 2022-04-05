@@ -1,4 +1,5 @@
-# This task list will install the latest Bacula Enterprise version
+---
+---# This task list will install the latest Bacula Enterprise version
 # available in the repository files added
 # This will allow the upgrade of existent BEE install by
 # adding the new repo file and using this same role to update
@@ -11,7 +12,7 @@ loop_var: fdplugins_item
   when: fdplugins_item.key == fdplugin
 - name: install Bacula Enteprise plugin for File Daemon
   yum:
-name: "{{ fdplugin_package_name }}"
+- name: "{{ fdplugin_package_name }}"
 state: latest
   register: result
 - debug: msg="{{ result.stderr.split('\n') }}"

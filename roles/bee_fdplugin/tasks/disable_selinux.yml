@@ -1,3 +1,4 @@
+---
 - name: disable SELinux
   selinux:
     state: disabled

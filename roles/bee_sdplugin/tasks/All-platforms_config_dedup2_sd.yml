@@ -1,3 +1,4 @@
+---
 # dedup directories can be modified using --extra-vars='{"dedup_directories": [/mnt/dedup/index, /mnt/dedup/containers]}'
 # the first directory for the dedup index, the second directory for the containers
 - name: create dedup index and containers directories

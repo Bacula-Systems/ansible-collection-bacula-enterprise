@@ -1,3 +1,4 @@
+---
 - name: install postgresql and postgresql-client
   apt:
     name: "{{ packages }}"

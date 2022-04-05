@@ -1,3 +1,4 @@
+---
 - name: create volumes directory
   file:
     path: "{{ volumes_directory }}"

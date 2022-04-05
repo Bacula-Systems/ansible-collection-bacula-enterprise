@@ -1,3 +1,4 @@
+---
 - name: download the oci-cli installation script
   get_url:
     url: https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh

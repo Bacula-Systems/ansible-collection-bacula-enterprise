@@ -1,3 +1,4 @@
+---
 - name: get the Storage Daemon password used to communicate with Director in the bacula-sd.conf file
   shell: "grep ^[[:space:]]*Password -m 1 /opt/bacula/etc/bacula-sd.conf | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
   register: current_sd_password

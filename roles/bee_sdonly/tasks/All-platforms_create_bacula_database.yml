@@ -1,3 +1,4 @@
+---
 - name: check if bacula database already exists
   shell: "psql -lqt | cut -d '|' -f 1 | grep -qw bacula"
   become: true

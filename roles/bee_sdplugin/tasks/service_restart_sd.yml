@@ -1,3 +1,4 @@
+---
 - name: restart bacula-sd service
   service:
     name: bacula-sd

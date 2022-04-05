@@ -1,3 +1,4 @@
-repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
+---
+---repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
 codename: stretch
 architecture: 64

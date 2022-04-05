@@ -1,3 +1,4 @@
+---
 - name: get the list of bacula enterprise packages
   shell: "apt list --installed | grep bacula-enterprise-postgresql"
   register: deb_packages

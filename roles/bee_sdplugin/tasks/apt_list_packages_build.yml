@@ -1,3 +1,4 @@
+---
 - name: get the list of bacula enterprise packages
   shell: "apt list --installed | grep {{ sdplugin_package_name }}"
   register: deb_packages

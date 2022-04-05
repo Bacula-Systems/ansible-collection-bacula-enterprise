@@ -1,3 +1,4 @@
+---
 - name: fail following tasks if director_hostname is not defined
   fail: msg="director_hostname not provided, skipping remote Director configuration."
   when: director_hostname is not defined

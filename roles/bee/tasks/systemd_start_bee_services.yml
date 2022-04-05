@@ -1,3 +1,4 @@
+---
 - name: start bacula-dir service (for Debian/Ubuntu, daemons must start automatically after installation)
   systemd:
     name: bacula-dir

@@ -1,3 +1,4 @@
+---
 - name: confirm new configurations are reloaded
   service:
     name: bweb

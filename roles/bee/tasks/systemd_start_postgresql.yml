@@ -1,3 +1,4 @@
+---
 - name: start postgresql server
   systemd:
     name: postgresql

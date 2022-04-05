@@ -1,3 +1,4 @@
+---
 - name: Add BEE package signatures for CentOS
   rpm_key:
     key: "{{ dl_area }}/{{ key_item.1 }}"

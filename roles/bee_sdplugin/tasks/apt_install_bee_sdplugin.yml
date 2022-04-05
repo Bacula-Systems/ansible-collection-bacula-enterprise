@@ -1,4 +1,5 @@
-# This task list will install the latest Bacula Enterprise version
+---
+---# This task list will install the latest Bacula Enterprise version
 # available in the repository files added
 # This will allow the upgrade of existent BEE install by
 # adding the new repo file and using this same role to update
@@ -11,7 +12,7 @@ loop_var: sdplugins_item
   when: sdplugins_item.key == sdplugin
 - name: install Bacula Enteprise Edition plugin for Storage Daemon
   apt:
-name: "{{ sdplugin_package_name }}"
+- name: "{{ sdplugin_package_name }}"
 state: present
   register: result
 - debug: msg="{{ result.stderr.split('\n') }}"

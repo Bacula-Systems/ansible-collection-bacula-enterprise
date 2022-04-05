@@ -1,3 +1,4 @@
+---
 - name: add Plugin dependencies repository and key if required
   include_tasks: add_repo_dependency.yml
   vars:

@@ -1,3 +1,4 @@
+---
 - name: configure firewalld
   shell: "firewall-cmd --permanent --zone=public --add-port={{ port_number }}/tcp"
   become: true

@@ -1,3 +1,4 @@
+---
 - name: configure firewalld
   firewalld:
     port: 9102/tcp

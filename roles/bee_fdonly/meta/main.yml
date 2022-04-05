@@ -1,4 +1,5 @@
-galaxy_info:
+---
+---galaxy_info:
   role_name: bee_fdonly
   author: Ana Machado, Bill Arlofski
   description: this role will install a File Daemon only in one or more hosts.

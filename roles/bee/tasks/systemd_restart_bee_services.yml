@@ -1,3 +1,4 @@
+---
 - name: restart bacula-dir service
   systemd:
     name: bacula-dir

@@ -1,4 +1,6 @@
-galaxy_info:
+---
+---
+---galaxy_info:
   role_name: bee_sdplugin
   author: Ana Machado, Bill Arlofski
   description: this role will install a Storage Daemon Plugin in one or more hosts.

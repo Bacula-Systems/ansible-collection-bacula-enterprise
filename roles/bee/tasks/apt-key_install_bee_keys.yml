@@ -1,3 +1,4 @@
+---
 - name: install package signatures for Debian/Ubuntu
   apt_key:
     url: "{{ dl_area }}/{{ key_item.1 }}"

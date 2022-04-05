@@ -1,3 +1,4 @@
+---
 - name: Register the Microsoft RedHat repository
   get_url:
     url: "https://packages.microsoft.com/config/rhel/{{ ansible_distribution_major_version }}/prod.repo"

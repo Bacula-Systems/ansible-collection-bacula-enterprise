@@ -1,3 +1,4 @@
+---
 - name: Enable Google Cloud SDK repository
   community.general.zypper_repository:
     name: google-cloud-sdk

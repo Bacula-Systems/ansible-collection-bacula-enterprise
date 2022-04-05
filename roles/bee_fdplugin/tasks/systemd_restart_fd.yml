@@ -1,3 +1,4 @@
+---
 - name: restart bacula-fd service
   systemd:
     name: bacula-fd

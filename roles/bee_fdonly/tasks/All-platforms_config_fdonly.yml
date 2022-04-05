@@ -1,3 +1,4 @@
+---
 - name: Modify the Client name, if defined
   ansible.builtin.replace:
     path: /opt/bacula/etc/bacula-fd.conf

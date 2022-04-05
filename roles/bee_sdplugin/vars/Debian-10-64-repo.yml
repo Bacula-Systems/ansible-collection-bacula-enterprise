@@ -1,3 +1,4 @@
-repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
+---
+---repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
 codename: buster
 architecture: 64

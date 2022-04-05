@@ -1,3 +1,4 @@
+---
 - name: update and upgrade apt packages
   apt:
     upgrade: 'yes'

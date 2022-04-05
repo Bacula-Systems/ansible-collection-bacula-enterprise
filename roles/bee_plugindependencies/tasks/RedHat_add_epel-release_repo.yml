@@ -1,3 +1,4 @@
+---
 - name: Import EPEL GPG key
   rpm_key:
     key: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
