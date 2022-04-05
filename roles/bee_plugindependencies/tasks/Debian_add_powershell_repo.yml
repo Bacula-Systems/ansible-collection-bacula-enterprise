@@ -11,7 +11,7 @@
 - name: Update the list of products
   apt:
     update_cache: true
-  
+
 - name: Install PowerShell
   apt:
     name: powershell

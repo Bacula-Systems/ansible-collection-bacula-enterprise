@@ -15,7 +15,7 @@
   become: true
   become_user: postgres
   when: bacula_database_exists.rc != 0
-- name: grant Bacula catalog privileges 
+- name: grant Bacula catalog privileges
   shell: "/opt/bacula/scripts/grant_postgresql_privileges"
   become: true
   become_user: postgres

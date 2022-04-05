@@ -1,5 +1,5 @@
 ---
-- name: get plugin package name 
+- name: get plugin package name
   set_fact:
     fdplugin_package_name: "{{ fdplugins_item.value.package_name}}"
   loop: "{{ fdplugins|dict2items }}"

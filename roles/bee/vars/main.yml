@@ -13,14 +13,14 @@ keys:
 
 bee_additional_packages:
   debian:
-  - apt-transport-https
-  - sudo
-  - openssl
-  - ca-certificates
-  - gnupg
-  - acl
+    - apt-transport-https
+    - sudo
+    - openssl
+    - ca-certificates
+    - gnupg
+    - acl
 
   ubuntu:
-  - apt-transport-https
-  - sudo
-  - acl
+    - apt-transport-https
+    - sudo
+    - acl

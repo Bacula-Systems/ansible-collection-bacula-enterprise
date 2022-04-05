@@ -1,2 +1,2 @@
 ---
-  - include_tasks: yum_install_plugin_dependencies.yml
+- include_tasks: yum_install_plugin_dependencies.yml

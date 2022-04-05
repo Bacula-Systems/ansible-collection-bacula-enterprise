@@ -4,11 +4,11 @@
 - include_tasks: service_start_fd.yml
 - include_tasks: "{{ fdplugin_config_file }}"
   with_first_found:
-    - files:
+    files:
       - "{{ fdplugin }}_config_fdplugin.yml"
     skip: true
-    loop_control:
-      loop_var: fdplugin_config_file
+  loop_control:
+    loop_var: fdplugin_config_file
 - include_tasks: service_restart_fd.yml
 - include_tasks: yum_list_packages_build.yml
 - include_tasks: All-platforms_config_fdplugin_dir.yml

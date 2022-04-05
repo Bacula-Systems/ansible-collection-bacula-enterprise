@@ -3,18 +3,18 @@ sdplugins:
   acsls:
     directory: acsls
     name: acsls
-    package_name: bacula-enterprise-acsls 
-  
+    package_name: bacula-enterprise-acsls
+
   aligned:
     directory: aligned
     name: aligned
     package_name: bacula-enterprise-aligned
-  
+
   dedup:
     directory: dedup
     name: dedup
     package_name: bacula-enterprise-dedup-plugin
-  
+
   dedup2:
     directory: dedup
     name: dedup2

@@ -1,5 +1,5 @@
 ---
-- name: Collect PostgreSQL version 
+- name: Collect PostgreSQL version
   become: true
   become_user: postgres
   shell: psql --version

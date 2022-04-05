@@ -6,289 +6,289 @@
 plugins_dependencies:
   - plugin_name: cloud
     dependencies:
-       - package_dependency_name: epel-release
-         bee_version: 10.0.8
-         operator: le
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 8
-       - package_dependency_name: epel-release
-         bee_version: 10.0.8
-         operator: le
-         add_repo: false
-         os_distribution: RedHat
-         os_distribution_major_version: 8
-       - package_dependency_name: epel-release
-         bee_version: 10.0.8
-         operator: le
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 7
+      - package_dependency_name: epel-release
+        bee_version: 10.0.8
+        operator: le
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 8
+      - package_dependency_name: epel-release
+        bee_version: 10.0.8
+        operator: le
+        add_repo: false
+        os_distribution: RedHat
+        os_distribution_major_version: 8
+      - package_dependency_name: epel-release
+        bee_version: 10.0.8
+        operator: le
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 7
   - plugin_name: cloud-azure
     dependencies:
-       - package_dependency_name: epel-release
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: true
-         os_distribution: RedHat
-         os_distribution_major_version: 8
-       - package_dependency_name: epel-release
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 8
-       - package_dependency_name: epel-release
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 7
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: OracleLinux
-         os_distribution_major_version: 8
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: RedHat
-         os_distribution_major_version: 8
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: CentOS
-         os_distribution_major_version: 8
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: CentOS
-         os_distribution_major_version: 7
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: CentOS
-         os_distribution_major_version: 6
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: Debian
-         os_distribution_major_version: 10
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: Debian
-         os_distribution_major_version: 9
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: Debian
-         os_distribution_major_version: 8
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: Ubuntu
-         os_distribution_major_version: 18
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: Ubuntu
-         os_distribution_major_version: 16
-       - package_dependency_name: azure-cli
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: SLES
-         os_distribution_major_version: 15
+      - package_dependency_name: epel-release
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: true
+        os_distribution: RedHat
+        os_distribution_major_version: 8
+      - package_dependency_name: epel-release
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 8
+      - package_dependency_name: epel-release
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 7
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: OracleLinux
+        os_distribution_major_version: 8
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: RedHat
+        os_distribution_major_version: 8
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: CentOS
+        os_distribution_major_version: 8
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: CentOS
+        os_distribution_major_version: 7
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: CentOS
+        os_distribution_major_version: 6
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Debian
+        os_distribution_major_version: 10
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Debian
+        os_distribution_major_version: 9
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Debian
+        os_distribution_major_version: 8
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Ubuntu
+        os_distribution_major_version: 18
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Ubuntu
+        os_distribution_major_version: 16
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: SLES
+        os_distribution_major_version: 15
   - plugin_name: cloud-google
     dependencies:
-       - package_dependency_name: google-cloud-sdk
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: CentOS
-         os_distribution_major_version: 7
-       - package_dependency_name: google-cloud-sdk
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: CentOS
-         os_distribution_major_version: 8
-       - package_dependency_name: google-cloud-sdk
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: RedHat
-         os_distribution_major_version: 8
-       - package_dependency_name: google-cloud-sdk
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: OracleLinux
-         os_distribution_major_version: 8
-       - package_dependency_name: google-cloud-sdk
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: SLES
-         os_distribution_major_version: 15
-       - package_dependency_name: google-cloud-sdk
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: Debian
-         os_distribution_major_version: 10
-       - package_dependency_name: google-cloud-sdk
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: Ubuntu
-         os_distribution_major_version: 20
-       - package_dependency_name: google-cloud-sdk
-         bee_version: 12.0.0
-         operator: ge
-         add_repo: true
-         os_distribution: Ubuntu
-         os_distribution_major_version: 18
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: CentOS
+        os_distribution_major_version: 7
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: CentOS
+        os_distribution_major_version: 8
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: RedHat
+        os_distribution_major_version: 8
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: OracleLinux
+        os_distribution_major_version: 8
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: SLES
+        os_distribution_major_version: 15
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Debian
+        os_distribution_major_version: 10
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Ubuntu
+        os_distribution_major_version: 20
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Ubuntu
+        os_distribution_major_version: 18
   - plugin_name: cloud-oracle
     dependencies:
-       - package_dependency_name: python3-venv
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Debian
-         os_distribution_major_version: 11
-       - package_dependency_name: curl
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Debian
-         os_distribution_major_version: 11
-       - package_dependency_name: wget
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Debian
-         os_distribution_major_version: 11
-       - package_dependency_name: python3-venv
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Debian
-         os_distribution_major_version: 10
-       - package_dependency_name: curl
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Debian
-         os_distribution_major_version: 10
-       - package_dependency_name: wget
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Debian
-         os_distribution_major_version: 10
-       - package_dependency_name: wget
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Debian
-         os_distribution_major_version: 9
-       - package_dependency_name: wget
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: RedHat
-         os_distribution_major_version: 8
-       - package_dependency_name: wget
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 8
-       - package_dependency_name: python3
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 8
-       - package_dependency_name: python3
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 7
-       - package_dependency_name: wget
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 7
-       - package_dependency_name: wget
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Ubuntu
-         os_distribution_major_version: 18
-       - package_dependency_name: wget
-         bee_version: 10.2.0
-         operator: ge
-         add_repo: false
-         os_distribution: Ubuntu
-         os_distribution_major_version: 16
+      - package_dependency_name: python3-venv
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Debian
+        os_distribution_major_version: 11
+      - package_dependency_name: curl
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Debian
+        os_distribution_major_version: 11
+      - package_dependency_name: wget
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Debian
+        os_distribution_major_version: 11
+      - package_dependency_name: python3-venv
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Debian
+        os_distribution_major_version: 10
+      - package_dependency_name: curl
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Debian
+        os_distribution_major_version: 10
+      - package_dependency_name: wget
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Debian
+        os_distribution_major_version: 10
+      - package_dependency_name: wget
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Debian
+        os_distribution_major_version: 9
+      - package_dependency_name: wget
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: RedHat
+        os_distribution_major_version: 8
+      - package_dependency_name: wget
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 8
+      - package_dependency_name: python3
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 8
+      - package_dependency_name: python3
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 7
+      - package_dependency_name: wget
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 7
+      - package_dependency_name: wget
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Ubuntu
+        os_distribution_major_version: 18
+      - package_dependency_name: wget
+        bee_version: 10.2.0
+        operator: ge
+        add_repo: false
+        os_distribution: Ubuntu
+        os_distribution_major_version: 16
   - plugin_name: xenserver
     dependencies:
-       - package_dependency_name: epel-release
-         bee_version: 12.3.0
-         operator: ge
-         add_repo: false
-         os_distribution: CentOS
-         os_distribution_major_version: 7
+      - package_dependency_name: epel-release
+        bee_version: 12.3.0
+        operator: ge
+        add_repo: false
+        os_distribution: CentOS
+        os_distribution_major_version: 7
   - plugin_name: m365
     dependencies:
-       - package_dependency_name: powershell
-         bee_version: 12.7.0
-         operator: ge
-         add_repo: true
-         os_distribution: CentOS
-         os_distribution_major_version: 7
-       - package_dependency_name: powershell
-         bee_version: 12.7.0
-         operator: ge
-         add_repo: true
-         os_distribution: CentOS
-         os_distribution_major_version: 8
-       - package_dependency_name: powershell
-         bee_version: 12.7.0
-         operator: ge
-         add_repo: true
-         os_distribution: RedHat
-         os_distribution_major_version: 8
-       - package_dependency_name: powershell
-         bee_version: 12.7.0
-         operator: ge
-         add_repo: true
-         os_distribution: Ubuntu
-         os_distribution_major_version: 20
-       - package_dependency_name: powershell
-         bee_version: 12.7.0
-         operator: ge
-         add_repo: true
-         os_distribution: Ubuntu
-         os_distribution_major_version: 18
-       - package_dependency_name: powershell
-         bee_version: 12.7.0
-         operator: ge
-         add_repo: true
-         os_distribution: Debian
-         os_distribution_major_version: 10
+      - package_dependency_name: powershell
+        bee_version: 12.7.0
+        operator: ge
+        add_repo: true
+        os_distribution: CentOS
+        os_distribution_major_version: 7
+      - package_dependency_name: powershell
+        bee_version: 12.7.0
+        operator: ge
+        add_repo: true
+        os_distribution: CentOS
+        os_distribution_major_version: 8
+      - package_dependency_name: powershell
+        bee_version: 12.7.0
+        operator: ge
+        add_repo: true
+        os_distribution: RedHat
+        os_distribution_major_version: 8
+      - package_dependency_name: powershell
+        bee_version: 12.7.0
+        operator: ge
+        add_repo: true
+        os_distribution: Ubuntu
+        os_distribution_major_version: 20
+      - package_dependency_name: powershell
+        bee_version: 12.7.0
+        operator: ge
+        add_repo: true
+        os_distribution: Ubuntu
+        os_distribution_major_version: 18
+      - package_dependency_name: powershell
+        bee_version: 12.7.0
+        operator: ge
+        add_repo: true
+        os_distribution: Debian
+        os_distribution_major_version: 10

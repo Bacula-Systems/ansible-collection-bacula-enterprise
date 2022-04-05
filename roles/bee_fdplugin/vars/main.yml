@@ -132,8 +132,8 @@ fdplugins:
 # Valid operator values are: eq, le, lt, ge, gt
 
 fdplugins_dependencies:
-  - plugin_name: 
+  - plugin_name:
     dependencies:
-      - package_dependency_name: 
+      - package_dependency_name:
         bee_version:
         operator: le

@@ -1,5 +1,5 @@
 ---
-- name: update cache to install additional package 
+- name: update cache to install additional package
   apt:
     update_cache: true
 - name: install additional packages
@@ -9,10 +9,10 @@
     force: true
   vars:
     packages:
-    - apt-transport-https
-    - curl
-    - lsb-release
-    - gnupg
+      - apt-transport-https
+      - curl
+      - lsb-release
+      - gnupg
 - name: install Microsoft key
   shell: curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
 - name: add azure-cli repo

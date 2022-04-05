@@ -4,9 +4,9 @@
 - include_tasks: apt_install_bee_fdplugin.yml
 - include_tasks: "{{ fdplugin_config_file }}"
   with_first_found:
-    - files:
+    files:
       - "{{ fdplugin }}_config_fdplugin.yml"
-      skip: true
+    skip: true
   loop_control:
     loop_var: fdplugin_config_file
 - include_tasks: systemd_restart_fd.yml

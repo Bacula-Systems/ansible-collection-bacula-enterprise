@@ -6,8 +6,8 @@
     force: true
   vars:
     packages:
-    - apt-transport-https
-    - software-properties-common
+      - apt-transport-https
+      - software-properties-common
 
 - name: Download the Microsoft repository GPG keys
   get_url:
@@ -28,7 +28,7 @@
     - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} universe"
     - "deb http://archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-updates universe"
     - "deb http://security.ubuntu.com/ubuntu/ {{ ansible_distribution_release }}-security universe"
-  
+
 - name: Install PowerShell
   apt:
     name: powershell

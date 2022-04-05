@@ -8,8 +8,8 @@
     state: latest
   vars:
     packages:
-    - apt-transport-https
-    - sudo
-    - openssl
-    - ca-certificates
-    - gnupg
+      - apt-transport-https
+      - sudo
+      - openssl
+      - ca-certificates
+      - gnupg

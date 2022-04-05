@@ -2,10 +2,10 @@
 - name: disable SELinux
   selinux:
     state: disabled
-  register: selinux_status 
+  register: selinux_status
   ignore_errors: true
 - debug: msg="{{ selinux_status.msg }}"
 - name: reboot the vm if required
-  reboot: 
+  reboot:
   when: selinux_status.reboot_required
   register: reboot_status

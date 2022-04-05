@@ -4,7 +4,7 @@
     path: /opt/bacula/etc/bacula-fd.conf
     after: 'FileDaemon {'
     regexp: "{{ client_hostname.split('.')[0] }}-fd"
-    replace: "{{ client_name }}"  
+    replace: "{{ client_name }}"
   when: client_name is defined
 
 - name: fail following tasks if director_hostname is not defined

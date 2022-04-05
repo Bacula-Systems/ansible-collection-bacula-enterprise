@@ -6,7 +6,7 @@
   loop_control:
     loop_var: file_item
   with_first_found:
-    - files:
+    files:
       - "All-platforms_config_{{ sdplugin }}_sd.yml"
     skip: true
 - include_tasks: All-platforms_config_sdplugin.yml

@@ -1,5 +1,4 @@
 ---
----
 - name: update repositories cache
   apt:
     update_cache: true
@@ -12,5 +11,5 @@
     state: latest
   vars:
     packages:
-    - apt-transport-https
-    - sudo
+      - apt-transport-https
+      - sudo
