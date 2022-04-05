@@ -228,14 +228,14 @@ This is the `tests/bee.yml` file referenced in the command line above:
     shell: echo "reload" | /opt/bacula/bin/bconsole
     register: reload_result
     delegate_to: "{{ director_hostname }}"
-  - debug:  msg="{{ reload_result.stdout.split('\n') }}"
-  - debug:  msg="{{ reload_result.stderr.split('\n') }}"
+  - debug: msg="{{ reload_result.stdout.split('\n') }}"
+  - debug: msg="{{ reload_result.stderr.split('\n') }}"
 
   - name: display any message in bconsole
     shell: echo "messages" | /opt/bacula/bin/bconsole
     register: status_messages
     delegate_to: "{{ director_hostname }}"
-  - debug:  msg="{{ status_messages.stdout.split('\n') }}"
+  - debug: msg="{{ status_messages.stdout.split('\n') }}"
 ```
 
 **Please note all the examples above can use an inventory file and/or --extra-vars or you may modify the playbooks to use any variable assignment allowed in Ansible.**
