@@ -42,7 +42,7 @@
     owner: bacula
     group: bacula
     mode: '0660'
-  ignore_errors: yes
+  ignore_errors: true
   delegate_to: "{{ director_hostname }}"
 
 - name: include the line to include the jobs and filesets configuration files in the ansible.conf.d directory in the bacula-dir.conf file

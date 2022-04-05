@@ -14,7 +14,7 @@
   apt:
     name: "{{ dependency_item.1.package_dependency_name }}"
     state: latest
-    update_cache: yes
+    update_cache: true
   loop: "{{ plugins_dependencies|subelements('dependencies') }}"
   loop_control:
     loop_var: dependency_item

@@ -6,7 +6,7 @@
   yum:
     name: bacula-enterprise-bweb
     state: latest
-    update_cache: yes
+    update_cache: true
 - name: install BWeb Management Suite
   shell: /opt/bweb/bin/install_bweb.sh
   become: true

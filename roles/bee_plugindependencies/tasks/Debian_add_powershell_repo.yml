@@ -4,12 +4,12 @@
     dest: /tmp
 
 - name: Register the Microsoft repository GPG keys
-  become: yes
+  become: true
   shell: dpkg -i /tmp/packages-microsoft-prod.deb
 
 - name: Update the list of products
   apt:
-    update_cache: yes
+    update_cache: true
   
 - name: Install PowerShell
   apt:

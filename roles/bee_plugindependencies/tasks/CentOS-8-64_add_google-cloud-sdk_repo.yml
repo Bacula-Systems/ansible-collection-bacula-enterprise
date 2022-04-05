@@ -3,8 +3,8 @@
     name: google-cloud-sdk
     description: Google Cloud SDK
     baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el8-x86_64
-    enabled: yes
-    gpgcheck: yes
+    enabled: true
+    gpgcheck: true
     gpgkey:
       - https://packages.cloud.google.com/yum/doc/yum-key.gpg
       - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg

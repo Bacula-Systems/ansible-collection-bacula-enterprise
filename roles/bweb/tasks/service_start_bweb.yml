@@ -6,4 +6,4 @@
   service:
     name: bweb
     state: started
-    enabled: yes
+    enabled: true

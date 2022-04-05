@@ -221,7 +221,7 @@ This is the `tests/bee.yml` file referenced in the command line above:
   tasks:
   - name: Re split the configuration using the /opt/bweb/bin/split_bacula_conf.pl script
     shell: "/opt/bweb/bin/split_bacula_conf.pl -F -d /opt/bacula/etc/conf.d/ -b /opt/bacula/bin/ -f /opt/bacula/etc/bacula-dir.conf -c Director"
-    become: yes
+    become: true
     become_user: bacula
 
   - name: reload Director configuration

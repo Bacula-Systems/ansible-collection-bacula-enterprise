@@ -16,4 +16,4 @@
 - name: set the PostgreSQL database to auto-start at boot
   service:
     name: postgresql
-    enabled: yes
+    enabled: true

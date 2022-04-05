@@ -11,7 +11,7 @@
     owner: bacula
     group: bacula
     mode: "0755"
-    recurse: yes
+    recurse: true
   loop: "{{ dedup_directories }}"
   loop_control:
     loop_var: dedup_directories_item

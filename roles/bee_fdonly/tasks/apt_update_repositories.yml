@@ -1,6 +1,6 @@
 - name: update repositories cache
   apt:
-    update_cache: yes
+    update_cache: true
 - name: install additional packages
   apt:
     name: "{{ packages }}"

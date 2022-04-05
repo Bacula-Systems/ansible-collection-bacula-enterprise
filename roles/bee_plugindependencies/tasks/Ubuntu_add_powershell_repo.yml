@@ -2,7 +2,7 @@
   apt:
     name: "{{ packages }}"
     state: latest
-    force: yes
+    force: true
   vars:
     packages:
     - apt-transport-https
@@ -14,12 +14,12 @@
     dest: /tmp
 
 - name: Register the Microsoft repository GPG keys
-  become: yes
+  become: true
   shell: dpkg -i /tmp/packages-microsoft-prod.deb
 
 - name: Update the list of products
   apt:
-    update_cache: yes
+    update_cache: true
 - name: Enable the "universe" repositories
   apt_repository:
     repo: "{{ item }}"

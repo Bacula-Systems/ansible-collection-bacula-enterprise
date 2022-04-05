@@ -2,4 +2,4 @@
   yum:
     name: '*'
     state: latest
-    update_cache: yes
+    update_cache: true

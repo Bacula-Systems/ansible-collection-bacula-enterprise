@@ -3,7 +3,7 @@
   become: true
   become_user: postgres
   register: bacula_database_exists
-  ignore_errors: yes
+  ignore_errors: true
 - name: create Bacula catalog database
   shell: "/opt/bacula/scripts/create_postgresql_database"
   become: true

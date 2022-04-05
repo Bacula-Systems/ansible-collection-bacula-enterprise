@@ -12,5 +12,5 @@
   community.general.zypper:
     name: azure-cli
     state: present
-    update_cache: yes
-    force_resolution: yes
+    update_cache: true
+    force_resolution: true

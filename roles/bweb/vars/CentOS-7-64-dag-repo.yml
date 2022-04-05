@@ -3,6 +3,6 @@ repo_filename: Bacula-Enterprise-dag
 description: Bacula Systems dag for BWeb repository
 rhel_version: rhel7
 architecture: 64
-enabled: yes
-protect: no
-gpgcheck: no
+enabled: true
+protect: false
+gpgcheck: false

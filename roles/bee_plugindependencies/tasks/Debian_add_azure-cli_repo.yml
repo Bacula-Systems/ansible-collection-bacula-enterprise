@@ -1,11 +1,11 @@
 - name: update cache to install additional package 
   apt:
-    update_cache: yes
+    update_cache: true
 - name: install additional packages
   apt:
     name: "{{ packages }}"
     state: latest
-    force: yes
+    force: true
   vars:
     packages:
     - apt-transport-https
@@ -18,4 +18,4 @@
   shell: echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 - name: update cache to install additional package 
   apt:
-    update_cache: yes
+    update_cache: true

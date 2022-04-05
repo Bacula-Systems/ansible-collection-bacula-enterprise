@@ -1,6 +1,6 @@
 - name: update repositories cache
   apt:
-    update_cache: yes
+    update_cache: true
   register: apt_result
 - debug:  msg="{{ apt_result.stdout.split('\n') }}"
 - debug:  msg="{{ apt_result.stderr.split('\n') }}"
