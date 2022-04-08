@@ -79,6 +79,12 @@ plugins_dependencies:
         operator: ge
         add_repo: true
         os_distribution: Debian
+        os_distribution_major_version: 11
+      - package_dependency_name: azure-cli
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Debian
         os_distribution_major_version: 10
       - package_dependency_name: azure-cli
         bee_version: 12.0.0
@@ -142,6 +148,12 @@ plugins_dependencies:
         add_repo: true
         os_distribution: SLES
         os_distribution_major_version: 15
+      - package_dependency_name: google-cloud-sdk
+        bee_version: 12.0.0
+        operator: ge
+        add_repo: true
+        os_distribution: Debian
+        os_distribution_major_version: 11
       - package_dependency_name: google-cloud-sdk
         bee_version: 12.0.0
         operator: ge
@@ -286,6 +298,12 @@ plugins_dependencies:
         add_repo: true
         os_distribution: Ubuntu
         os_distribution_major_version: 18
+      - package_dependency_name: powershell
+        bee_version: 12.7.0
+        operator: ge
+        add_repo: true
+        os_distribution: Debian
+        os_distribution_major_version: 11
       - package_dependency_name: powershell
         bee_version: 12.7.0
         operator: ge
