@@ -1,0 +1,9 @@
+repo_name: "Bacula-Enterprise-{{ sdplugin }}"
+repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
+description: Bacula Enterprise Edition repository
+rhel_version: thel9
+rhel_version: thel9
+architecture: 64
+enabled: 1
+protect: 0
+gpgcheck: 1
