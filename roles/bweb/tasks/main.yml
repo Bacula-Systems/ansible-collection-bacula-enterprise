@@ -1,17 +1,9 @@
 ---
 - name: Include BWeb Management Suite Installation file
   include_tasks: "{{ item }}"
-<<<<<<< HEAD
-  vars:
-    params:
-      files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_bweb.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_install_bweb.yml"
-=======
     vars:
       params:
         files:
           - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_bweb.yml"
           - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_install_bweb.yml"
->>>>>>> 19f376f... added Debian 11 to bweb role
   loop: "{{ query('first_found', params) }}"

@@ -1,15 +1,9 @@
 ---
 - name: install postgresql and postgresql-client
   apt:
-<<<<<<< HEAD
     name: "{{ packages }}"
     update-cache: true
     state: present
-=======
-    - name: "{{ packages }}"
-      update-cache: true
-      state: present
->>>>>>> 19f376f... added Debian 11 to bweb role
   vars:
     packages:
       - postgresql

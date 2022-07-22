@@ -2,11 +2,7 @@
 - name: disable SELinux
   selinux:
     state: disabled
-<<<<<<< HEAD
   register: selinux_status
-=======
-  register: selinux_status 
->>>>>>> 19f376f... added Debian 11 to bweb role
   ignore_errors: true
 - debug: msg="{{ selinux_status.msg }}"
 - name: reboot the vm if required

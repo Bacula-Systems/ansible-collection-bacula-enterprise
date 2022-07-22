@@ -1,5 +1,4 @@
 ---
----
 - include_tasks: yum-repository_add_repo_file.yml
 - include_tasks: yum_install_bee_sdplugin.yml
 - include_tasks: "{{ file_item }}"

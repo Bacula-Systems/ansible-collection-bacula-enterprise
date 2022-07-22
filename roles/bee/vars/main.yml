@@ -19,10 +19,6 @@ bee_additional_packages:
     - ca-certificates
     - gnupg
     - acl
-<<<<<<< HEAD
-
-=======
->>>>>>> 19f376f... added Debian 11 to bweb role
   ubuntu:
     - apt-transport-https
     - sudo

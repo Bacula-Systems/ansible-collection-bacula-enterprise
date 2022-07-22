@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
 - name: update cache to install additional package
-=======
-- name: update cache to install additional package 
->>>>>>> 19f376f... added Debian 11 to bweb role
   apt:
     update_cache: true
 - name: install additional packages

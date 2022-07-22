@@ -1,16 +1,12 @@
 ---
-<<<<<<< HEAD
----# This task list will install the latest Bacula Enterprise version
-=======
 # This task list will install the latest Bacula Enterprise version
->>>>>>> 19f376f... added Debian 11 to bweb role
 # available in the repository files added
 # This will allow the upgrade of existent BEE install by
 # adding the new repo file and using this same role to update
 - name: install Bacula Enteprise Edition postgresql
   zypper:
-- name: bacula-enterprise-postgresql
-state: latest
+    - name: bacula-enterprise-postgresql
+      state: latest
   register: result
 - debug: msg="{{ result.stderr.split('\n') }}"
   when: result.stderr is defined

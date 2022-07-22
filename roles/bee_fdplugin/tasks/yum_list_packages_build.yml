@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
-- name: get plugin package name
-=======
 - name: get plugin package name 
->>>>>>> 19f376f... added Debian 11 to bweb role
   set_fact:
     fdplugin_package_name: "{{ fdplugins_item.value.package_name}}"
   loop: "{{ fdplugins|dict2items }}"

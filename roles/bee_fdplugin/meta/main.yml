@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
----galaxy_info:
-=======
 galaxy_info:
->>>>>>> 19f376f... added Debian 11 to bweb role
   role_name: bee_fdplugin
   author: Ana Machado, Bill Arlofski
   description: this role will install a File Daemon Plugin in one or more hosts.

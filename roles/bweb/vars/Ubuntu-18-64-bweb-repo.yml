@@ -1,8 +1,4 @@
 ---
-<<<<<<< HEAD
----repo_filename: BWeb-Management-Suite
-=======
 repo_filename: BWeb-Management-Suite
->>>>>>> 19f376f... added Debian 11 to bweb role
 codename: bionic
 architecture: 64

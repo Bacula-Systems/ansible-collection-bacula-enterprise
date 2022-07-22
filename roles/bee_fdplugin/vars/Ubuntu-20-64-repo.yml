@@ -1,8 +1,4 @@
 ---
-<<<<<<< HEAD
----repo_filename: Bacula-Enterprise-Edition
-=======
 repo_filename: Bacula-Enterprise-Edition
->>>>>>> 19f376f... added Debian 11 to bweb role
 codename: focal
 architecture: 64

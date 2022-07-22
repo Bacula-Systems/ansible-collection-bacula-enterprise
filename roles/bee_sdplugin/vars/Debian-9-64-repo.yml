@@ -1,8 +1,4 @@
 ---
-<<<<<<< HEAD
----repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
-=======
 repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
->>>>>>> 19f376f... added Debian 11 to bweb role
 codename: stretch
 architecture: 64

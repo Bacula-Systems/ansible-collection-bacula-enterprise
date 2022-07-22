@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
----repo_name: "Bacula-Enterprise-{{ fdplugin }}"
-=======
 repo_name: "Bacula-Enterprise-{{ fdplugin }}"
->>>>>>> 19f376f... added Debian 11 to bweb role
 repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
 description: "Bacula Enterprise Edition {{ fdplugin }} repository"
 rhel_version: rhel7

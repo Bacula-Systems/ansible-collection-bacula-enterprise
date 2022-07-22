@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
----galaxy_info:
-=======
 galaxy_info:
->>>>>>> 19f376f... added Debian 11 to bweb role
   role_name: bweb
   author: Ana Machado, Bill Arlofski
   description: this role will install BWeb Management Suite in one or more hosts.

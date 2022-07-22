@@ -4,7 +4,7 @@
 - include_tasks: systemd_start_fd.yml
 - include_tasks: "{{ fdplugin_config_file }}"
   with_first_found:
-    - files:
+    files:
       - "{{ fdplugin }}_config_fdplugin.yml"
     skip: true
   loop_control:
