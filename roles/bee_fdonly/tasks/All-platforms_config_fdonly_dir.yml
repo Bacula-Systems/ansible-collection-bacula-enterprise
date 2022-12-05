@@ -19,7 +19,7 @@
   delegate_to: "{{ director_hostname }}"
 
 - name: get the Catalog name used by the Director
-  shell: "sed -n '/Catalog {/,/}/p' /opt/bacula/etc/bacula-dir.conf | grep Name | awk {'print $3'}"
+  shell: "grep -r 'Catalog {' /opt/bacula/etc -A 1 -m 1 | grep Name | head -1 | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
   register: catalog_name
   delegate_to: "{{ director_hostname }}"
 
