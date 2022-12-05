@@ -6,4 +6,4 @@ rhel_version: rhel7
 architecture: 64
 enabled: 1
 protect: 0
-gpgcheck: 1
+gpgcheck: 0
