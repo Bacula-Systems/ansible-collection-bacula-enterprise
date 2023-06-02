@@ -1,0 +1,10 @@
+- name: Install plugin dependencies - do not use a package manager
+  include_tasks: "{{ item }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_{{ plugin_dependency }}.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_install_{{ plugin_dependency }}.yml"
+        - "{{ ansible_distribution }}_install_{{ plugin_dependency }}.yml"
+        - "install_{{ plugin_dependency }}.yml"
+  loop: "{{ query('first_found', params) }}"

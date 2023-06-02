@@ -1,0 +1,132 @@
+---
+# This is the dictionary to add any package dependency that
+# need to be installed before the plugin packages
+# Valid operator values are: eq, le, lt, ge, gt
+
+dependencies:
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-1.rh.x86_64.rpm"
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 7
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-1.rh.x86_64.rpm"
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 8
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-1.rh.x86_64.rpm"
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: OracleLinux
+     os_distribution_major_version: 9
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-1.rh.x86_64.rpm"
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: OracleLinux
+     os_distribution_major_version: 8
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-1.rh.x86_64.rpm"
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: RedHat
+     os_distribution_major_version: 9
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-1.rh.x86_64.rpm"
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: RedHat
+     os_distribution_major_version: 8
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell_7.3.4-1.deb_amd64.deb"
+     use_deb_package: true
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 22
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell_7.3.4-1.deb_amd64.deb"
+     use_deb_package: true
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 20
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell_7.3.4-1.deb_amd64.deb"
+     use_deb_package: true
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 18
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell_7.3.4-1.deb_amd64.deb"
+     use_deb_package: true
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 11
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell_7.3.4-1.deb_amd64.deb"
+     use_deb_package: true
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 10

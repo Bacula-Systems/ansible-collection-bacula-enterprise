@@ -1,0 +1,57 @@
+- name: install Bacula Enteprise plugin for Storage Daemon dependencies and package key if required
+  block:
+
+    - name: Install the GPG Public Key if needed
+      apt_key:
+        state: present
+        url: "{{ item.gpgkey}}"
+      when:
+        - item.install_gpgkey|default(false)|bool == true
+
+    - name: add Plugin dependencies repository if required
+      include_tasks: add_repo_dependency.yml
+      vars:
+        add_repo_dependency: "{{ item.package_name }}"
+      when:
+        - "item.add_repo == true"
+
+    - name: set the plugin_dependency value as the dependency name
+      set_fact:
+        plugin_dependency="{{ item.package_name }}"
+
+    - name: Install {{ plugin_dependency }} using package dependency name
+      apt:
+        name: "{{ item.package_dependency_name}}"
+        state: latest
+        update_cache: true
+      when:
+        - item.use_deb_package is not defined
+        - item.use_package_manager|default(false)|bool == true
+
+    - name: Install {{ plugin_dependency }} using deb package
+      apt:
+        deb: "{{ item.package_dependency_name}}"
+      when:
+        - item.use_deb_package is defined
+        - item.use_deb_package|default(false)|bool == true
+        - item.use_package_manager|default(false)|bool == true
+
+    - name: Install {{ plugin_dependency }} not using package manager
+      include_tasks: install_plugin_dependencies.yml
+      vars:
+        plugin_dependency: "{{ item.package_name }}"
+      when:
+        - item.use_package_manager|default(false)|bool == false
+
+    - name: check dependency is correctly installed
+      include_tasks: "{{ lookup('ansible.builtin.first_found', params) }}"
+      when:
+        - item.check_dependency_install|default(false)|bool == true
+      vars:
+        params:
+          files:
+            - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_check_{{ plugin_dependency }}.yml"
+            - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_check_{{ plugin_dependency }}.yml"
+            - "{{ ansible_distribution }}_check_{{ plugin_dependency }}.yml"
+            - "check_{{ plugin_dependency }}.yml"
+          skip: true

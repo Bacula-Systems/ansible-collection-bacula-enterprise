@@ -1,0 +1,142 @@
+---
+# This is the dictionary to add any package dependency that
+# need to be installed before the plugin packages
+# Valid operator values are: eq, le, lt, ge, gt
+
+dependencies:
+   - package_name: curl
+     package_dependency_name: curl
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 11
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 11
+   - package_name: python3-venv
+     package_dependency_name: python3-venv
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 11
+   - package_name: curl
+     package_dependency_name: curl
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 10
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 10
+   - package_name: python3-venv
+     package_dependency_name: python3-venv
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 10
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 9
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: RedHat
+     os_distribution_major_version: 9
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: RedHat
+     os_distribution_major_version: 8
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 8
+   - package_name: python3
+     package_dependency_name: python3
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 8
+   - package_name: python3
+     package_dependency_name: python3
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 7
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 7
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 22
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 20
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 18
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 16
