@@ -30,7 +30,9 @@ Some roles have a `templates` directory with Clients, Jobs and Filesets that wil
 
 Before using the Bacula Enterprise collection, it must be installed with the Ansible Galaxy command:
 
-> \# ansible-galaxy collection install baculasystems.bacula_enterprise
+```shell
+ansible-galaxy collection install baculasystems.bacula_enterprise
+```
 
 ## Roles
 
@@ -51,16 +53,16 @@ Please set your Bacula Enterprise Edition subscription's repository URL (downloa
 
 You may use the following command to set all `dl_area` values at once:
 
-> \# find /root/.ansible/collections/ansible_collections/baculasystems/bacula_enterprise/roles/ -name main.yml -exec sed -i 's/@@customer@/<your_download_area_string>/g' {} \\;
+```shell
+find /root/.ansible/collections/ansible_collections/baculasystems/bacula_enterprise/roles/ -name main.yml -exec sed -i 's/@@customer@/<your_download_area_string>/g' {} \\;
+```
 
 The Bacula Clients (File Daemons) and the Bacula Storage Daemons will use the password used by the Director {} resource present in the bacula-fd.conf and bacula-sd.conf files respectively to communicate with the remote Director provided in the deployment.
 
 The variables in the following table must be set in a playbook, in an inventory file, or by passing them with the `--extra-vars` option on the command line. Depending on the role used, the following variables may be required: `bee_version, director_hostname, client_hostname, client_name`, `storage_hostname`, `storage_name`, `volumes_directory` and `dedup_directories`
 
-
 Variable | Description
 -------- | ---------------------
-bee_version | the Bacula Enterprise Edition version, for example: `16.0.0`
 bee_version | the Bacula Enterprise Edition version, for example: `16.0.0`
 director_hostname | the FQDN of the Director host, for example: `baculadir.example.com`. The name of the Director is, by default, the hostname + "-dir". In this example, the Director name will be `baculadir-dir`
 client_hostname | the FQDN of the Client host, for example, `baculaclient.example.com`
@@ -76,14 +78,15 @@ jobdefs_name | by default, the roles will use the first JobDefs resource name fo
 
 The following examples use the playbooks in the `tests` directory of the Bacula Enterprise collection.
 
-1) To deploy Bacula Enterprise Edition (DIR, SD, and FD) `16.0.0` on a host with the FQDN `baculadir.example.com` using the --extra_vars command line option, and the `bee.yml` playbook:
-1) To deploy Bacula Enterprise Edition (DIR, SD, and FD) `16.0.0` on a host with the FQDN `baculadir.example.com` using the --extra_vars command line option, and the `bee.yml` playbook:
+1. To deploy Bacula Enterprise Edition (DIR, SD, and FD) `16.0.0` on a host with the FQDN `baculadir.example.com` using the --extra_vars command line option, and the `bee.yml` playbook:
 
-> \# ansible-playbook -i baculadir.example.com, tests/bee.yml --extra-vars "director_hostname=baculadir.example.com bee_version=16.0.0"
-> \# ansible-playbook -i baculadir.example.com, tests/bee.yml --extra-vars "director_hostname=baculadir.example.com bee_version=16.0.0"
+```shell
+ansible-playbook -i baculadir.example.com, tests/bee.yml --extra-vars "director_hostname=baculadir.example.com bee_version=16.0.0"
+```
 
 This is the `tests/bee.yml` file referenced in the command line above:
-```
+
+```yaml
 ---
 - hosts: "{{ director_hostname }}"
   remote_user: root
@@ -93,13 +96,13 @@ This is the `tests/bee.yml` file referenced in the command line above:
       name: baculasystems.bacula_enterprise.bee
 ```
 
-2) Using an inventory file to install two remote Bacula Enterprise Edition version `16.0.0` File Daemon to the hosts `client1.example.com` and `client2.example.com`, and deploy the two clients' resource definitions in the Director's configuration on the `baculadir.example.com` host, first an inventory file needs to be created:
-2) Using an inventory file to install two remote Bacula Enterprise Edition version `16.0.0` File Daemon to the hosts `client1.example.com` and `client2.example.com`, and deploy the two clients' resource definitions in the Director's configuration on the `baculadir.example.com` host, first an inventory file needs to be created:
+2. Using an inventory file to install two remote Bacula Enterprise Edition version `16.0.0` File Daemon to the hosts `client1.example.com` and `client2.example.com`, and deploy the two clients' resource definitions in the Director's configuration on the `baculadir.example.com` host, first an inventory file needs to be created:
 
 Note: In this example, please be sure to edit the `tests/clients.yaml` inventory file to match your environment.
 
 The `tests/clients.yaml` inventory file (edit to match systems in your environment):
-```
+
+```yaml
 ---
 clients:
   hosts:
@@ -111,16 +114,18 @@ clients:
 
   vars:
     bee_version: 16.0.0
-    bee_version: 16.0.0
     director_hostname: baculadir.example.com
 ```
 
 Then, to deploy the two Bacula File Daemons to the two hosts using the `bee-fdonly.yml` playbook and the above `clients.yaml` inventory file:
 
-> \# ansible-playbook -i tests/clients.yaml tests/bee-fdonly.yml
+```shell
+ansible-playbook -i tests/clients.yaml tests/bee-fdonly.yml
+```
 
 This is the `tests/bee-fdonly.yml` playbook referenced in the command line above:
-```
+
+```yaml
 ---
 - hosts: clients
   tasks:
@@ -130,16 +135,17 @@ This is the `tests/bee-fdonly.yml` playbook referenced in the command line above
       name: baculasystems.bacula_enterprise.bee_fdonly
 ```
 
-3) To install the Bacula Enterprise Edition MySQL File Daemon Plugin version `16.0.0` in the remote client on the `client1.example.com` host, and deploy the plugin configuration (basic FileSet, not including plugin options in most of the cases) in the Director's configuration on the `baculadir.example.com` host, using the --extra_vars command line option:
-3) To install the Bacula Enterprise Edition MySQL File Daemon Plugin version `16.0.0` in the remote client on the `client1.example.com` host, and deploy the plugin configuration (basic FileSet, not including plugin options in most of the cases) in the Director's configuration on the `baculadir.example.com` host, using the --extra_vars command line option:
+3. To install the Bacula Enterprise Edition MySQL File Daemon Plugin version `16.0.0` in the remote client on the `client1.example.com` host, and deploy the plugin configuration (basic FileSet, not including plugin options in most of the cases) in the Director's configuration on the `baculadir.example.com` host, using the --extra_vars command line option:
 
-> \# ansible-playbook tests/bee-fdplugin.yml -i client1.example.com, --extra-vars "client_hostname=client1.example.com client_name=client1-fd bee_version=16.0.0 fdplugin=mysql director_hostname=baculadir.example.com"
-> \# ansible-playbook tests/bee-fdplugin.yml -i client1.example.com, --extra-vars "client_hostname=client1.example.com client_name=client1-fd bee_version=16.0.0 fdplugin=mysql director_hostname=baculadir.example.com"
+```shell
+ansible-playbook tests/bee-fdplugin.yml -i client1.example.com, --extra-vars "client_hostname=client1.example.com client_name=client1-fd bee_version=16.0.0 fdplugin=mysql director_hostname=baculadir.example.com"
+```
 
 In the above example, the client name in the bacula-fd.conf file will be modified to `client1-fd` instead of `client1.example.com-fd`. The name used in the Client resource in the Director configuration will also be deployed using `client1-fd`.
 
 This is the `tests/bee-fdplugin.yml` playbook referenced in the commmand line above:
-```
+
+```yaml
 ---
 - hosts: "{{ client_hostname }}"
   tasks:
@@ -154,11 +160,11 @@ This is the `tests/bee-fdplugin.yml` playbook referenced in the commmand line ab
       name: baculasystems.bacula_enterprise.bee_fdplugin
 ```
 
-4) In the example, two remote Bacula Enterprise Edition version `16.0.0` Storage Daemons will be deployed to the hosts `storage1.example.com` and `storage2.example.com`, using an inventory file. Bacula Enterprise Edition DIR, SD, and FD components will also be installed and the Bacula Director service will be automatically disabled. First an inventory file needs to be created:
-4) In the example, two remote Bacula Enterprise Edition version `16.0.0` Storage Daemons will be deployed to the hosts `storage1.example.com` and `storage2.example.com`, using an inventory file. Bacula Enterprise Edition DIR, SD, and FD components will also be installed and the Bacula Director service will be automatically disabled. First an inventory file needs to be created:
+4. In the example, two remote Bacula Enterprise Edition version `16.0.0` Storage Daemons will be deployed to the hosts `storage1.example.com` and `storage2.example.com`, using an inventory file. Bacula Enterprise Edition DIR, SD, and FD components will also be installed and the Bacula Director service will be automatically disabled. First an inventory file needs to be created:
 
 The `tests/storages.yaml` inventory file (edit to match systems in your environment):
-```
+
+```yaml
 ---
 storages:
   hosts:
@@ -169,16 +175,18 @@ storages:
   vars:
     director_hostname: baculadir.example.com
     bee_version: 16.0.0
-    bee_version: 16.0.0
     volumes_directory: /opt/bacula/volumes
 ```
 
 Then, to deploy the two Bacula Storage Daemons to the two hosts using the `tests/bee-sdonly.yml` playbook and the above `tests/storages.yaml` inventory file:
 
-> \# ansible-playbook -i tests/storages.yaml tests/bee-sdonly.yml
+```shell
+ansible-playbook -i tests/storages.yaml tests/bee-sdonly.yml
+```
 
 This is the `tests/bee-sdonly.yml` playbook referenced in the command line above:
-```
+
+```yaml
 ---
 - hosts: storages
   tasks:
@@ -188,14 +196,15 @@ This is the `tests/bee-sdonly.yml` playbook referenced in the command line above
       name: baculasystems.bacula_enterprise.bee_sdonly
 ```
 
-5) To install a Bacula Enterprise Edition dedup (GED) Storage Daemon Plugin version `16.0.0` on the `storage1.example.com` host (deployed in the example 4 above), using the --extra_vars command line option:
-5) To install a Bacula Enterprise Edition dedup (GED) Storage Daemon Plugin version `16.0.0` on the `storage1.example.com` host (deployed in the example 4 above), using the --extra_vars command line option:
+5. To install a Bacula Enterprise Edition dedup (GED) Storage Daemon Plugin version `16.0.0` on the `storage1.example.com` host (deployed in the example 4 above), using the --extra_vars command line option:
 
-> \# ansible-playbook -i storage1.example.com, tests/bee-sdplugin.yml --extra-vars '{"storage_hostname":"storage1.example.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"16.0.0", "sdplugin":"dedup",  "volumes_directory":"/mnt/dedup/data/volumes",  "dedup_directories":["/mnt/dedup/index", "/mnt/dedup/data/containers"],  "director_hostname":"baculadir.example.com"}'
-> \# ansible-playbook -i storage1.example.com, tests/bee-sdplugin.yml --extra-vars '{"storage_hostname":"storage1.example.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"16.0.0", "sdplugin":"dedup",  "volumes_directory":"/mnt/dedup/data/volumes",  "dedup_directories":["/mnt/dedup/index", "/mnt/dedup/data/containers"],  "director_hostname":"baculadir.example.com"}'
+```shell
+ansible-playbook -i storage1.example.com, tests/bee-sdplugin.yml --extra-vars '{"storage_hostname":"storage1.example.com",  "storage_name":"bacula-dedup-sd",  "bee_version":"16.0.0", "sdplugin":"dedup",  "volumes_directory":"/mnt/dedup/data/volumes",  "dedup_directories":["/mnt/dedup/index", "/mnt/dedup/data/containers"],  "director_hostname":"baculadir.example.com"}'
+```
 
 This is the `tests/bee-sdplugin.yml` playbook referenced in the command line above:
-```
+
+```yaml
 ---
 - hosts: "{{ storage_hostname }}"
   tasks:
@@ -207,14 +216,15 @@ This is the `tests/bee-sdplugin.yml` playbook referenced in the command line abo
       name: baculasystems.bacula_enterprise.bee_sdplugin
 ```
 
-6) To deploy Bacula Enterprise BWeb Management Suite  `16.0.0` on a host with the FQDN `baculadir.example.com` using the --extra_vars command line option, and the `bweb.yml` playbook:
-6) To deploy Bacula Enterprise BWeb Management Suite  `16.0.0` on a host with the FQDN `baculadir.example.com` using the --extra_vars command line option, and the `bweb.yml` playbook:
+6. To deploy Bacula Enterprise BWeb Management Suite  `16.0.0` on a host with the FQDN `baculadir.example.com` using the --extra_vars command line option, and the `bweb.yml` playbook:
 
-> \# ansible-playbook -i baculadir.example.com, tests/bweb.yml --extra-vars "director_hostname=baculadir.example.com bee_version=16.0.0"
-> \# ansible-playbook -i baculadir.example.com, tests/bweb.yml --extra-vars "director_hostname=baculadir.example.com bee_version=16.0.0"
+```shell
+ansible-playbook -i baculadir.example.com, tests/bweb.yml --extra-vars "director_hostname=baculadir.example.com bee_version=16.0.0"
+```
 
 This is the `tests/bee.yml` file referenced in the command line above:
-```
+
+```yaml
 ---
 - hosts: "{{ director_hostname }}"
   tasks:
@@ -226,9 +236,11 @@ This is the `tests/bee.yml` file referenced in the command line above:
 **From Bacula Enterprise Edition 16.0.0, it is possible to use the Bacula Enterprise Ansible Collection to deploy new File Daemons and/or new Storage Daemon in your environment even if you have the configuration files already split using BWeb. In this collection, we provide the re-split-configuration.yml playbook that will re-split the configuration added by the Ansible collection for the new resources in the current BWeb directory structure:**
 **From Bacula Enterprise Edition 16.0.0, it is possible to use the Bacula Enterprise Ansible Collection to deploy new File Daemons and/or new Storage Daemon in your environment even if you have the configuration files already split using BWeb. In this collection, we provide the re-split-configuration.yml playbook that will re-split the configuration added by the Ansible collection for the new resources in the current BWeb directory structure:**
 
-> \# ansible-playbook -i baculadir.example.com, tests/re-split-configuration.yml --extra-vars "director_hostname=baculadir.example.com"
-
+```shell
+ansible-playbook -i baculadir.example.com, tests/re-split-configuration.yml --extra-vars "director_hostname=baculadir.example.com"
 ```
+
+```yaml
 ---
 - hosts: "{{ director_hostname }}"
   remote_user: root
@@ -253,7 +265,6 @@ This is the `tests/bee.yml` file referenced in the command line above:
 ```
 
 **Please note all the examples above can use an inventory file and/or --extra-vars or you may modify the playbooks to use any variable assignment allowed in Ansible.**
-
 
 ## Licensing
 
