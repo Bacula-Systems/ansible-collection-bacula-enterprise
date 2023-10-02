@@ -1,0 +1,12 @@
+---
+- name: copy the ca.crt file of the k8s cluster (available in the ansible vm) to the kubernetes plugin client
+  copy:
+    src: files/{{ fdplugin }}/{{ cert_file }}
+    dest: /opt/bacula/etc/
+    owner: root
+    group: root
+    mode: '0600'
+  with_items:
+    - ca.crt
+  loop_control:
+    loop_var: cert_file

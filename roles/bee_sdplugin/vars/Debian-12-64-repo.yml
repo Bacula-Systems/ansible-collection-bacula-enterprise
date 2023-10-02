@@ -1,0 +1,4 @@
+---
+repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
+codename: bookworm
+architecture: 64

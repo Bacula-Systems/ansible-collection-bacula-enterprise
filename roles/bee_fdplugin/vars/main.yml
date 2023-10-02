@@ -1,0 +1,204 @@
+---
+fdplugins:
+  azure-vm:
+    directory: azure-vm
+    name: azure-vm
+    package_name: bacula-enterprise-azure-vm-plugin
+
+  antivirus:
+    directory: bin
+    name: antivirus
+    package_name: bacula-enterprise-antivirus-plugin
+
+  bcloud:
+    name: bcloud
+    directory: bcloud
+    package_name: bacula-enterprise-bcloud-service
+
+  db2:
+    name: db2
+    directory: db2
+    package_name: bacula-enterprise-db2-plugin
+
+  delta:
+    name: delta
+    directory: delta
+    package_name: bacula-enterprise-delta
+
+  docker:
+    name: docker
+    directory: docker
+    package_name: bacula-enterprise-docker-plugin
+
+  docker-tools:
+    name: docker
+    directory: docker
+    package_name: bacula-enterprise-docker-tools
+
+  exchange-ews:
+    name: exchange-ews
+    directory: exchange-ews
+    package_name: bacula-enterprise-exchange-ews-plugin
+
+  gw:
+    name: google-workspace
+    directory: google-workspace
+    package_name: bacula-enterprise-google-workspace-plugin
+
+  hdfs:
+    name: hdfs
+    directory: hdfs
+    package_name: bacula-enterprise-hdfs-plugin
+
+  inventory:
+    name: inventory
+    directory: bin
+    package_name: bacula-enterprise-inventory-plugin
+
+  kubernetes:
+    name: kubernetes
+    directory: kubernetes
+    package_name: bacula-enterprise-kubernetes-plugin
+
+  kubernetes-tools:
+    name: kubernetes
+    directory: kubernetes
+    package_name: bacula-enterprise-kubernetes-tools
+
+  kvm:
+    name: kvm
+    directory: kvm
+    package_name: bacula-enterprise-kvm-plugin
+
+  ldap:
+    directory: ldap
+    name: ldap
+    package_name: bacula-enterprise-ldap-plugin
+
+  m365:
+    directory: m365
+    name: m365
+    package_name: bacula-enterprise-m365-plugin
+
+  mysql:
+    directory: mysql
+    name: mysql
+    package_name: bacula-enterprise-mysql-plugin
+
+  ndmp:
+    directory: ndmp
+    name: ndmp
+    package_name: bacula-enterprise-ndmp
+
+  netapp-hfc:
+    directory: netapp-hfc
+    name: netapp-hfc
+    package_name: bacula-enterprise-netapp-hfc
+
+  nutanix-ahv:
+    directory: nutanix
+    name: nutanix
+    package_name: bacula-enterprise-nutanix-ahv-plugin
+
+  nutanix-hfc:
+    directory: nutanix
+    name: nutanix
+    package_name: bacula-enterprise-nutanix-hfc-plugin
+
+  openshift:
+    name: openshift
+    directory: openshift
+    package_name: bacula-enterprise-openshift-plugin
+
+  openstack-vm:
+    name: openstack-vm
+    directory: openstack-vm
+    package_name: bacula-enterprise-openstack-vm-plugin
+
+  oracle:
+    name: oracle
+    directory: oracle
+    package_name: bacula-enterprise-oracle
+
+  postgresql:
+    directory: postgresql
+    name: postgresql
+    package_name: bacula-enterprise-postgresql-plugin
+
+  proxmox:
+    directory: proxmox
+    name: proxmox
+    package_name: bacula-enterprise-proxmox-plugin
+
+  qemu:
+    directory: qemu
+    name: qemu
+    package_name: bacula-enterprise-qemu-plugin
+
+  rhv:
+    directory: rhv
+    name: rhv
+    package_name: bacula-enterprise-rhv-plugin
+
+  s3:
+    directory: s3
+    name: s3
+    package_name: bacula-enterprise-s3-plugin
+
+  sap-hana:
+    directory: sap-hana
+    name: sap-hana
+    package_name: bacula-enterprise-sap-hana-plugin
+
+  security:
+    directory: bin
+    name: security
+    package_name: bacula-enterprise-security-plugin
+
+  single-item-restore:
+    name: single-item-restore
+    directory: single-item-restore
+    package_name: bacula-enterprise-single-item-restore
+
+  snapshot:
+    name: snapshot
+    directory: snapshot
+    package_name: bacula-enterprise-snapshot
+
+  swift:
+    name: swift
+    directory: swift
+    package_name: bacula-enterprise-swift-plugin
+
+  sybase:
+    name: sybase
+    directory: sybase
+    package_name: bacula-enterprise-sybase-plugin
+
+  totp:
+    directory: bin
+    name: totp
+    package_name: bacula-enterprise-totp-dir-plugin
+
+  vsphere:
+    name: vsphere
+    directory: vsphere
+    package_name: bacula-enterprise-vsphere
+
+  xenserver:
+    name: xenserver
+    directory: xenserver
+    package_name: bacula-enterprise-xenserver-plugin
+
+# This is the dictionary to add any package dependency that
+# need to be installed before the plugin packages
+# The following entries are an example of the structure and
+# they cannot be removed. They can be modified though.
+# Valid operator values are: eq, le, lt, ge, gt
+
+fdplugins_dependencies:
+  - plugin_name: 
+    dependencies:
+       - package_dependency_name: 
+         bee_version:
+         operator: le

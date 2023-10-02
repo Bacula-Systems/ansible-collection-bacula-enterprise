@@ -1,0 +1,71 @@
+- name: get the Storage Daemon password used to communicate with Director in the bacula-sd.conf file
+  shell: "grep ^[[:space:]]*Password -m 1 /opt/bacula/etc/bacula-sd.conf | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
+  register: current_sd_password
+
+- name: set the dir_sd_password
+  set_fact:
+    dir_sd_password: "{{ current_sd_password.stdout }}"
+
+- name: get the JobDefs resource name used in the configuration files (DefaultJob until 12.2.4 version, BackupsToDisk from 12.4 version)
+  shell: "grep 'JobDefs {' /opt/bacula/etc/bacula-dir.conf -A 1 -m 1 | grep Name | tr -d ' ' | cut -d \"=\" -f2"
+  register: jobdefs_name
+
+- name: set the jobdefs_name value
+  set_fact:
+    jobdefs_name: "{{ jobdefs_name.stdout }}"
+
+- name: create ansible.conf.d directory
+  file:
+    path: /opt/bacula/etc/ansible.conf.d/director
+    state: directory
+    mode: '0770'
+    owner: bacula
+    group: bacula
+
+- name: copy any .conf file to the /opt/bacula/etc/ansible.conf.d/director directory
+  copy:
+    src: files/
+    dest: /opt/bacula/etc/ansible.conf.d/director/
+    mode: '0770'
+    owner: bacula
+    group: bacula
+
+- name: include the line to include all configuration files in the ansible.conf.d directory in the bacula-dir.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-dir.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - include any file in the bee role files directory"
+    block: |
+      @|"sh -c 'for f in /opt/bacula/etc/ansible.conf.d/director/*.conf ; do echo @${f} ; done'"
+
+- name: get the Catalog name used by the Director
+  shell: "grep 'Catalog {' /opt/bacula/etc/bacula-dir.conf -A 1 -m 1 | grep Name | tr -d ' ' | cut -d \"=\" -f2"
+  register: catalog
+
+- name: set the catalog_name value
+  set_fact:
+    catalog_name: "{{ catalog.stdout }}"
+
+- name: generate the linuxbmr rescue-fd client and console definitions to be included in the bacula-dir.conf file
+  template:
+    src: "linuxbmr_config_in_bacula_dir.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ director_name }}-linuxbmr-config.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'
+
+- name: generate the /dev/null autochanger to be included in the bacula-dir.conf file
+  template:
+    src: "autochanger-dev-null_conf_in_bacula_dir.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ director_name }}_dev_null_autochanger.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'
+
+- name: generate the job to /dev/null to be included in the bacula-dir.conf file
+  template:
+    src: "dev_null_job.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ director_name }}_dev_null_job.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'

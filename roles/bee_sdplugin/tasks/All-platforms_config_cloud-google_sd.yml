@@ -1,0 +1,17 @@
+---
+- name: copy the credential_key.json file to /opt/bacula/etc directory
+  copy:
+    src: "{{ sdplugin }}/{{ item }}"
+    dest: /opt/bacula/etc/
+    owner: bacula
+    group: bacula
+    mode: '0600'
+  with_items:
+    - credential_key.json
+
+- name: activate service account using the json file and set the configuration data to be stored in /opt/bacula/etc/google
+  shell: sudo -u bacula HOME=/opt/bacula/etc/google gcloud auth activate-service-account --project=<project_id> --key-file=/opt/bacula/etc/credential_key.json
+  register: gcloud_config
+
+- debug: msg="{{ gcloud_config.stdout.split('\n') }}"
+- debug: msg="{{ gcloud_config.stderr.split('\n') }}"

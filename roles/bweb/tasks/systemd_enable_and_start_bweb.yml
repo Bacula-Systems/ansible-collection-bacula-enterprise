@@ -1,0 +1,8 @@
+- name: auto-start BWeb during boot time
+  systemd:
+    name: bweb
+    enabled: true
+- name: start BWeb
+  systemd:
+    name: bweb
+    state: started

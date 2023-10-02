@@ -1,0 +1,15 @@
+---
+- name: copy the Google Workspace config example file, please modify the values
+  copy:
+    src: "{{ fdplugin }}/gw.settings"
+    dest: /opt/bacula/etc/gw.settings
+    owner: bacula
+    group: bacula
+    mode: '0600'
+- name: copy the Google Workspace json example file, please replace with the correct one
+  copy:
+    src: "{{ fdplugin }}/bacula-gw-plugin.json"
+    dest: /opt/bacula/etc/bacula-gw-plugin.json
+    owner: bacula
+    group: bacula
+    mode: '0600'

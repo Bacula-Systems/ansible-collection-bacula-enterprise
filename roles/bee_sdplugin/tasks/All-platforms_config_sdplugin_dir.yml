@@ -1,0 +1,81 @@
+---
+- name: get the Storage Daemon password used to communicate with Director in the bacula-sd.conf file
+  shell: "grep ^[[:space:]]*Password -m 1 /opt/bacula/etc/bacula-sd.conf | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
+  register: current_sd_password
+
+- name: set the dir_sd_password
+  set_fact:
+    dir_sd_password: "{{ current_sd_password.stdout }}"
+
+- name: create ansible.conf.d, ansible.conf.d/director and ansible.conf.d/director/storages directories, if they don't exist
+  file:
+    path: "{{ directories }}"
+    state: directory
+    mode: '0770'
+    owner: bacula
+    group: bacula
+  loop:
+    - /opt/bacula/etc/ansible.conf.d
+    - /opt/bacula/etc/ansible.conf.d/director
+    - /opt/bacula/etc/ansible.conf.d/director/storages
+  loop_control:
+    loop_var: directories
+  delegate_to: "{{ director_hostname }}"
+
+- name: generate the autochanger resource definition to be included in the bacula-dir.conf file
+  template:
+    src: "autochanger_conf_in_bacula_dir.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/storages/{{ storage_name }}-{{ sdplugin }}-autochanger.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'
+  delegate_to: "{{ director_hostname }}"
+
+- name: include the line to include the Autochanger configuration in the ansible.conf.d directory in the bacula-dir.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-dir.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Autochanger - {{ storage_name }}-{{ sdplugin }} in Director"
+    block: |
+      @/opt/bacula/etc/ansible.conf.d/director/storages/{{ storage_name }}-{{ sdplugin }}-autochanger.conf
+  delegate_to: "{{ director_hostname }}"
+
+- name: get the JobDefs resource name used in the configuration files (DefaultJob until 12.2.4 version, BackupsToDisk from 12.4 version)
+  shell: "grep 'JobDefs {' /opt/bacula/etc/bacula-dir.conf -A 1 -m 1 | grep Name | tr -d ' ' | cut -d \"=\" -f2"
+  register: jobdefs_name
+
+- name: set the jobdefs_name value
+  set_fact:
+    jobdefs_name: "{{ jobdefs_name.stdout }}"
+
+- name: generate the Backup job resource using the sdplugin autochanger to be included in the bacula-dir.conf file
+  template:
+    src: "sdplugin_job.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ storage_name }}-{{ sdplugin }}-job.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'
+  delegate_to: "{{ director_hostname }}"
+
+- name: generate the Pool resource using the sdplugin autochanger to be included in the bacula-dir.conf file
+  template:
+    src: "sdplugin_pool.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ sdplugin }}-pool.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'
+  delegate_to: "{{ director_hostname }}"
+
+- name: reload Director configuration
+  shell: echo "reload" | /opt/bacula/bin/bconsole
+  register: reload_result
+  delegate_to: "{{ director_hostname }}"
+- debug: msg="{{ reload_result.stdout.split('\n') }}"
+- debug: msg="{{ reload_result.stderr.split('\n') }}"
+
+- name: status storage in Director
+  shell: echo "status storage={{ storage_name }}-{{ sdplugin }}-autochanger" | /opt/bacula/bin/bconsole
+  register: status_result
+  delegate_to: "{{ director_hostname }}"
+- debug: msg="{{ status_result.stdout.split('\n') }}"
+- debug: msg="{{ status_result.stderr.split('\n') }}"

@@ -1,0 +1,7 @@
+endpoint=dc1.exchange.lan
+#admin_domain=exchange.lan
+admin_user=administrator@exchange.lan
+admin_password=password
+log=/opt/bacula/working/e2ws/e2ws-debug.log
+concurrent_threads=10
+debug=9

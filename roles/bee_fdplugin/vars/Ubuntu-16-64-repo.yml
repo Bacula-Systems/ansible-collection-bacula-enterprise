@@ -1,0 +1,4 @@
+---
+repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
+codename: xenial
+architecture: 64

@@ -1,0 +1,5 @@
+---
+repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
+codename: jammy
+codename: jammy
+architecture: 64

@@ -1,0 +1,6 @@
+---
+- hosts: "{{ director_hostname }}"
+  tasks:
+  - name: Install BWeb Management Suite
+    import_role:
+      name: baculasystems.bacula_enterprise.bweb

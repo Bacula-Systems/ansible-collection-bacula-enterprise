@@ -1,0 +1,70 @@
+---
+- name: fail following tasks if director_hostname is not defined
+  fail: msg="director_hostname not provided, skipping remote Director configuration."
+  when: director_hostname is not defined
+
+- name: get the File Daemon password used to communicate with Director in the bacula-fd.conf file
+  shell: "grep ^[[:space:]]*Password -m 1 /opt/bacula/etc/bacula-fd.conf | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
+  register: current_fd_password
+
+- name: set the dir_fd_password
+  set_fact:
+    dir_fd_password: "{{ current_fd_password.stdout }}"
+
+- name: get the JobDefs resource name used in the configuration files (DefaultJob until 12.2.4 version, BackupsToDisk from 12.4 version)
+  shell: "grep -r 'JobDefs {' /opt/bacula/etc -A 1 -m 1 | grep Name | head -1 | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
+  register: jobdefs_name
+  delegate_to: "{{ director_hostname }}"
+
+- name: set the jobdefs_name value
+  set_fact:
+    jobdefs_name: "{{ jobdefs_name.stdout }}"
+  delegate_to: "{{ director_hostname }}"
+
+- name: create ansible.conf.d, ansible.conf.d/director and ansible.conf.d/director/clients directories, if they don't exist
+  file:
+    path: "{{ directories }}"
+    state: directory
+    mode: '0770'
+    owner: bacula
+    group: bacula
+  loop:
+    - /opt/bacula/etc/ansible.conf.d
+    - /opt/bacula/etc/ansible.conf.d/director
+    - /opt/bacula/etc/ansible.conf.d/director/clients
+  loop_control:
+    loop_var: directories
+  delegate_to: "{{ director_hostname }}"
+
+- name: generate the job and fileset plugin to be included in the bacula-dir.conf file
+  template:
+    src: "{{ fdplugin }}_jobs_filesets.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/clients/{{ client_name }}-{{ fdplugin }}_jobs_filesets.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'
+  ignore_errors: true
+  delegate_to: "{{ director_hostname }}"
+
+- name: include the line to include the jobs and filesets configuration files in the ansible.conf.d directory in the bacula-dir.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-dir.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Jobs and FileSets - {{ client_name }}-{{ fdplugin }} in the bacula-dir.conf file"
+    block: |
+      @/opt/bacula/etc/ansible.conf.d/director/clients/{{ client_name }}-{{ fdplugin }}_jobs_filesets.conf
+  delegate_to: "{{ director_hostname }}"
+
+- name: reload Director configuration
+  shell: echo "reload" | /opt/bacula/bin/bconsole
+  register: reload_result
+  delegate_to: "{{ director_hostname }}"
+- debug: msg="{{ reload_result.stdout.split('\n') }}"
+- debug: msg="{{ reload_result.stderr.split('\n') }}"
+
+- name: status client in Director
+  shell: echo "status client={{ client_name }}" | /opt/bacula/bin/bconsole
+  register: status_result
+  delegate_to: "{{ director_hostname }}"
+- debug: msg="{{ status_result.stdout.split('\n') }}"
+- debug: msg="{{ status_result.stderr.split('\n') }}"

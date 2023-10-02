@@ -1,0 +1,45 @@
+---
+- name: download the awscli installation script
+  ansible.builtin.get_url:
+    url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /tmp/awscliv2.zip
+
+- name: unzip the installation script file
+  ansible.builtin.unarchive:
+    src: /tmp/awscliv2.zip
+    dest: /tmp
+    remote_src: true
+
+- name: install the awscli program
+  ansible.builtin.shell: /tmp/aws/install
+  become: true
+  become_user: root
+  register: awscli_install_status
+  failed_when:
+    - '"Found preexisting AWS CLI installation" not in awscli_install_status.stderr'
+    - '"You can now run: /usr/local/bin/aws --version" not in awscli_install_status.stdout'
+
+- debug: msg="{{ awscli_install_status.stdout.split('\n') }}"
+- debug: msg="{{ awscli_install_status.stderr.split('\n') }}"
+
+- name: update the awscli program
+  ansible.builtin.shell: /tmp/aws/install --update
+  become: true
+  become_user: root
+  register: awscli_update_status
+  when:
+    - '"Found preexisting AWS CLI installation" in awscli_install_status.stderr'
+
+- debug: msg="{{ awscli_update_status.stdout.split('\n') }}"
+  when:
+    - '"Found preexisting AWS CLI installation" in awscli_install_status.stderr'
+- debug: msg="{{ awscli_update_status.stderr.split('\n') }}"
+  when:
+    - '"Found preexisting AWS CLI installation" in awscli_install_status.stderr'
+
+- name: check awscli version installed
+  ansible.builtin.shell: aws --version
+  register: awscli_version
+
+- debug: msg="{{ awscli_version.stdout.split('\n') }}"
+- debug: msg="{{ awscli_version.stderr.split('\n') }}"

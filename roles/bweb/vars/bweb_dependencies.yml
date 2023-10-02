@@ -1,0 +1,38 @@
+---
+bweb_dependencies:
+  RedHat:
+    dependency_name: epel-release
+    package_dependency_name: epel-release
+    bee_version: 14.1
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: RedHat
+    os_distribution_major_version: 9
+  OracleLinux:
+    dependency_name: epel-release
+    package_dependency_name: oracle-epel-release-el9
+    bee_version: 14.1
+    operator: ge
+    add_repo: no
+    use_package_manager: yes
+    os_distribution: OracleLinux
+    os_distribution_major_version: 9
+  Rocky:
+    dependency_name: epel-release
+    package_dependency_name: epel-release
+    bee_version: 14.1
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: Rocky
+    os_distribution_major_version: 9
+  AlmaLinux:
+    dependency_name: epel-release
+    package_dependency_name: epel-release
+    bee_version: 14.1
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: AlmaLinux
+    os_distribution_major_version: 9

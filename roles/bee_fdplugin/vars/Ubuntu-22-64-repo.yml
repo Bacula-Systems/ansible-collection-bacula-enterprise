@@ -1,0 +1,4 @@
+---
+repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
+codename: jammy
+architecture: 64

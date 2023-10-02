@@ -1,0 +1,126 @@
+
+               Last revision: 30 September 2016
+
+Trademark:
+The name Bacula is a registered trademark of Kern Sibbald.
+The name Bacula Systems is a registered trademark of Bacula Systems SA.
+The name Bacula Enterprise is a trademark of Bacula Systems SA.
+
+
+Community version:
+This code is NOT the community version of Bacula, which is copyright Kern
+Sibbald.  If you want that version, please go to www.bacula.org to get
+instructions for downloading it.
+
+Enterprise version:
+This code is the Enterprise version of Bacula, which is a proprietary
+copyrighted work of Bacula Systems SA and distributed under Bacula Systems
+SA's trademarks.  Bacula Systems SA, All rights reserved.
+
+Licensees holding a valid Bacula Systems SA license may use the files
+released (distributed) to them in accordance with the proprietary license
+agreement provided in this file.  Redistribution of any part of
+this release is not permitted.
+
+NAS Backup Edition:
+Bacula Systems SA licenses the NAS Backup Edition for the sole purpose of
+backing up the licensed number of NAS systems.  Should it be required to
+backup systems outside the NAS, a copy of the Bacula Enterprise Edition must
+also be licensed separately through a Bacula Systems subscription.
+
+Windows Binaries:
+Bacula Systems Enterprise Edition licenses the use of Windows Binaries as part
+of the subscription service with Bacula Systems SA. Support for these binaries
+is then provided by Bacula Systems S.A.
+
+Bacula Systems SA licenses Windows Binaries for use with the Community version
+of Bacula upon payment of the associated fee.  This fee is based on the number
+of clients you intend to use the binaries on, and it is a condition of the
+license that you respect the total number of clients you pay for.  It is not
+permitted to use these binaries with Bacula Enterprise Edition or any of its
+plugins.  Upon payment the binaries are made available from a designated
+download area for a period of 90 days.  Support for these binaries with the
+Community version of Bacula is provided by the Bacula Project through
+www.bacula.org
+
+===================================
+
+Trademark:
+The name Bacula Systems(R) and associated logos as well as other trademarks are
+trademarks of Bacula Systems SA. Absent a written agreement or other express
+permission, Bacula Systems SA does not allow third parties to use its
+trademarks.  Absent such a written trademark license from Bacula Systems, a
+third party does not have the right to distribute anything (code, binaries,
+...) containing Bacula Systems trademarks.
+
+License:
+All source code listed under Copyright Bacula Systems SA as well as all code
+falling under the dual license is available only to users with a
+valid Bacula Systems subscription agreement, and may not be redistributed
+without explicit written permission from Bacula Systems SA.
+
+The following additions apply to the enterprise version of Bacula, which is a
+proprietary copyrighted work of Bacula Systems SA.
+
+Linking: 
+If you have received the source code of Bacula Enterprise under a
+Non-disclosure Agreement (NDA), 
+Bacula Systems SA gives you permission to link the code of the
+Enterprise version of Bacula with the OpenSSL project's "OpenSSL"
+library (or with modified versions of it that use the same license as
+the "OpenSSL" library).  You must obey all the other terms of this
+license in all respects for all of the code used other than "OpenSSL".
+
+Intellectual Property rights:
+Recipient understands that although each Contributor to Bacula grants
+the licenses to its Contributions set forth herein, no assurances are
+provided by any Contributor that the Program does not infringe the
+patent or other intellectual property rights of any other entity.
+Each Contributor disclaims any liability to Recipient for claims
+brought by any other entity based on infringement of intellectual
+property rights or otherwise.  As a condition to exercising the rights
+and licenses granted hereunder, each Recipient hereby assumes sole
+responsibility to secure any other intellectual property rights
+needed, if any.  
+
+Copyrights:
+Each Contributor to Bacula represents that to its knowledge it has
+sufficient copyright rights in its Contribution, if any, to grant
+the copyright license set forth in this Agreement.
+
+Code falling under the above conditions will be marked as follows:
+
+   Bacula® - The Network Backup Solution
+
+   Copyright (C) 2000-2020 Bacula Systems SA
+   All rights reserved.
+
+   The main author of Bacula is Kern Sibbald, with contributions from many
+   others, a complete list can be found in the file AUTHORS.
+
+   Licensees holding a valid Bacula Systems SA license may use this file
+   and others of this release in accordance with the proprietary license
+   agreement provided in the LICENSE file.  Redistribution of any part of
+   this release is not permitted.
+
+   Bacula® is a registered trademark of Kern Sibbald.
+
+Bacula can be enabled with data encryption and/or communications
+encryption. If this is the case, OpenSSL code will be included that
+that contains cryptographic software written by Eric Young
+(eay@cryptsoft.com) and also software written by Tim Hudson
+(tjh@cryptsoft.com).
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+=====================================

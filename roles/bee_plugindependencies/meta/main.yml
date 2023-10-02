@@ -1,0 +1,10 @@
+---
+galaxy_info:
+  role_name: bee_plugindependencies
+  author: Ana Machado, Bill Arlofski
+  description: this role is used by the bee_fdplugin and bee_sdplugin roles.
+  company: Bacula Systems SA
+  license: BSD 2-Clause
+  min_ansible_version: 2.9
+  galaxy_tags: []
+dependencies: []

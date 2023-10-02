@@ -1,0 +1,25 @@
+---
+keys:
+  - packages: bee
+    packages_signatures:
+      - BaculaSystems-Public-Signature.asc
+      - BaculaSystems-Public-Signature-08-2017.asc
+
+# This is the dictionary to add any additional package that
+# need to be installed before BEE is installed
+# The following entries are an example of the structure and
+# they cannot be removed. They can be modified though.
+# Valid operator values are: eq, le, lt, ge, gt
+
+bee_additional_packages:
+  debian:
+    - apt-transport-https
+    - sudo
+    - openssl
+    - ca-certificates
+    - gnupg
+    - acl
+  ubuntu:
+    - apt-transport-https
+    - sudo
+    - acl

@@ -1,0 +1,159 @@
+---
+# This is the dictionary to add any package dependency that
+# need to be installed before the plugin packages
+# Valid operator values are: eq, le, lt, ge, gt
+
+dependencies:
+   - package_name: python3
+     package_dependency_name: python3
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 8
+   - package_name: python3
+     package_dependency_name: python3
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 7
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 7
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: CentOS
+     os_distribution_major_version: 8
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: RedHat
+     os_distribution_major_version: 9
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: RedHat
+     os_distribution_major_version: 8
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Rocky
+     os_distribution_major_version: 9
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Rocky
+     os_distribution_major_version: 8
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: AlmaLinux
+     os_distribution_major_version: 9
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: AlmaLinux
+     os_distribution_major_version: 8
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: SLES
+     os_distribution_major_version: 15
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: OracleLinux
+     os_distribution_major_version: 9
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: OracleLinux
+     os_distribution_major_version: 8
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 16.0.7
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 12
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 11
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     package_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 10
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 22
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 20
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
+     bee_version: 12.0.0
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 18

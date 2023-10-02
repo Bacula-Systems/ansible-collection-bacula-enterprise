@@ -1,0 +1,33 @@
+---
+# valid status codes are 200: OK or 304: Not Modified
+- name: Check if connection is allowed from a remote host, we use the Ansible host as remote host.
+  uri:
+    url: "https://{{ director_hostname }}.{{ domain }}:9180"
+    method: GET
+    follow_redirects: all
+    status_code: [200, 304]
+    force: true
+    use_proxy: false
+    validate_certs: false
+    return_content: true
+    dest: /tmp
+  register: bweb_login
+  delegate_to: localhost
+- debug:
+    msg: "Connected/Authenticated to {{ bweb_login.url }}... HTTP request: {{ bweb_login.status }} - {{ bweb_login.msg }}"
+
+# valid status codes are 200: OK or 304: Not Modified
+- name: Check if BWeb main page is loaded
+  uri:
+    url: "https://{{ director_hostname }}.{{ domain }}:9180/cgi-bin/bweb/bweb.pl"
+    method: GET
+    follow_redirects: all
+    status_code: [200, 304]
+    force: true
+    use_proxy: false
+    validate_certs: false
+    return_content: false
+  register: bweb_main_page
+  delegate_to: localhost
+- debug:
+    msg: "BWeb Main page {{ bweb_main_page.url }}... corrected loaded. HTTP request: {{ bweb_main_page.status }} - {{ bweb_login.msg }}"

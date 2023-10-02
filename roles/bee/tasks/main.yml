@@ -1,0 +1,24 @@
+---
+- name: Check if dl_area is correctly defined and it can be reached
+  uri:
+    url: "{{ dl_area }}"
+  register: result
+  failed_when: result.status != 200
+
+- name: Set director_name based on director_hostname if director_name is not defined
+  set_fact:
+    director_name: "{{ director_hostname.split('.')[0] }}-dir"
+  when: director_name is not defined
+
+- name: Set storage_name based on director_hostname
+  set_fact:
+    storage_name: "{{ director_hostname.split('.')[0] }}-sd"
+
+- name: Include Bacula Enterprise Edition Installation file
+  include_tasks: "{{ item }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_bee.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_install_bee.yml"
+  loop: "{{ query('first_found', params) }}"

@@ -1,0 +1,6 @@
+---
+directors:
+  hosts:
+    baculadir.example.com:
+      director_hostname: baculadir.example.com
+      bee_version: 16.0.7

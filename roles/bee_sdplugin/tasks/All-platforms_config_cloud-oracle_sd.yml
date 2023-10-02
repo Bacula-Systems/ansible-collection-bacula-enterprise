@@ -1,0 +1,49 @@
+---
+- name: download the oci-cli installation script
+  get_url:
+    url: https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
+    dest: /tmp/install.sh
+    mode: '0777'
+  when: install_ora_cli
+  register: oci_download
+  failed_when: oci_download.status_code != 200
+
+- debug: msg="{{ oci_download.msg.split('\n') }}"
+  when: install_ora_cli
+
+- name: install the OCI CLI
+  shell: LC_ALL=C.UTF-8 LANG=C.UTF-8 /tmp/install.sh --install-dir /usr/local/lib/oracle-cli --exec-dir /usr/local/bin --script-dir /usr/local/bin --rc-file-path /root/.bashrc --accept-all-defaults
+  async: 600
+  poll: 30
+  when: install_ora_cli
+  register: oci_install
+
+- debug: msg="{{ oci_install.stdout.split('\n') }}"
+  when: install_ora_cli
+
+- debug: msg="{{ oci_install.stderr.split('\n') }}"
+  when: install_ora_cli
+
+- name: copy the RSA PKI pair to use with the oci cli
+  copy:
+    src: "{{ sdplugin }}/{{ item }}"
+    dest: /opt/bacula/etc/oci/
+    owner: bacula
+    group: bacula
+    mode: '0600'
+  with_items:
+    - oci_api_key.pem
+    - oci_api_key_public.pem
+    - config
+
+- name: test OCI CLI
+  shell: LC_ALL=C.UTF-8 LANG=C.UTF-8 /usr/local/bin/oci os object list -bn bucket-qa --cli-rc-file /opt/bacula/etc/oci/config --config-file /opt/bacula/etc/oci/config
+  become: true
+  become_user: bacula
+  register: oci_object_list
+  ignore_errors: true
+  when: install_ora_cli
+- debug: msg="{{ oci_object_list.stdout.split('\n') }}"
+  when: install_ora_cli
+- debug: msg="{{ oci_object_list.stderr.split('\n') }}"
+  when: install_ora_cli

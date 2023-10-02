@@ -1,0 +1,10 @@
+---
+- name: update repositories cache
+  apt:
+    update_cache: true
+
+- name: install additional packages for Debian/Ubuntu
+  apt:
+    name: "{{ bee_additional_packages[ansible_distribution|lower] }}"
+    state: latest
+    force: true

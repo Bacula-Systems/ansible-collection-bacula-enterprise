@@ -1,0 +1,19 @@
+{# This configuration will be included in the Director bacula-dir.conf file #}
+Job {
+  Name = "{{ fdplugin }}-All-{{ client_name }}-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ client_name }}
+  FileSet = {{ fdplugin }}-All-{{ client_name }}-fileset
+  Schedule = Manual
+  Accurate = yes
+}
+FileSet {
+  Name = {{ fdplugin }}-All-{{ client_name }}-fileset
+  Include {
+    Options {
+      Signature = MD5
+      Plugin = "delta: min_size=4k"   # do not use the plugin for files smaller than 4k
+    }
+    File = /home
+  }
+}

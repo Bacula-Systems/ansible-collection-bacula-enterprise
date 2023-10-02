@@ -1,0 +1,7 @@
+---
+repo_filename: Bacula-Enterprise-Edition
+description: Bacula Enterprise Edition repository
+sles_version: sles114
+architecture: 64
+auto_import_keys: true
+disable_gpg_check: true

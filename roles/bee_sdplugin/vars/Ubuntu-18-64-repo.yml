@@ -1,0 +1,4 @@
+---
+repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
+codename: bionic
+architecture: 64

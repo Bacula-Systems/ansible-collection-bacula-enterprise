@@ -1,0 +1,10 @@
+---
+- name: install postgresql and postgresql-client
+  apt:
+    name: "{{ packages }}"
+    update-cache: true
+    state: present
+  vars:
+    packages:
+      - postgresql
+      - postgresql-client

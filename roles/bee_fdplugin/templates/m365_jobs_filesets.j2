@@ -1,0 +1,15 @@
+{# This configuration will be included in the Director bacula-dir.conf file #}
+Job {
+  Name = "{{ fdplugin }}-All-{{ client_name }}-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ client_name }}
+  FileSet = {{ fdplugin }}-All-{{ client_name }}-fileset
+  Schedule = Manual
+}
+
+FileSet {
+  Name = "{{ fdplugin }}-All-{{ client_name }}-fileset"
+  Include {
+    Plugin = "m365:"
+  }
+}

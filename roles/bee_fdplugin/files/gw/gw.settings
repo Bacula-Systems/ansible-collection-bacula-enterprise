@@ -1,0 +1,5 @@
+log=/opt/bacula/working/gw/gw-debug.log
+debug=1
+credentials_file=/opt/bacula/etc/bacula-gw-plugin.json
+customer_id=<customer_id>
+admin_user_email=<admin_user_email@domain.com>

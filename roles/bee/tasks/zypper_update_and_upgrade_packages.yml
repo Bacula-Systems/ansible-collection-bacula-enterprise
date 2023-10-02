@@ -1,0 +1,6 @@
+---
+- name: update packages, not upgrade service pack
+  zypper:
+    name: '*'
+    state: latest
+    uddate_cache: true

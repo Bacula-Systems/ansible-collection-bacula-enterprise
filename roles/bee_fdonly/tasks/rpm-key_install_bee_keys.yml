@@ -1,0 +1,11 @@
+---
+- name: Add BEE package signatures for CentOS
+  rpm_key:
+    key: "{{ dl_area }}/{{ key_item.1 }}"
+    state: present
+  when: key_item[0].packages == 'bee'
+  loop_control:
+    loop_var: key_item
+  with_subelements:
+    - "{{ keys }}"
+    - packages_signatures

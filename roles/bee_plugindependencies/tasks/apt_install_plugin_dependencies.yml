@@ -1,0 +1,41 @@
+- name: check if sdplugin variables file exists
+  local_action:
+    module: ansible.builtin.stat
+    path: "{{ role_path }}/vars/{{ sdplugin }}.yml"
+  register: sdplugin_variables
+  when:
+    - sdplugin is defined
+  
+- name: include sdplugin dependencies variables
+  ansible.builtin.include_vars: 
+    file: "{{ sdplugin }}.yml"
+  when:
+    - sdplugin is defined
+    - sdplugin_variables.stat.exists  
+
+- name: check if fdplugin variables file exists
+  local_action:
+    module: ansible.builtin.stat
+    path: "{{ role_path }}/vars/{{ fdplugin }}.yml"
+  register: fdplugin_variables
+  when:
+    - fdplugin is defined
+
+- name: include fdplugin dependencies variables
+  ansible.builtin.include_vars: 
+    file: "{{ fdplugin }}.yml"
+  when:
+    - fdplugin is defined
+    - fdplugin_variables.stat.exists  
+
+- name: select the dependencies according to the platform
+  set_fact:
+    plugin_dependencies: "{{ dependencies | selectattr('os_distribution','eq',ansible_distribution) | selectattr('os_distribution_major_version','eq', ansible_distribution_major_version|int) }}"
+  when:
+    - (sdplugin_variables is defined) or (fdplugin_variables is defined)
+    - (sdplugin_variables.stat is defined and sdplugin_variables.stat.exists) or (fdplugin_variables.stat is defined and fdplugin_variables.stat.exists)
+
+- name: install dependencies for Bacula Enteprise plugins
+  include_tasks: apt_install_plugin_dependencies_tasks.yml
+  loop: "{{ plugin_dependencies }}"
+  when: plugin_dependencies is defined

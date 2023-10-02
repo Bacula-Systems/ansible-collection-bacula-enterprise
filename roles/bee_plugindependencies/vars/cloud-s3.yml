@@ -1,0 +1,150 @@
+---
+# This is the dictionary to add any package dependency that
+# need to be installed before the plugin packages
+# Valid operator values are: eq, le, lt, ge, gt
+
+dependencies:
+   - package_name: unzip
+     package_dependency_name: unzip
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
+     os_distribution_major_version: 22
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: Ubuntu
+     os_distribution_major_version: 22
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: Ubuntu
+     os_distribution_major_version: 20
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: Ubuntu
+     os_distribution_major_version: 18
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 16.0.7
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: Debian
+     os_distribution_major_version: 12
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: Debian
+     os_distribution_major_version: 11
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: Debian
+     os_distribution_major_version: 10
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: CentOS
+     os_distribution_major_version: 8
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: CentOS
+     os_distribution_major_version: 7
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: RedHat
+     os_distribution_major_version: 9
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: RedHat
+     os_distribution_major_version: 8
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: OracleLinux
+     os_distribution_major_version: 9
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: OracleLinux
+     os_distribution_major_version: 8
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: Rocky
+     os_distribution_major_version: 9
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: Rocky
+     os_distribution_major_version: 8
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: AlmaLinux
+     os_distribution_major_version: 9
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: AlmaLinux
+     os_distribution_major_version: 8
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: SLES
+     os_distribution_major_version: 15

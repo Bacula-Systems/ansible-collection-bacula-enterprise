@@ -1,0 +1,17 @@
+Job {
+  Name = {{ director_name }}-dev-null-job
+  JobDefs = {{ jobdefs_name }}
+  Storage = {{ storage_name }}-dev-null-autochanger
+  FileSet = {{ director_name }}-dev-null-Home-fileset
+}
+
+FileSet {
+  Name = {{ director_name }}-dev-null-Home-fileset
+  Include {
+    Options {
+      Signature = md5
+#      Compression = zstd10
+    }
+    File = /home
+  }
+}

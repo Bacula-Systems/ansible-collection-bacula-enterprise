@@ -1,0 +1,5 @@
+---
+- name: install postgresql-server
+  zypper:
+    name: postgresql-server
+    state: latest

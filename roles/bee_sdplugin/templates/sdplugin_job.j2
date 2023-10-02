@@ -1,0 +1,18 @@
+Job {
+  Name = {{ storage_name }}-{{ sdplugin }}-job
+  JobDefs = {{ jobdefs_name }}
+  Storage = {{ storage_name }}-{{ sdplugin }}-autochanger
+  FileSet = {{ storage_name }}-{{ sdplugin }}-Home-fileset
+  Pool = {{ storage_name }}-{{ sdplugin }}-pool
+}
+
+FileSet {
+  Name = {{ storage_name }}-{{ sdplugin }}-Home-fileset
+  Include {
+    Options {
+      Signature = md5
+      Compression = zstd10
+    }
+    File = /home
+  }
+}

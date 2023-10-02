@@ -1,0 +1,9 @@
+---
+repo_name: Bacula-Enterprise-bweb
+repo_filename: BWeb-Management-Suite
+description: BWeb Management Suite repository
+rhel_version: rhel9
+architecture: 64
+enabled: 1
+protect: 0
+gpgcheck: 1

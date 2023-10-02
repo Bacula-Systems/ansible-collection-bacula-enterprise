@@ -1,0 +1,7 @@
+---
+- hosts: "{{ director_hostname }}"
+  remote_user: root
+  tasks:
+  - name: Install Bacula Enterprise Edition - PostgreSQL Catalog
+    import_role:
+      name: baculasystems.bacula_enterprise.bee

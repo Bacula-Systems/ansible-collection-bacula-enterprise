@@ -1,0 +1,38 @@
+- name: create volumes directory
+  file:
+    path: /opt/bacula/volumes
+    state: directory
+    owner: bacula
+    group: bacula
+    mode: '0755'
+
+- name: create ansible.conf.d and ansible.conf.d/storage directories, if they don't exist
+  file:
+    path: "{{ directories }}"
+    state: directory
+    mode: '0770'
+    owner: bacula
+    group: bacula
+  loop:
+    - /opt/bacula/etc/ansible.conf.d
+    - /opt/bacula/etc/ansible.conf.d/storage
+  loop_control:
+    loop_var: directories
+
+- name: add null devices to the Storage Daemon
+  block:
+  - name: generate the /dev/null autochanger resource definition to be included in the bacula-sd.conf file
+    template:
+      src: "dev_null_conf_in_bacula_sd.j2"
+      dest: "/opt/bacula/etc/ansible.conf.d/storage/{{ director_name }}-dev-null-autochanger-devices.conf"
+      owner: bacula
+      group: bacula
+      mode: '0660'
+
+- name: include the line to include the /dev/null Autochanger configuration in the ansible.conf.d directory in the bacula-sd.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-sd.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Autochanger {{ director_name }}-dev-null-autochanger in bacula-sd.conf"
+    block: |
+      @/opt/bacula/etc/ansible.conf.d/storage/{{ director_name }}-dev-null-autochanger-devices.conf

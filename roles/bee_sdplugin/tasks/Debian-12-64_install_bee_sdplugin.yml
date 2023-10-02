@@ -1,0 +1,15 @@
+---
+- include_tasks: apt-repository_add_repo_file.yml
+- include_tasks: apt_install_bee_sdplugin.yml
+- include_tasks: "{{ item }}"
+  with_first_found:
+    - files:
+      - "All-platforms_config_{{ sdplugin }}_sd.yml"
+      skip: true
+  when: sdplugin != "single-item-restore"
+- include_tasks: apt_list_packages_build.yml
+- include_tasks: All-platforms_config_sdplugin.yml
+  when: sdplugin != "single-item-restore"
+- include_tasks: systemd_restart_sd.yml
+- include_tasks: All-platforms_config_sdplugin_dir.yml
+  when: sdplugin != "single-item-restore"

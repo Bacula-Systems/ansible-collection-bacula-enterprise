@@ -1,0 +1,10 @@
+---
+- name: Include Bacula Enterprise Plugin Dependencies Installation file
+  include_tasks: "{{ item }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_plugin_dependencies.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}{{ ansible_distribution_release }}-{{ ansible_userspace_bits }}-repo.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_install_plugin_dependencies.yml"
+  loop: "{{ query('first_found', params, errors='ignore') }}"

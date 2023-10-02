@@ -1,0 +1,12 @@
+Pool {
+  Name = {{ storage_name }}-{{ sdplugin }}-pool
+  PoolType = Backup
+  Recycle = Yes
+  AutoPrune = Yes
+  VolumeRetention = 5 minutes
+  MaximumVolumes = 100
+  MaximumVolumeJobs = 5
+  VolumeUseDuration = 23h
+  LabelFormat = {{ storage_name }}-{{ sdplugin }}-Vol-
+  ActionOnPurge = Truncate
+}

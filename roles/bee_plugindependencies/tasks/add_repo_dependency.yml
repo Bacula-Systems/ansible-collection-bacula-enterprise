@@ -1,0 +1,10 @@
+- name: add Plugin dependencies repository and key if required
+  include_tasks: "{{ item }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_add_{{ add_repo_dependency }}_repo.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_add_{{ add_repo_dependency }}_repo.yml"
+        - "{{ ansible_distribution }}_add_{{ add_repo_dependency }}_repo.yml"
+      errors: ignore
+  loop: "{{ query('first_found', params) }}"

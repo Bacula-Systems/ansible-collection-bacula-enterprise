@@ -1,0 +1,36 @@
+# This template is not ready, need to work on the configuration for ACSLS
+
+Autochanger {
+  Name = {{ storage_name }}-dev-null-autochanger
+  Device = {{ storage_name }}-dev-null-Chgr-Dev1, {{ storage_name }}-dev-null-Chgr-Dev2
+  Changer Command = ""
+  Changer Device = /dev/null
+}
+
+Device {
+  Name = {{ storage_name }}-dev-null-Chgr-Dev1
+  DriveIndex = 0
+  Device Type = fifo
+  Media Type = dev-null-volume
+  Archive Device = /dev/null
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = no;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  Maximum Concurrent Jobs = 1
+}
+
+Device {
+  Name = {{ storage_name }}-dev-null-Chgr-Dev2
+  DriveIndex = 1
+  Device Type = fifo
+  Media Type = dev-null-volume
+  Archive Device = /dev/null
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = no;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  Maximum Concurrent Jobs = 1
+}

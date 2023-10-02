@@ -1,0 +1,11 @@
+---
+storages:
+  hosts:
+    storage1.example.com:
+      storage_hostname: storage1.example.com
+    storage2.example.com:
+      storage_hostname: storage2.example.com
+  vars:
+    director_hostname: baculadir.example.com
+    bee_version: 16.0.7
+    volumes_directory: /opt/bacula/volumes

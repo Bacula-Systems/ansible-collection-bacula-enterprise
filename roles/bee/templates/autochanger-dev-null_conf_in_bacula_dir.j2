@@ -1,0 +1,10 @@
+Autochanger {
+  Name = {{ storage_name }}-dev-null-autochanger
+  Address = {{ director_hostname }}
+  SDPort = 9103
+  Password = "{{ dir_sd_password }}"
+  Device = {{ storage_name }}-dev-null-autochanger
+  Media Type = dev-null-volume
+  Maximum Concurrent Jobs = 10 
+  Autochanger = {{ storage_name }}-dev-null-autochanger
+}

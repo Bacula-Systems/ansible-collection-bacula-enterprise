@@ -1,0 +1,4 @@
+---
+dl_area: https://www.baculasystems.com/dl/@@customer@
+dir_fd_password: bacula
+install_gdb: false

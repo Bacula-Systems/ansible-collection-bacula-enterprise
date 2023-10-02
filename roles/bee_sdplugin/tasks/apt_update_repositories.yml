@@ -1,0 +1,15 @@
+---
+- name: update repositories cache
+  apt:
+    update_cache: true
+  register: apt_result
+- debug: msg="{{ apt_result.stdout.split('\n') }}"
+- debug: msg="{{ apt_result.stderr.split('\n') }}"
+- name: install additional packages
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - apt-transport-https
+      - sudo

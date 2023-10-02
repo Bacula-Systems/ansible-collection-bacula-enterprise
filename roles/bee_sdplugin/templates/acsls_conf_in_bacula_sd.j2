@@ -1,0 +1,36 @@
+# This template is not ready, need to work on the configuration for ACSLS
+
+Autochanger {
+  Name = {{ sdplugin }}-Chgr
+  Device = {{ sdplugin }}-Chgr-Dev1, {{ sdplugin }}-Chgr-Dev2
+  Changer Command = ""
+  Changer Device = /dev/null
+}
+
+Device {
+  Name = {{ sdplugin }}-Chgr-Dev1
+  DriveIndex = 0
+  Device Type = tape
+  Media Type = {{ sdplugin }}-volume
+  Archive Device = "{{ volumes_directory }}"
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  Maximum Concurrent Jobs = 1
+}
+
+Device {
+  Name = {{ sdplugin }}-Chgr-Dev2
+  DriveIndex = 1
+  Device Type = tape
+  Media Type = {{ sdplugin }}-volume
+  Archive Device = "{{ volumes_directory }}"
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  Maximum Concurrent Jobs = 1
+}

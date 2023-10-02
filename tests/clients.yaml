@@ -1,0 +1,10 @@
+---
+clients:
+  hosts:
+    client1.example.com:
+      client_hostname: client1.example.com
+    client2.example.com:
+      client_hostname: client2.example.com
+  vars:
+    bee_version: 16.0.7
+    director_hostname: baculadir.example.com

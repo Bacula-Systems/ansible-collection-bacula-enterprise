@@ -1,0 +1,7 @@
+- name: install gdb
+  zypper:
+    name: gdb
+    state: latest
+  register: result
+- debug: msg="{{ result.stderr.split('\n') }}"
+  when: result.stderr is defined

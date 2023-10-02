@@ -1,0 +1,44 @@
+Dedupengine {
+  Name = {{ sdplugin }}-Dedupengine
+  Dedup Directory = /opt/bacula/{{ sdplugin }}/containers
+  Dedup Index Directory = /opt/bacula/{{ sdplugin }}/index
+  Driver = Dedup2
+  MaximumContainerSize = 2TB
+  MaximumIndexMemorySize = 1 GB
+}
+
+
+Autochanger {
+  Name = {{ sdplugin }}-Chgr
+  Device = {{ sdplugin }}Chgr-Dev1, {{ sdplugin }}Chgr-Dev2
+  Changer Command = ""
+  Changer Device = /dev/null
+}
+
+Device {
+  Name = {{ sdplugin }}Chgr-Dev1
+  Device Type = dedup
+  Dedupengine = {{ sdplugin }}-Dedupengine
+  Media Type = {{ sdplugin }}-volume
+  Archive Device = "{{ volumes_directory }}"
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  Maximum Concurrent Jobs = 5
+}
+
+Device {
+  Name = {{ sdplugin }}Chgr-Dev2
+  Device Type = dedup
+  Dedupengine = {{ sdplugin }}-Dedupengine
+  Media Type = {{ sdplugin }}-volume
+  Archive Device = "{{ volumes_directory }}"
+  LabelMedia = yes;                   # lets Bacula label unlabeled media
+  Random Access = Yes;
+  AutomaticMount = yes;               # when device opened, read it
+  RemovableMedia = no;
+  AlwaysOpen = no;
+  Maximum Concurrent Jobs = 5
+}

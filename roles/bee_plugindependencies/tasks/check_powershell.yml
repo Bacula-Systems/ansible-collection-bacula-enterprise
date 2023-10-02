@@ -1,0 +1,8 @@
+- name: Start PowerShell and Install PnP.Powershell
+  shell: Install-Module -Name 'PnP.PowerShell' -Force | ConvertTo-Json
+  args:
+    executable: /usr/bin/pwsh
+  register: PnP_powershell_status
+
+- debug: "{{ PnP_powershell_status.stdout.split('\n') }}"
+- debug: "{{ PnP_powershell_status.stderr.split('\n') }}"
