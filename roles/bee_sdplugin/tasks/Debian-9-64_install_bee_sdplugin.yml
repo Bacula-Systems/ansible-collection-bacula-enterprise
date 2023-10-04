@@ -1,13 +1,12 @@
 ---
 - include_tasks: apt-repository_add_repo_file.yml
 - include_tasks: apt_install_bee_sdplugin.yml
-- include_tasks: "{{ file_item }}"
-  loop_control:
-    loop_var: file_item
-  with_first_found:
-    files:
-      - "All-platforms_config_{{ sdplugin }}_sd.yml"
-    skip: true
+- include_tasks: "{{ item }}"
+  vars:
+    params:
+      files:
+        - "All-platforms_config_{{ sdplugin }}_sd.yml"
+  loop: "{{ query('first_found', params, errors='ignore') }}"
 - include_tasks: All-platforms_config_sdplugin.yml
 - include_tasks: apt_list_packages_build.yml
 - include_tasks: service_restart_sd.yml
