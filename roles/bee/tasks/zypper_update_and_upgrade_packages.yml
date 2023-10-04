@@ -3,4 +3,4 @@
   zypper:
     name: '*'
     state: latest
-    uddate_cache: true
+    update_cache: true
