@@ -1,0 +1,5 @@
+---
+- name: configure SuSEfirewall2 add port 9102
+  shell: "SuSEfirewall2 open EXT TCP bacula-fd"
+- name: restart SuSEfirewall2
+  shell: "SuSEfirewall2 start"
