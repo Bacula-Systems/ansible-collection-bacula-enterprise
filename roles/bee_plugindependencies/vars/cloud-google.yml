@@ -126,7 +126,6 @@ dependencies:
      os_distribution_major_version: 11
    - package_name: google-cloud-sdk
      package_dependency_name: google-cloud-sdk
-     package_name: google-cloud-sdk
      bee_version: 12.0.0
      operator: ge
      add_repo: yes

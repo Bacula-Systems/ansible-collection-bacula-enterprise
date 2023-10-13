@@ -2,7 +2,6 @@ repo_name: "Bacula-Enterprise-{{ fdplugin }}"
 repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
 description: "Bacula Enterprise Edition {{ fdplugin }} repository"
 rhel_version: rhel9
-rhel_version: rhel9
 architecture: 64
 enabled: 1
 protect: 0

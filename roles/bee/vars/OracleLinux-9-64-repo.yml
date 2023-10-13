@@ -2,7 +2,6 @@ repo_name: Bacula-Enterprise
 repo_filename: Bacula-Enterprise-Edition
 description: Bacula Enterprise Edition repository
 rhel_version: rhel9
-rhel_version: rhel9
 architecture: 64
 enabled: 1
 protect: 0
