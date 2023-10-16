@@ -29,6 +29,7 @@
     mode: '0770'
     owner: bacula
     group: bacula
+  failed_when: false
 
 - name: include the line to include all configuration files in the ansible.conf.d directory in the bacula-dir.conf file
   blockinfile:
