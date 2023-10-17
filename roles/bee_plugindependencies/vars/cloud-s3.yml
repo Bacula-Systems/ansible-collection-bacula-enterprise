@@ -12,6 +12,14 @@ dependencies:
      use_package_manager: yes
      os_distribution: Ubuntu
      os_distribution_major_version: 22
+   - package_name: unzip
+     package_dependency_name: unzip
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 12
    - package_name: awscli
      package_dependency_name: awscli
      bee_version: 14.0.0
