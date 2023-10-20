@@ -3,6 +3,16 @@
   args:
     executable: /usr/bin/pwsh
   register: PnP_powershell_status
+  failed_when:
+    - PnP_powershell_status.stderr is defined
+    - PnP_powershell_status.stderr | length > 0
 
-- debug: "{{ PnP_powershell_status.stdout.split('\n') }}"
-- debug: "{{ PnP_powershell_status.stderr.split('\n') }}"
+- debug: "{{ PnP_powershell_status.stdout }}"
+  when:
+    - PnP_powershell_status.stdout is defined
+    - PnP_powershell_status.stdout | length > 0
+
+- debug: "{{ PnP_powershell_status.stderr }}"
+  when:
+    - PnP_powershell_status.stderr is defined
+    - PnP_powershell_status.stderr | length > 0
