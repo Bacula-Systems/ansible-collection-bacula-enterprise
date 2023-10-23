@@ -14,6 +14,10 @@
   set_fact:
     storage_name: "{{ director_hostname.split('.')[0] }}-sd"
 
+- name: Set client_name based on director_hostname
+  set_fact:
+    client_name: "{{ director_hostname.split('.')[0] }}-fd"
+
 - name: Include Bacula Enterprise Edition Installation file
   include_tasks: "{{ item }}"
   vars:
