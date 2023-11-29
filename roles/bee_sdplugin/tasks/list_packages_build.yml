@@ -1,0 +1,21 @@
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: get plugin package name
+  set_fact:
+    sdplugin_package_name: "{{ sdplugins_item.value.package_name}}"
+  loop: "{{ sdplugins|dict2items }}"
+  loop_control:
+    loop_var: sdplugins_item
+  when: sdplugins_item.key == sdplugin
+
+- name: check if {{ sdplugin }} package is installed
+  ansible.builtin.debug:
+    msg: "{{ ansible_facts.packages[sdplugin_package_name] }}"
+  when: ansible_facts.packages[sdplugin_package_name] is defined
+
+- name: fail if {{ sdplugin }} package is not installed
+  ansible.builtin.fail:
+    msg: "{{ sdplugin_package_name }} not installed."
+  when: ansible_facts.packages[sdplugin_package_name] is not defined

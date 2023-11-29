@@ -12,4 +12,4 @@
 - include_tasks: All-platforms_BEE_check_director_status.yml
 - include_tasks: All-platforms_BEE_check_FD_status.yml
 - include_tasks: All-platforms_BEE_check_SD_status.yml
-- include_tasks: apt_list_packages_build.yml
+- include_tasks: list_packages_build.yml

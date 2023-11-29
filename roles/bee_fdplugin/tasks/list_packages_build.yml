@@ -1,0 +1,21 @@
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: get plugin package name
+  set_fact:
+    fdplugin_package_name: "{{ fdplugins_item.value.package_name}}"
+  loop: "{{ fdplugins|dict2items }}"
+  loop_control:
+    loop_var: fdplugins_item
+  when: fdplugins_item.key == fdplugin
+
+- name: check if {{ fdplugin }} package is installed
+  ansible.builtin.debug:
+    msg: "{{ ansible_facts.packages[fdplugin_package_name] }}"
+  when: ansible_facts.packages[fdplugin_package_name] is defined
+
+- name: fail if {{ fdplugin }} package is not installed
+  ansible.builtin.fail:
+    msg: "{{ fdplugin_package_name }} not installed."
+  when: ansible_facts.packages[fdplugin_package_name] is not defined

@@ -7,7 +7,7 @@
 - include_tasks: systemd_config_firewalld.yml 
 - include_tasks: systemd_restart_fd.yml
 - include_tasks: All-platforms_config_fdonly_dir.yml
-- include_tasks: yum_list_packages_build.yml
+- include_tasks: list_packages_build.yml
 - name: Install gdb
   include_tasks: yum_install_gdb.yml
   when: install_gdb

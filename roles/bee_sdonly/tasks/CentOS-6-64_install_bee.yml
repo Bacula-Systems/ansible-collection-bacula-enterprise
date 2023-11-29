@@ -5,7 +5,7 @@
 - include_tasks: yum_install_postgresql.yml
 - include_tasks: service_initialize_and_enable_postgresql.yml
 - include_tasks: yum_install_bee.yml
-- include_tasks: yum_list_packages_build.yml
+- include_tasks: list_packages_build.yml
 - include_tasks: service_start_postgresql.yml
 - include_tasks: All-platforms_create_bacula_database.yml
 - include_tasks: All-platforms_config_sdonly.yml

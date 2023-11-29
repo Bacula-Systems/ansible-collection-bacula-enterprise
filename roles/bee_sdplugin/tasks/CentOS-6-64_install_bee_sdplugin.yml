@@ -9,6 +9,6 @@
       - "All-platforms_config_{{ sdplugin }}_sd.yml"
     skip: true
 - include_tasks: All-platforms_config_sdplugin.yml
-- include_tasks: yum_list_packages_build.yml
+- include_tasks: list_packages_build.yml
 - include_tasks: service_restart_sd.yml
 - include_tasks: All-platforms_config_sdplugin_dir.yml
