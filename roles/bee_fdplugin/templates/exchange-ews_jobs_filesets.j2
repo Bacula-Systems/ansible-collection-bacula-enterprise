@@ -1,0 +1,19 @@
+{# This configuration will be included in the Director bacula-dir.conf file #}
+Job {
+  Name = "{{ fdplugin }}-All-{{ client_name }}-email-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ client_name }}-fd
+  FileSet = {{ fdplugin }}-All-{{ client_name }}-email-fileset
+  Schedule = Manual
+  Accurate = yes
+}
+
+FileSet {
+  Name = {{ fdplugin }}-All-{{ client_name }}-email-fileset
+  Include {
+    Options {
+      Signature = MD5
+      Plugin = "ews: servie=email"
+    }
+  }
+}
