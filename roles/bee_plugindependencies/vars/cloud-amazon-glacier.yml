@@ -70,7 +70,7 @@ dependencies:
      os_distribution_major_version: 18
    - package_name: awscli
      package_dependency_name: awscli
-     bee_version: 16.0.7
+     bee_version: 12.0.0
      operator: ge
      add_repo: no
      use_package_manager: no
