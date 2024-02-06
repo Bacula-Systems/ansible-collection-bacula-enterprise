@@ -1,0 +1,47 @@
+- name: gather variables
+  include_vars: "{{ repo_item }}"
+  with_first_found:
+  - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}-repo.yml"
+  loop_control:
+    loop_var: repo_item
+- name: get plugin variables
+  set_fact:
+    dirplugin_name: "{{ dirplugins_item.value.name }}"
+    dirplugin_directory: "{{ dirplugins_item.value.directory }}"
+  loop: "{{ dirplugins|dict2items }}"
+  loop_control:
+    loop_var: dirplugins_item
+  when: dirplugins_item.key == dirplugin
+- name: Add BEE nightly APT repository
+  apt_repository:
+    repo: "deb {{ dl_area }}/nightly-debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename}}-{{ architecture }}/ {{ codename }} {{ dirplugin_name }}"
+    filename: "{{ repo_filename }}"
+    codename: "{{ codename }}"
+    state: present
+    update_cache: no
+  when: build == "nightly"
+- name: Add BEE beta APT repository
+  apt_repository:
+    repo: "deb {{ dl_area }}/beta-debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename}}-{{ architecture }}/ {{ codename }} {{ dirplugin_name }}"
+    filename: "{{ repo_filename }}"
+    codename: "{{ codename }}"
+    state: present
+    update_cache: no
+  when: build == "beta"
+- name: Add BEE release APT repository
+  apt_repository:
+    repo: "deb {{ dl_area }}/debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename}}-{{ architecture }}/ {{ codename }} {{ dirplugin_name }}"
+    filename: "{{ repo_filename }}"
+    codename: "{{ codename }}"
+    state: present
+    update_cache: no
+  when: build == "release"
+# we do the cache update after adding the repository to get better the error
+- name: update repositories cache
+  apt:
+    update_cache: yes
+  register: apt_update_result
+- debug:  msg="{{ apt_update_result.stdout.split('\n') }}"
+  when: apt_update_result.stdout is defined
+- debug:  msg="{{ apt_update_result.stderr.split('\n') }}"
+  when: apt_update_result.stderr is defined

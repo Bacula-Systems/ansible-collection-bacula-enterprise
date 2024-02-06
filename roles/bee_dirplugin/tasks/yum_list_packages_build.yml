@@ -1,0 +1,16 @@
+- name: get plugin package name 
+  set_fact:
+    dirplugin_package_name: "{{ dirplugins_item.value.package_name}}"
+  loop: "{{ dirplugins|dict2items }}"
+  loop_control:
+    loop_var: dirplugins_item
+  when: dirplugins_item.key == dirplugin
+- name: get list of plugin packages installed
+  yum:
+    list=installed
+  register: yum_packages
+- name: list bacula enterprise packages builds
+  debug:
+    msg: "{{ yum_packages | json_query(query_packages) }}"
+  vars:
+    query_packages: "results[?name == '{{ dirplugin_package_name }}']"

@@ -1,0 +1,8 @@
+- name: Include Bacula Enterprise Plugin Installation file
+  include_tasks: "{{ item }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_bee_dirplugin.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_install_bee_dirplugin.yml"
+  loop: "{{ query('first_found', params) }}"

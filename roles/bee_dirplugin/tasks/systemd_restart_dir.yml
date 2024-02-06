@@ -1,0 +1,8 @@
+- name: restart bacula-dir service
+  systemd:
+    name: bacula-dir
+    state: restarted
+  register: bacula_dir_status
+  ignore_errors: yes
+- debug: msg="{{ bacula_dir_status.name }} status is {{ bacula_dir_status.state }}, PID is {{ bacula_dir_status.status.ExecMainPID }}.\n \
+         PID is {{ bacula_dir_status.status.ExecMainPID }}, ExecMainStatus is {{ bacula_dir_status.status.ExecMainStatus }}."

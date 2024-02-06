@@ -1,0 +1,12 @@
+---
+    - include_tasks: yum-repository_add_repo_file.yml
+    - include_tasks: yum_install_bee_dirplugin.yml
+    - include_tasks: "{{ dirplugin_config_file }}"
+      with_first_found:
+        - files:
+          - "{{ dirplugin }}_config_dirplugin.yml"
+          skip: true
+      loop_control:
+        loop_var: dirplugin_config_file
+    - include_tasks: systemd_restart_dir.yml
+    - include_tasks: yum_list_packages_build.yml

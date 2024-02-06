@@ -1,0 +1,16 @@
+---
+dirplugins:
+  bguardian:
+    name: bguardian
+    directory: bguardian
+    package_name: bacula-enterprise-bguardian-dir-plugin
+
+  totp:
+    name: totp
+    directory: bin
+    package_name: bacula-enterprise-totp-dir-plugin
+
+  wazuh:
+    name: wazuh
+    directory: bin
+    package_name: bacula-enterprise-wazuh-rules

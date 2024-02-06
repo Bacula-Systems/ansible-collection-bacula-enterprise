@@ -1,0 +1,54 @@
+---
+- name: create ansible.conf.d and ansible.conf.d/director directories, if they don't exist
+  file:
+    path: "{{ directories }}"
+    state: directory
+    mode: '0770'
+    owner: bacula
+    group: bacula
+  loop:
+    - /opt/bacula/etc/ansible.conf.d
+    - /opt/bacula/etc/ansible.conf.d/director
+    - /opt/bacula/etc/ansible.conf.d/console
+  loop_control:
+    loop_var: directories
+
+- name: get the Director password used by the default console to communicate with Director in the bacula-dir.conf file, and use the same password
+  shell: "grep ^[[:space:]]*Password -m 1 /opt/bacula/etc/bacula-dir.conf | tr -d ' ' | tr -d '\"' | cut -d \"=\" -f2"
+  register: current_dir_password
+
+- name: set the dir_cons_password
+  set_fact:
+    dir_cons_password: "{{ current_dir_password.stdout }}"
+
+- name: generate the console resource definition to be included in the bacula-dir.conf file
+  template:
+    src: "{{ dirplugin }}_conf_in_bacula_dir.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ dirplugin }}-dir-console.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'
+
+- name: include the line to include the console configuration in the ansible.conf.d directory in the bacula-dir.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-dir.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Console {{ dirplugin }} in bacula-dir.conf"
+    block: |
+      @/opt/bacula/etc/ansible.conf.d/director/{{ dirplugin }}-dir-console.conf
+
+- name: include the Console in the bconsole.conf file
+  template:
+    src: "{{ dirplugin }}_conf_in_bconsole.j2"
+    dest: "/opt/bacula/etc/ansible.conf.d/console/{{ dirplugin }}-console.conf"
+    owner: bacula
+    group: bacula
+    mode: '0660'
+
+- name: include the line to include the Console configuration in the ansible.conf.d directory in the bconsole.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bconsole.conf
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Add {{ dirplugin }} Console to the bconsole.conf"
+    block: |
+      @/opt/bacula/etc/ansible.conf.d/console/{{ dirplugin }}-console.conf

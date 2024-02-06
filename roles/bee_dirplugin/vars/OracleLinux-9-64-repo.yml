@@ -1,0 +1,8 @@
+repo_name: "Bacula-Enterprise-{{ dirplugin }}"
+repo_filename: "Bacula-Enterprise-Edition-{{ dirplugin }}"
+description: "Bacula Enterprise Edition {{ dirplugin }} repository"
+rhel_version: rhel9
+architecture: 64
+enabled: 1
+protect: 0
+gpgcheck: 1
