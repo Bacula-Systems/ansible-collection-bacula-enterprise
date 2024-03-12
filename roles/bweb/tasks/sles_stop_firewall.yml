@@ -1,0 +1,4 @@
+- name: stop SuSEfirewall2
+  ansible.builtin.service:
+    name: SuSEfirewall2
+    state: stopped
