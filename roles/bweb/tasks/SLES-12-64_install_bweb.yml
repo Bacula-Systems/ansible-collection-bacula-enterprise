@@ -1,8 +1,8 @@
 ---
-    - include_tasks: zypper-repository_add_repo_file.yml 
-    - include_tasks: zypper_install_dependencies.yml
-    - include_tasks: zypper_install_bweb.yml
-    - include_tasks: systemd_enable_and_start_bweb.yml
-    - include_tasks: sles_config_firewalld.yml
-    - include_tasks: list_packages_build.yml
-    - include_tasks: check_connection.yml
+- include_tasks: zypper-repository_add_repo_file.yml 
+- include_tasks: zypper_install_dependencies.yml
+- include_tasks: zypper_install_bweb.yml
+- include_tasks: systemd_enable_and_start_bweb.yml
+- include_tasks: sles_config_firewall.yml
+- include_tasks: list_packages_build.yml
+- include_tasks: check_connection.yml
