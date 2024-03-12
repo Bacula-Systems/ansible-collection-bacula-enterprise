@@ -6,8 +6,12 @@
   register: result
   retries: 3
   delay: 10
-  until: result.status == 200
-  failed_when: result.status != 200
+  until:
+    - result.stderr is defined
+    - result.stderr | length == 0
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
   when: key_item[0].packages == 'bee'
   loop: "{{ keys|subelements('packages_signatures') }}"
   loop_control:
