@@ -1,0 +1,8 @@
+---
+- name: include the line to for the Security Plugin configuration in the bacula-fd.conf file
+  blockinfile:
+    path: /opt/bacula/etc/bacula-fd.conf
+    insertafter: '^(.*)WorkingDirectory(.*)'
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - Add Security Plugin options in the bacula-fd.conf file"
+    block: |
+      PluginOptions = "security: interval=5min"
