@@ -186,7 +186,7 @@ dependencies:
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
   - package_name: azure-cli
     package_dependency_name: azure-cli
-    bee_version: 12.0.0
+    bee_version: 16.0.7
     operator: ge
     add_repo: yes
     use_package_manager: yes
@@ -262,5 +262,15 @@ dependencies:
     use_package_manager: yes
     os_distribution: SLES
     os_distribution_major_version: 15
+    install_gpgkey: true
+    gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+  - package_name: azure-cli
+    package_dependency_name: azure-cli
+    bee_version: 12.0.0
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: SLES
+    os_distribution_major_version: 12
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
