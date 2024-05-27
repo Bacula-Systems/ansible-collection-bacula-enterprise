@@ -2,11 +2,22 @@
 - name: update repositories cache
   apt:
     update_cache: true
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
+
 - name: install additional packages for Debian/Ubuntu
   apt:
     name: "{{ package_item.1 }}"
     state: latest
     force: true
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
   when: "package_item.0.os_distribution == ansible_distribution"
   loop_control:
     loop_var: package_item

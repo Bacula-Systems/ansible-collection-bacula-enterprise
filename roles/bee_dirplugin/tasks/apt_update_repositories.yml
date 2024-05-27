@@ -1,10 +1,21 @@
 - name: update repositories cache
   apt:
     update_cache: yes
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
+
 - name: install additional packages
   apt:
     name: "{{ packages }}"
     state: latest
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
   vars:
     packages:
     - apt-transport-https

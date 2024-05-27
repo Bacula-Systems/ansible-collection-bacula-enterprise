@@ -3,3 +3,8 @@
   apt:
     upgrade: 'yes'
     update_cache: true
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0

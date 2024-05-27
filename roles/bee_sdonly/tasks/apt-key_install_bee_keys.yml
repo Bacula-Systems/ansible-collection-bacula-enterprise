@@ -3,6 +3,11 @@
   apt_key:
     url: "{{ dl_area }}/{{ key_item.1 }}"
     state: present
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
   when: key_item[0].packages == 'bee'
   loop: "{{ keys|subelements('packages_signatures') }}"
   loop_control:
