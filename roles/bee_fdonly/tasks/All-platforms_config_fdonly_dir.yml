@@ -9,8 +9,8 @@
     path: "{{ directories }}"
     state: directory
     mode: '0770'
-    owner: bacula
-    group: bacula
+    owner: root
+    group: root
   loop:
     - /opt/bacula/etc/ansible.conf.d
     - /opt/bacula/etc/ansible.conf.d/director
@@ -38,8 +38,8 @@
   template:
     src: "client_conf_in_bacula_dir.j2"
     dest: "/opt/bacula/etc/ansible.conf.d/director/clients/{{ client_name }}-client.conf"
-    owner: bacula
-    group: bacula
+    owner: root
+    group: root
     mode: '0660'
   delegate_to: "{{ director_hostname }}"
 
