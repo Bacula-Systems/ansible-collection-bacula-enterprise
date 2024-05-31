@@ -1,0 +1,4 @@
+---
+repo_filename: "Bacula-Enterprise-Edition-{{ fdplugin }}"
+codename: noble
+architecture: 64

@@ -1,0 +1,5 @@
+---
+repo_filename: "Bacula-Enterprise-Edition-{{ sdplugin }}"
+codename: noble
+codename: noble
+architecture: 64
