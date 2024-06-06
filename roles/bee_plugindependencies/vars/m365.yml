@@ -125,6 +125,18 @@ dependencies:
      add_repo: no
      use_package_manager: yes
      os_distribution: Ubuntu
+     os_distribution_major_version: 24
+   - package_name: powershell
+     package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell_7.4.1-1.deb_amd64.deb"
+     use_deb_package: true
+     install_gpgkey: true
+     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+     check_dependency_install: true
+     bee_version: 12.7.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Ubuntu
      os_distribution_major_version: 22
    - package_name: powershell
      package_dependency_name: "https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell_7.4.1-1.deb_amd64.deb"
