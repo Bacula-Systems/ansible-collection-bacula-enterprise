@@ -16,6 +16,8 @@
     name: "{{ fdplugin_package_name }}"
     state: latest
   register: result
+  environment:
+    DEBIAN_FRONTEND: noninteractive
   retries: 3
   delay: 10
   failed_when:

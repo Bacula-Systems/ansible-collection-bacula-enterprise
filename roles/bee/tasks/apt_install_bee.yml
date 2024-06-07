@@ -7,12 +7,14 @@
   apt:
     name: bacula-enterprise-postgresql
     state: present
+  register: result
+  environment:
+    DEBIAN_FRONTEND: noninteractive
   retries: 3
   delay: 10
   failed_when:
     - result.stderr is defined
     - result.stderr | length > 0
-  register: result
 
 - name: format error output
   debug: msg="{{ result.stderr.split('\n') }}"

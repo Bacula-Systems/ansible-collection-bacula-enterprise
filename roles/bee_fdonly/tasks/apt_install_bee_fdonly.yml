@@ -7,9 +7,9 @@
   apt:
     name: bacula-enterprise-client
     state: latest
+  register: result
   environment:
     DEBIAN_FRONTEND: noninteractive
-  register: result
   retries: 3
   delay: 10
   failed_when:
