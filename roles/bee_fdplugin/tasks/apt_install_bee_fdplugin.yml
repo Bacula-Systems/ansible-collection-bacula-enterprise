@@ -21,6 +21,7 @@
   retries: 3
   delay: 10
   failed_when:
+    - "'debconf: delaying package configuration, since apt-utils is not installed' not in result.stderr"
     - result.stderr is defined
     - result.stderr | length > 0
 
