@@ -1,8 +1,26 @@
-- name: Include Bacula Enterprise Plugin Installation file
-  include_tasks: "{{ item }}"
-  vars:
-    params:
-      files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_bee_dirplugin.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_install_bee_dirplugin.yml"
-  loop: "{{ query('first_found', params) }}"
+---
+- block:
+  - name: Check if dl_area is correctly defined and it can be reached
+    uri:
+      url: "{{ dl_area }}"
+    register: result
+    retries: 3
+    delay: 10
+    until: result.status == 200
+    failed_when: result.status != 200
+
+  - name: Set director_name based on director_hostname if director_name is not defined
+    set_fact:
+      director_name: "{{ director_hostname.split('.')[0] }}-dir"
+    when: director_name is not defined
+
+  - name: Include Bacula Enterprise Plugin Installation file
+    include_tasks: "{{ item }}"
+    vars:
+      params:
+        files:
+          - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}_install_bee_dirplugin.yml"
+          - "{{ ansible_distribution }}-{{ ansible_distribution_version }}-{{ansible_userspace_bits}}_install_bee_dirplugin.yml"
+    loop: "{{ query('first_found', params) }}"
+  become: true
+  become_user: root
