@@ -21,9 +21,12 @@
   retries: 3
   delay: 10
   failed_when:
-    - "'debconf: delaying package configuration, since apt-utils is not installed' not in result.stderr"
     - result.stderr is defined
     - result.stderr | length > 0
+    - "'debconf: delaying package configuration, since apt-utils is not installed' not in result.stderr"
 
 - debug: msg="{{ result.stderr.split('\n') }}"
-  when: result.stderr is defined
+  when:
+    - result.stderr is defined
+    - result.stderr | length > 0
+    - "'debconf: delaying package configuration, since apt-utils is not installed' not in result.stderr"

@@ -15,7 +15,13 @@
   failed_when:
     - result.stderr is defined
     - result.stderr | length > 0
+    - '"bacula-enterprise-postgresql failed to preconfigure, with exit status 127" not in result.stderr'
+    - '"debconf: delaying package configuration, since apt-utils is not installed" not in result.stderr'
 
 - name: format error output
   debug: msg="{{ result.stderr.split('\n') }}"
-  when: result.stderr is defined
+  when:
+    - result.stderr is defined
+    - result.stderr | length > 0
+    - '"bacula-enterprise-postgresql failed to preconfigure, with exit status 127" not in result.stderr'
+    - '"debconf: delaying package configuration, since apt-utils is not installed" not in result.stderr'
