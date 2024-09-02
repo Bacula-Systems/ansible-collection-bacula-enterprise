@@ -1,14 +1,19 @@
 ---
 fdplugins:
-  azure-vm:
-    directory: azure-vm
-    name: azure-vm
-    package_name: bacula-enterprise-azure-vm-plugin
+  amazon-ec2:
+    directory: amazon-ec2
+    name: amazon-ec2
+    package_name: bacula-enterprise-amazon-ec2-plugin
 
   antivirus:
     directory: bin
     name: antivirus
     package_name: bacula-enterprise-antivirus-plugin
+
+  azure-vm:
+    directory: azure-vm
+    name: azure-vm
+    package_name: bacula-enterprise-azure-vm-plugin
 
   bcloud:
     name: bcloud
@@ -155,7 +160,7 @@ fdplugins:
     name: security
     package_name: bacula-enterprise-security-plugin
 
-  single-item-restore:
+  sir:
     name: single-item-restore
     directory: single-item-restore
     package_name: bacula-enterprise-single-item-restore
