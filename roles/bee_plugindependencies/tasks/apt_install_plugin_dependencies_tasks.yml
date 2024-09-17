@@ -34,7 +34,7 @@
         state: latest
         update_cache: true
       when:
-        - item.use_deb_package is not defined
+        - (item.use_deb_package is not defined) or (not item.use_deb_package)
         - item.use_package_manager|default(false)|bool == true
 
     - name: Install {{ plugin_dependency }} using deb package
