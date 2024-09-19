@@ -17,10 +17,18 @@
   retries: 3
   delay: 10
   failed_when:
+    - result.rc != 0
     - result.stderr is defined
     - result.stderr | length > 0
 
-- name: print zypper results
-  debug:
-    msg:
-      - "{{ result }}"
+- debug: msg="{{ result.stderr.split('\n') }}"
+  when:
+    - result.rc != 0
+    - result.stderr is defined
+    - result.stderr | length > 0
+
+- debug: msg="{{ result.stdout.split('\n') }}"
+  when:
+    - result.rc != 0
+    - result.stdout is defined
+    - result.stdout | length > 0
