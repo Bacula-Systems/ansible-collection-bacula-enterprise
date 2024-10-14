@@ -1,0 +1,15 @@
+{# This configuration will be included in the Director bacula-dir.conf file #}
+Job {
+  Name = "{{ fdplugin }}-single-vm-pve-{{ vm_name }}-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ vm_name }}-fd
+  FileSet = {{ fdplugin }}-single-vm-pve-{{ vm_name }}-fileset
+  Schedule = Manual
+}
+
+FileSet {
+  Name = "{{ fdplugin }}-single-vm-pve-{{ vm_name }}-fileset"
+  Include {
+    Plugin = "qemu: mode=pve vm=<vm_name>"
+  }
+}
