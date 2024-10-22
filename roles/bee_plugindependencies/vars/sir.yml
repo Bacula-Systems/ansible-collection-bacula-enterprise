@@ -1,0 +1,16 @@
+---
+# This is the dictionary to add any package dependency that
+# need to be installed before the plugin packages
+# Valid operator values are: eq, le, lt, ge, gt
+
+dependencies:
+  - package_name: epel-release
+    package_dependency_name: epel-release
+    bee_version: 16.0.16
+    operator: ge
+    add_repo: no
+    use_package_manager: yes
+    os_distribution: CentOS
+    os_distribution_major_version: 7
+    install_gpgkey: true
+    gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7"
