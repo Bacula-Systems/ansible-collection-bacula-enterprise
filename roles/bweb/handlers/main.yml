@@ -1,0 +1,6 @@
+---
+
+- name: Restart bweb
+  ansible.builtin.service:
+    name: "{{ bweb_service }}"
+    state: restarted
