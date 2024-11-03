@@ -1,0 +1,39 @@
+---
+# bacula_bweb/tasks/main.yml
+
+- name: Set the bweb_config_file variable
+  ansible.builtin.set_fact:
+    bweb_config_file: "{{ __bweb_config_file }}"
+  when: bweb_config_file is not defined
+
+- name: Set the ssl input files
+  ansible.builtin.set_fact:
+    ssl_input_files:
+      - bweb_ssl_cert_file
+      - bweb_ssl_key_file
+  when: bweb_ssl_enabled
+
+- name: Generate ssl .pem file
+  ansible.builtin.template:
+    src: server.pem.j2
+    dest: "{{ bweb_ssl_pem_file }}"
+    mode: "0400"
+    owner: "{{ bweb_server_username }}"
+    group: "{{ bweb_server_groupname }}"
+  when:
+    - bweb_ssl_enabled
+    - bweb_ssl_pem_file is defined
+    - bweb_ssl_key_file is defined
+    - bweb_ssl_cert_file is defined
+  notify:
+    - Restart Bweb
+
+- name: Place Bweb httpd.conf
+  ansible.builtin.template:
+    src: "{{ bweb_config_file | basename }}.j2"
+    dest: "{{ bweb_config_file }}"
+    mode: "0644"
+    owner: root
+    group: root
+  notify:
+    - Restart Bweb
