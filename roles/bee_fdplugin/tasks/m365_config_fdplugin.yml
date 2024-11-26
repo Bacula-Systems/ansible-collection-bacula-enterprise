@@ -2,7 +2,7 @@
 - name: copy the M365 config file with tenantid, objectid, appid and secret to be used
   copy:
     src: "{{ fdplugin }}/bacula_m365_config.conf"
-    dest: /opt/bacula/working/m365/n36j/
+    dest: /opt/bacula/etc/m365/n36j/
     owner: bacula
     group: bacula
     mode: '0600'
