@@ -1,15 +1,125 @@
 {# This configuration will be included in the Director bacula-dir.conf file #}
 Job {
-  Name = "{{ fdplugin }}-All-{{ client_name }}-job"
+  Name = "{{ fdplugin }}-{{ vm_name }}-calendar-job"
   JobDefs = {{ jobdefs_name }}
-  Client = {{ client_name }}
-  FileSet = {{ fdplugin }}-All-{{ client_name }}-fileset
+  Client = {{ vm_name }}-fd
+  FileSet = {{ fdplugin }}-{{ vm_name }}-calendar-fileset
   Schedule = Manual
 }
 
-FileSet {
-  Name = "{{ fdplugin }}-All-{{ client_name }}-fileset"
+Fileset {
+  Name = "{{ fdplugin }}-{{ vm_name }}-calendar-fileset"
   Include {
-    Plugin = "m365:"
+   Options {
+    Signature = Md5
+   }
+   Plugin = "m365: config_file=/opt/bacula/etc/m365/n36j/bacula_m365_config.conf service=calendar"
   }
 }
+
+Job {
+  Name = "{{ fdplugin }}-{{ vm_name }}-contacts-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ vm_name }}-fd
+  FileSet = {{ fdplugin }}-{{ vm_name }}-contacts-fileset
+  Schedule = Manual
+}
+
+Fileset {
+  Name = "{{ fdplugin }}-{{ vm_name }}-contacts-fileset"
+  Include {
+   Options {
+    Signature = Md5
+   }
+   Plugin = "m365: config_file=/opt/bacula/etc/m365/n36j/bacula_m365_config.conf service=contact"
+  }
+}
+
+Job {
+  Name = "{{ fdplugin }}-{{ vm_name }}-drive-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ vm_name }}-fd
+  FileSet = {{ fdplugin }}-{{ vm_name }}-drive-fileset
+  Schedule = Manual
+}
+
+Fileset {
+  Name = "{{ fdplugin }}-{{ vm_name }}-drive-fileset"
+  Include {
+   Options {
+    Signature = Md5
+   }
+   Plugin = "m365: config_file=/opt/bacula/etc/m365/n36j/bacula_m365_config.conf service=drive"
+  }
+}
+
+Job {
+  Name = "{{ fdplugin }}-{{ vm_name }}-mailboxes-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ vm_name }}-fd
+  FileSet = {{ fdplugin }}-{{ vm_name }}-mailboxes-fileset
+  Schedule = Manual
+}
+
+Fileset {
+  Name = "{{ fdplugin }}-{{ vm_name }}-mailboxes-fileset"
+  Include {
+   Options {
+    Signature = Md5
+   }
+   Plugin = "m365: config_file=/opt/bacula/etc/m365/n36j/bacula_m365_config.conf service=email"
+  }
+}
+
+Job {
+  Name = "{{ fdplugin }}-{{ vm_name }}-onenote-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ vm_name }}-fd
+  FileSet = {{ fdplugin }}-{{ vm_name }}-onenote-fileset
+  Schedule = Manual
+}
+
+Fileset {
+  Name = "{{ fdplugin }}-{{ vm_name }}-onenote-fileset"
+  Include {
+   Options {
+    Signature = Md5
+   }
+   Plugin = "m365: config_file=/opt/bacula/etc/m365/n36j/bacula_m365_config.conf service=onenote"
+  }
+}
+
+Job {
+  Name = "{{ fdplugin }}-{{ vm_name }}-sharepoint-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ vm_name }}-fd
+  FileSet = {{ fdplugin }}-{{ vm_name }}-sharepoint-fileset
+  Schedule = Manual
+}
+
+Fileset {
+  Name = "{{ fdplugin }}-{{ vm_name }}-sharepoint-fileset"
+  Include {
+   Options {
+    Signature = Md5
+   }
+   Plugin = "m365: config_file=/opt/bacula/etc/m365/n36j/bacula_m365_config.conf service=sharepoint"
+  }
+}
+
+Job {
+  Name = "{{ fdplugin }}-{{ vm_name }}-teams-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ vm_name }}-fd
+  FileSet = {{ fdplugin }}-{{ vm_name }}-teams-fileset
+  Schedule = Manual
+}
+
+Fileset {
+  Name = "{{ fdplugin }}-{{ vm_name }}-teams-fileset"
+  Include {
+   Options {
+    Signature = Md5
+   }
+   Plugin = "m365: config_file=/opt/bacula/etc/m365/n36j/bacula_m365_config.conf service=teams"
+  }
