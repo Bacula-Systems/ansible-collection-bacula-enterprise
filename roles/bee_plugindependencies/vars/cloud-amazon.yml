@@ -212,3 +212,11 @@ dependencies:
      use_package_manager: no
      os_distribution: SLES
      os_distribution_major_version: 15
+   - package_name: awscli
+     package_dependency_name: awscli
+     bee_version: 14.0.0
+     operator: ge
+     add_repo: no
+     use_package_manager: no
+     os_distribution: SLES
+     os_distribution_major_version: 12
