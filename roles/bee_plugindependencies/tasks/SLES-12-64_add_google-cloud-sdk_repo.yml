@@ -1,0 +1,8 @@
+- name: Enable Google Cloud SDK repository
+  zypper_repository:
+    name: google-cloud-sdk
+    description: Google Cloud SDK
+    repo: 'https://packages.cloud.google.com/yum/repos/cloud-sdk-el8-x86_64'
+    enabled: true
+    auto_import_keys: true
+    state: present
