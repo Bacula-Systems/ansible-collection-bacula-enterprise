@@ -1,0 +1,23 @@
+---
+- name: Download the Microsoft repository keys
+  ansible.builtin.get_url:
+    url: "https://packages.microsoft.com/config/rhel/{{ ansible_distribution_major_version }}/packages-microsoft-prod.rpm"
+    dest: /tmp/packages-microsoft-prod.rpm
+
+- name: Register the Microsoft repository keys and update the list of packages after we added packages.microsoft.com
+  ansible.builtin.dnf:
+    name: /tmp/packages-microsoft-prod.rpm
+    state: present
+    update_cache: true
+
+- name: Install PowerShell
+  ansible.builtin.dnf:
+    name: powershell
+    state: present
+
+- name: check powershell version installed
+  ansible.builtin.shell: pwsh --version
+  register: powershell_version
+
+- debug: msg="{{ powershell_version.stdout.split('\n') }}"
+- debug: msg="{{ powershell_version.stderr.split('\n') }}"

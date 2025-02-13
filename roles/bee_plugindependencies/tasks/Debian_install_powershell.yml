@@ -1,0 +1,31 @@
+---
+- name: Install pre-requisite packages
+  ansible.builtin.apt:
+    name:
+      - wget
+    state: present
+  register: result
+
+- name: Download the Microsoft repository keys
+  ansible.builtin.get_url:
+    url: "https://packages.microsoft.com/config/{{ ansible_distribution|lower }}/{{ ansible_distribution_version }}/packages-microsoft-prod.deb"
+    dest: /tmp/packages-microsoft-prod.deb
+
+- name: Register the Microsoft repository keys
+  ansible.builtin.apt:
+    deb: /tmp/packages-microsoft-prod.deb
+
+- name: Update the list of packages after we added packages.microsoft.com
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Install PowerShell
+  ansible.builtin.apt:
+    name: powershell
+
+- name: check powershell version installed
+  ansible.builtin.shell: pwsh --version
+  register: powershell_version
+
+- debug: msg="{{ powershell_version.stdout.split('\n') }}"
+- debug: msg="{{ powershell_version.stderr.split('\n') }}"
