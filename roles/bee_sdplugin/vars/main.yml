@@ -65,7 +65,7 @@ sdplugins:
     name: shstore
     package_name: bacula-enterprise-shstore
 
-  single-item-restore:
+  sir:
     directory: single-item-restore
     name: single-item-restore
     package_name: bacula-enterprise-single-item-restore
