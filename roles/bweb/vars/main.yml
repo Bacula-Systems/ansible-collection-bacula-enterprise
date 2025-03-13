@@ -1,2 +1,6 @@
 ---
 domain: example.com
+
+bweb_service: bweb
+
+__bweb_config_file: /opt/bweb/etc/httpd.conf

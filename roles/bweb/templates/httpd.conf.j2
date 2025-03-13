@@ -1,0 +1,102 @@
+################################################################
+# lighttpd configuration example for bweb
+# bacula@localhost:~$ lighttpd -f script/httpd.conf
+# firefox http://localhost:9180
+################################################################
+
+{{ '#' if 'all' in bweb_server_bind else '' }}server.bind = "{{ bweb_server_bind }}"
+server.port = {{ bweb_server_port }}
+
+################################################################
+
+var.basedir = env.BWEBBASE
+var.logdir = env.BWEBLOG
+
+server.modules = ("mod_auth", "mod_cgi", "mod_alias", "mod_setenv",
+                  "mod_accesslog")
+server.document-root = basedir + "/html/"
+#server.errorlog = logdir + "/bweb-error.log"
+server.breakagelog = logdir + "/bweb-error.log"
+server.pid-file = logdir + "/bweb.pid"
+#accesslog.filename = logdir + "/bweb-access.log"
+cgi.assign = ( ".pl" => "/usr/bin/perl" )
+alias.url = ( "/cgi-bin/bweb/" => basedir + "/cgi/",
+              "/bweb/fv/" => "/opt/bweb/spool/",
+              "/bweb" => basedir + "/html/",
+               )
+
+setenv.add-environment = (
+  "PATH" => env.PATH,
+  "PERLLIB" => basedir + "/lib/",
+  "BWEBCONF" => basedir + "/bweb.conf",
+  "BWEBSESSION" => logdir + "/bweb/"
+)
+
+index-file.names = ( "index.html" )
+
+mimetype.assign = (
+".html" => "text/html",
+".gif" => "image/gif",
+".jpeg" => "image/jpeg",
+".jpg" => "image/jpeg",
+".png" => "image/png",
+".ico" => "image/x-icon",
+".css" => "text/css",
+".json" => "text/plain",
+".js" => "application/javascript",
+".svg" => "image/svg+xml",
+)
+
+################################################################
+# To enable SSL
+# openssl req   -x509 -nodes -days 365   -newkey rsa:1024 -keyout server.pem -out server.pem
+# chown bacula:bacula server.pem
+# chmod 400 server.pem
+
+{% if bweb_ssl_enabled %}
+ssl.engine = "enable"
+ssl.pemfile = "{{ bweb_ssl_pem_file }}"
+server.modules += ( "mod_openssl" )
+
+{% else %}
+#ssl.engine = "enable"
+#ssl.pemfile = "/opt/bweb/etc/server.pem"
+
+# On some versions of lighttpd, it is required to add the openssl module
+#server.modules += ( "mod_openssl" )
+{% endif %}
+
+################################################################
+# To enable Auth login http://redmine.lighttpd.net/projects/1/wiki/Docs_ModAuth
+# htpasswd -c /opt/bweb/etc/htpasswd.bweb
+
+## Uncomment this line if you use client registration by QR code or registration link
+# $HTTP["url"] !~ "^/cgi-bin/bweb/register.pl$" {
+
+## Uncomment below lines to enable HTTP Basic authentication
+{% if bweb_auth_type = 'http_basic' %}
+auth.backend = "htpasswd"
+auth.backend.htpasswd.userfile =  "{{ bweb_auth_file }}"
+auth.require = ( "/" =>
+        (
+        "method" => "basic",
+        "realm" => "Password protected area",
+        "require" => "valid-user"
+        )
+   )
+{% else %}
+#auth.backend = "htpasswd"
+#auth.backend.htpasswd.userfile =  "{{ bweb_auth_file }}"
+#auth.require = ( "/" =>
+#        (
+#        "method" => "basic",
+#        "realm" => "Password protected area",
+#        "require" => "valid-user"
+#        )
+#   )
+{% endif %}
+
+## Uncomment this line if you use client registration by QR code or registration link
+#}
+server.username  = "{{ bweb_server_username }}"
+server.groupname = "{{ bweb_server_groupname }}"
