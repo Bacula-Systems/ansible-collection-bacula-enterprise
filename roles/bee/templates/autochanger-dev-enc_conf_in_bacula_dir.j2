@@ -1,0 +1,10 @@
+Autochanger {
+  Name = {{ vm_name }}-DiskAutochanger-enc
+  Address = {{ vm_name }}
+  SDPort = 9103
+  Password = "{{ dir_sd_password }}"
+  Device = {{ vm_name }}-DiskAutochanger-enc
+  Media Type = {{ vm_name }}-DiskVolume-enc
+  Maximum Concurrent Jobs = 10 
+  Autochanger = {{ vm_name }}-DiskAutochanger-enc
+}

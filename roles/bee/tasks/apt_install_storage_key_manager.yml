@@ -1,0 +1,23 @@
+---
+# This task list will install the Bacula Enterprise Storage Key Manager
+# available in the repository files added
+# This will allow the upgrade of existent BEE install by
+# adding the new repo file and using this same role to update
+- name: install Bacula Enteprise Edition postgresql
+  apt:
+    name: bacula-enterprise-storage-key-manager
+    state: present
+  register: result
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
+
+- name: format error output
+  debug: msg="{{ result.stderr.split('\n') }}"
+  when:
+    - result.stderr is defined
+    - result.stderr | length > 0

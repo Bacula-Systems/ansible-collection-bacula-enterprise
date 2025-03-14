@@ -19,20 +19,57 @@
   loop_control:
     loop_var: directories
 
+- name: Modify the Storage name, if defined
+  ansible.builtin.replace:
+    path: /opt/bacula/etc/bacula-sd.conf
+    after: 'Storage {'
+    regexp: "{{ storage_hostname.split('.')[0] }}-sd"
+    replace: "{{ storage_name }}"
+  when: storage_name is defined
+
 - name: add null devices to the Storage Daemon
   block:
   - name: generate the /dev/null autochanger resource definition to be included in the bacula-sd.conf file
     template:
       src: "dev_null_conf_in_bacula_sd.j2"
-      dest: "/opt/bacula/etc/ansible.conf.d/storage/{{ director_name }}-dev-null-autochanger-devices.conf"
+      dest: "/opt/bacula/etc/ansible.conf.d/storage/{{ storage_name }}-dev-null-autochanger-devices.conf"
       owner: bacula
       group: bacula
       mode: '0660'
 
-- name: include the line to include the /dev/null Autochanger configuration in the ansible.conf.d directory in the bacula-sd.conf file
-  blockinfile:
-    path: /opt/bacula/etc/bacula-sd.conf
-    insertafter: EOF
-    marker: "# {mark} ANSIBLE MANAGED BLOCK - Autochanger {{ director_name }}-dev-null-autochanger in bacula-sd.conf"
-    block: |
-      @/opt/bacula/etc/ansible.conf.d/storage/{{ director_name }}-dev-null-autochanger-devices.conf
+  - name: include the line to include the /dev/null Autochanger configuration in the ansible.conf.d directory in the bacula-sd.conf file
+    blockinfile:
+      path: /opt/bacula/etc/bacula-sd.conf
+      insertafter: EOF
+      marker: "# {mark} ANSIBLE MANAGED BLOCK - Autochanger {{ storage_name }}-dev-null-autochanger in bacula-sd.conf"
+      block: |
+        @/opt/bacula/etc/ansible.conf.d/storage/{{ storage_name }}-dev-null-autochanger-devices.conf
+
+- name: Add Autochanger and Devices with Storage Encryption enabled
+  when:
+    - sdencryption_enabled is defined
+    - sdencryption_enabled
+  block:
+    - name: create the directory for volumes with SD Encryption enabled
+      file:
+        path: /opt/bacula/encrypted_volumes
+        state: directory
+        owner: bacula
+        group: bacula
+        mode: '0755'
+
+    - name: generate the encryption enabled autochanger resource definition to be included in the bacula-sd.conf file
+      template:
+        src: "dev_enc_conf_in_bacula_sd.j2"
+        dest: "/opt/bacula/etc/ansible.conf.d/storage/{{ storage_name }}-dev-enc-autochanger-devices.conf"
+        owner: bacula
+        group: bacula
+        mode: '0660'
+
+    - name: include the line to include the encryption enabled Autochanger configuration in the ansible.conf.d directory in the bacula-sd.conf file
+      blockinfile:
+        path: /opt/bacula/etc/bacula-sd.conf
+        insertafter: EOF
+        marker: "# {mark} ANSIBLE MANAGED BLOCK - Autochanger {{ storage_name }}-dev-enc-autochanger in bacula-sd.conf"
+        block: |
+          @/opt/bacula/etc/ansible.conf.d/storage/{{ storage_name }}-dev-enc-autochanger-devices.conf

@@ -1,0 +1,16 @@
+Job {
+  Name = {{ vm_name }}-dev-enc-job
+  JobDefs = {{ jobdefs_name }}
+  Storage = {{ vm_name }}-DiskAutochanger-enc
+  FileSet = {{ vm_name }}-dev-enc-Home-fileset
+}
+
+FileSet {
+  Name = {{ vm_name }}-dev-enc-Home-fileset
+  Include {
+    Options {
+      Signature = md5
+    }
+    File = /home
+  }
+}

@@ -5,6 +5,10 @@
 - include_tasks: yum_install_postgresql.yml
 - include_tasks: systemd_initialize_and_enable_postgresql.yml
 - include_tasks: yum_install_bee.yml
+- include_tasks: yum_install_storage_key_manager.yml
+  when:
+    - sdencryption_enabled is defined
+    - sdencryption_enabled
 - include_tasks: list_packages_build.yml
 - include_tasks: systemd_start_postgresql.yml
 - include_tasks: All-platforms_create_bacula_database.yml
@@ -14,9 +18,8 @@
 - include_tasks: All-platforms_BEE_check_director_status.yml
 - include_tasks: All-platforms_BEE_check_FD_status.yml
 - include_tasks: All-platforms_BEE_check_SD_status.yml
-- include_tasks: All-platforms_BEE_check_catalog_version.yml
 - include_tasks: systemd_config_firewalld.yml
-- include_tasks: All-platforms_PostgreSQL_version.yml                                         
+- include_tasks: All-platforms_PostgreSQL_version.yml
 - name: Install gdb
   include_tasks: yum_install_gdb.yml
   when: install_gdb

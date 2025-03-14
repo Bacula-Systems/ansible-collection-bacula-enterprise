@@ -1,0 +1,52 @@
+Autochanger {
+  Name = {{ vm_name }}-DiskAutochanger-enc
+  Device = {{ vm_name }}-DiskAutochanger-enc_Dev0, {{ vm_name }}-DiskAutochanger-enc_Dev1, {{ vm_name }}-DiskAutochanger-enc_Dev2
+  ChangerCommand = ""
+  ChangerDevice = /dev/null
+}
+
+Device {
+  Name = {{ vm_name }}-DiskAutochanger-enc_Dev0
+  DriveIndex = 0
+  DeviceType = File
+  MediaType = {{ vm_name }}-DiskVolume-enc
+  ArchiveDevice = "/opt/bacula/archive"
+  LabelMedia = Yes
+  RandomAccess = Yes
+  AutomaticMount = Yes
+  RemovableMedia = No
+  AlwaysOpen = No
+  MaximumConcurrentJobs = 5
+  VolumeEncryption = Yes
+}
+
+Device {
+  Name = {{ vm_name }}-DiskAutochanger-enc_Dev1
+  DriveIndex = 1
+  DeviceType = File
+  MediaType = {{ vm_name }}-DiskVolume-enc
+  ArchiveDevice = "/opt/bacula/archive"
+  LabelMedia = Yes
+  RandomAccess = Yes
+  AutomaticMount = Yes
+  RemovableMedia = No
+  AlwaysOpen = No
+  MaximumConcurrentJobs = 5
+  VolumeEncryption = Yes
+}
+
+Device {
+  Name = {{ vm_name }}-DiskAutochanger-enc_Dev2
+  DriveIndex = 2
+  DeviceType = File
+  MediaType = {{ vm_name }}-DiskVolume-enc
+  ArchiveDevice = "/opt/bacula/archive"
+  LabelMedia = Yes
+  RandomAccess = Yes
+  AutomaticMount = Yes
+  RemovableMedia = No
+  AlwaysOpen = No
+  MaximumConcurrentJobs = 5
+  Autoselect = No
+  VolumeEncryption = Yes
+}
