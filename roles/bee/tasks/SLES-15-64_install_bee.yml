@@ -4,6 +4,10 @@
 - include_tasks: SLES-15-64_enable_repository.yml
 - include_tasks: zypper_install_postgresql.yml
 - include_tasks: zypper_install_bee.yml
+- include_tasks: zypper_install_storage_key_manager.yml
+  when:
+    - sdencryption_enable is defined
+    - sdencryption_enable
 - include_tasks: list_packages_build.yml
 - include_tasks: systemd_start_postgresql.yml
 - include_tasks: All-platforms_create_bacula_database.yml
