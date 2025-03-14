@@ -47,8 +47,8 @@
 
 - name: Add Autochanger and Devices with Storage Encryption enabled
   when:
-    - sdencryption_enabled is defined
-    - sdencryption_enabled
+    - sdencryption_enable is defined
+    - sdencryption_enable
   block:
     - name: create the directory for volumes with SD Encryption enabled
       file:

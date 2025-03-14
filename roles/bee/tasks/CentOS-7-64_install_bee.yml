@@ -7,8 +7,8 @@
 - include_tasks: yum_install_bee.yml
 - include_tasks: yum_install_storage_key_manager.yml
   when:
-    - sdencryption_enabled is defined
-    - sdencryption_enabled
+    - sdencryption_enable is defined
+    - sdencryption_enable
 - include_tasks: list_packages_build.yml
 - include_tasks: systemd_start_postgresql.yml
 - include_tasks: All-platforms_create_bacula_database.yml

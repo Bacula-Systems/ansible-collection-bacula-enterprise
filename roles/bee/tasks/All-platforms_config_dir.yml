@@ -72,8 +72,8 @@
 
 - name: Add the Storage Encryption enabled autochanger to the Director
   when:
-    - sdencryption_enabled is defined
-    - sdencryption_enabled
+    - sdencryption_enable is defined
+    - sdencryption_enable
   block:
     - name: generate the SD encryption enabled autochanger to be included in the bacula-dir.conf file
       template:

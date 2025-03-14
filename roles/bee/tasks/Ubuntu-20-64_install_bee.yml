@@ -8,8 +8,8 @@
 - include_tasks: apt_install_bee.yml
 - include_tasks: apt_install_storage_key_manager.yml
   when:
-    - sdencryption_enabled is defined
-    - sdencryption_enabled
+    - sdencryption_enable is defined
+    - sdencryption_enable
 - include_tasks: list_packages_build.yml
 - include_tasks: All-platforms_config_dir.yml
 - include_tasks: All-platforms_config_sd.yml
