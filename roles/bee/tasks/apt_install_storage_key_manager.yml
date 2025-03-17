@@ -15,9 +15,11 @@
   failed_when:
     - result.stderr is defined
     - result.stderr | length > 0
+    - '"debconf: delaying package configuration, since apt-utils is not installed" not in result.stderr'
 
 - name: format error output
   debug: msg="{{ result.stderr.split('\n') }}"
   when:
     - result.stderr is defined
     - result.stderr | length > 0
+    - '"debconf: delaying package configuration, since apt-utils is not installed" not in result.stderr'

@@ -1,7 +1,7 @@
 ---
 - name: Enable SUSE Package Hub respository
   remote_user: root
-  shell: "SUSEConnect -p PackageHub/15.6/x86_64"
+  shell: "SUSEConnect -p PackageHub/{{ ansible_distribution_version }}/x86_64"
   register: enable_packagehub_result
   delegate_to: "{{ vm_name }}.supportlab.lan"
 - debug:  msg="{{ enable_packagehub_result.stdout.split('\n') }}"
