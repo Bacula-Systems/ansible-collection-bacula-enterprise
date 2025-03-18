@@ -9,6 +9,7 @@
   set_fact:
     sdplugin_name: "{{ sdplugins_item.value.name }}"
     sdplugin_directory: "{{ sdplugins_item.value.directory }}"
+    sdplugin_version: "{{ sdplugin_version | default(bee_version) }}"
   loop: "{{ sdplugins|dict2items }}"
   loop_control:
     loop_var: sdplugins_item
@@ -18,7 +19,7 @@
     name: "{{ repo_name }}"
     file: "{{ repo_filename }}"
     description: "{{ description }}"
-    baseurl: "{{ dl_area }}/rpms/{{ sdplugin_directory }}/{{ bee_version }}/{{ rhel_version }}-{{ architecture }}/"
+    baseurl: "{{ dl_area }}/rpms/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ rhel_version }}-{{ architecture }}/"
     enabled: "{{ enabled }}"
     protect: "{{ protect }}"
     gpgcheck: "{{ gpgcheck }}"

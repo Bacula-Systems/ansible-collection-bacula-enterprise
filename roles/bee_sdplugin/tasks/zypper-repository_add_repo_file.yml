@@ -8,6 +8,7 @@
   set_fact:
     sdplugin_name: "{{ sdplugins_item.value.name }}"
     sdplugin_directory: "{{ sdplugins_item.value.directory }}"
+    sdplugin_version: "{{ sdplugin_version | default(bee_version) }}"
   loop: "{{ sdplugins|dict2items }}"
   loop_control:
     loop_var: sdplugins_item
@@ -16,5 +17,5 @@
   zypper_repository:
     name: "{{ repo_filename }}"
     description: "{{ description }}"
-    repo: "{{ dl_area }}/rpms/{{ sdplugin_directory }}/{{ bee_version }}/{{ sles_version }}-{{ architecture }}/"
+    repo: "{{ dl_area }}/rpms/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ sles_version }}-{{ architecture }}/"
     auto_import_keys: "{{ auto_import_keys }}"

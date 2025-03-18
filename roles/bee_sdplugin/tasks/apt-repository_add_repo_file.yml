@@ -9,13 +9,14 @@
   set_fact:
     sdplugin_name: "{{ sdplugins_item.value.name }}"
     sdplugin_directory: "{{ sdplugins_item.value.directory }}"
+    sdplugin_version: "{{ sdplugin_version | default(bee_version) }}"
   loop: "{{ sdplugins|dict2items }}"
   loop_control:
     loop_var: sdplugins_item
   when: sdplugins_item.key == sdplugin
 - name: Add BEE APT repository
   apt_repository:
-    repo: "deb {{ dl_area }}/debs/{{ sdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}/ {{ codename }} {{ sdplugin_name }}"
+    repo: "deb {{ dl_area }}/debs/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ codename }}-{{ architecture }}/ {{ codename }} {{ sdplugin_name }}"
     filename: "{{ repo_filename }}"
     codename: "{{ codename }}"
     state: present
