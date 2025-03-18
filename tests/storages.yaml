@@ -7,5 +7,5 @@ storages:
       storage_hostname: storage2.example.com
   vars:
     director_hostname: baculadir.example.com
-    bee_version: 16.0.12
+    bee_version: 18.0.7
     volumes_directory: /opt/bacula/volumes
