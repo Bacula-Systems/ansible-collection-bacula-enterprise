@@ -61,6 +61,7 @@ The variables in the following table must be set in a playbook, in an inventory 
 Variable | Description
 -------- | ---------------------
 bee_version | the Bacula Enterprise Edition version, for example: `18.0.7`
+sdplugin_version | used when the Bacula Enterprise plugin uses a different version number. For example, the HPE StoreOnce Catalyst Plugin, where you should use sdplugin_version=1.0.1.
 director_hostname | the FQDN of the Director host, for example: `baculadir.example.com`. The name of the Director is, by default, the hostname + "-dir". In this example, the Director name will be `baculadir-dir`
 client_hostname | the FQDN of the Client host, for example, `baculaclient.example.com`
 client_name | the name of the File Daemon/Client. For example, `baculaclient1-fd`. If not specified, the `client_name` will be automatically created using the `client_hostname` + `-fd`

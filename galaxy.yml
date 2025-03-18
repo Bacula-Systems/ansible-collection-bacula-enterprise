@@ -9,7 +9,7 @@ namespace: baculasystems
 name: bacula_enterprise
 
 # The version of the collection. Must be compatible with semantic versioning
-version: 1.4.1
+version: 1.5.2
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
@@ -18,7 +18,7 @@ readme: README.md
 # @nicks:irc/im.site#channel'
 authors:
 - Ana Machado <info@baculasystems.com>
-
+- Bill Arlofski <info@baculasystems.com>
 
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
