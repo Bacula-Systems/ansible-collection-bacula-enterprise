@@ -10,6 +10,11 @@ sdplugins:
     name: aligned
     package_name: bacula-enterprise-aligned
 
+  catalyst:
+    directory: catalyst
+    name: catalyst
+    package_name: bacula-enterprise-storage-catalyst-plugin
+
   cloud-amazon:
     directory: cloud-s3
     name: cloud-s3
