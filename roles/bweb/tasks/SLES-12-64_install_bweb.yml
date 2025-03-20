@@ -3,6 +3,7 @@
 - include_tasks: zypper_install_dependencies.yml
 - include_tasks: zypper_install_bweb.yml
 - include_tasks: systemd_enable_and_start_bweb.yml
+- include_tasks: configure_bweb_http.yml
 - include_tasks: sles_config_firewall.yml
 - include_tasks: list_packages_build.yml
 - include_tasks: check_connection.yml

@@ -3,5 +3,6 @@
 - include_tasks: yum_install_dependencies.yml
 - include_tasks: yum_install_bweb.yml
 - include_tasks: systemd_enable_and_start_bweb.yml
+- include_tasks: configure_bweb_http.yml
 - include_tasks: systemd_config_firewalld.yml
 - include_tasks: yum_list_packages_build.yml
