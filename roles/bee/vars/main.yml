@@ -19,7 +19,11 @@ bee_additional_packages:
     - ca-certificates
     - gnupg
     - acl
+    - lsb-release
   ubuntu:
     - apt-transport-https
     - sudo
     - acl
+    - lsb-release
+    - gnupg
+    - python3-debian
