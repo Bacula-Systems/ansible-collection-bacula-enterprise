@@ -5,20 +5,25 @@
   - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ ansible_userspace_bits }}-repo.yml"
   loop_control:
     loop_var: repo_item
-- name: Add BEE APT repository
-  apt_repository:
-    repo: "deb {{ dl_area }}/debs/bin/{{ bee_version }}/{{ codename }}-{{ architecture }}/ {{ codename }} main"
-    filename: "{{ repo_filename }}"
-    codename: "{{ codename }}"
-    state: present
-    update_cache: false
+
+- name: Add BEE DEB822 repository
+  ansible.builtin.deb822_repository:
+    name: "{{ repo_filename }}"
+    types: deb
+    suites: "{{ codename }}"
+    uris: "{{ dl_area }}/debs/bin/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    components: main
+    signed_by: /etc/apt/trusted.gpg.d/BaculaSystems-Public-Signature-08-2017.asc
+
 # we do the cache update after adding the repository to get better the error
 - name: update repositories cache
   apt:
     update_cache: true
     allow_unauthenticated: false
   register: apt_update_result
+
 - debug: msg="{{ apt_update_result.stdout.split('\n') }}"
   when: apt_update_result.stdout is defined
+
 - debug: msg="{{ apt_update_result.stderr.split('\n') }}"
   when: apt_update_result.stderr is defined

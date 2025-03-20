@@ -1,17 +1,15 @@
 ---
 - name: install package signatures for Debian/Ubuntu
-  apt_key:
+  ansible.builtin.get_url:
     url: "{{ dl_area }}/{{ key_item.1 }}"
-    state: present
+    dest: /etc/apt/trusted.gpg.d/
   register: result
   retries: 3
   delay: 10
   until:
-    - result.stderr is defined
-    - result.stderr | length == 0
+    - result.status_code == 200
   failed_when:
-    - result.stderr is defined
-    - result.stderr | length > 0
+    - result.status_code != 200
   when: key_item[0].packages == 'bee'
   loop: "{{ keys|subelements('packages_signatures') }}"
   loop_control:
