@@ -18,7 +18,9 @@ This collection has been tested against following Ansible versions: **>=2.9,<2.1
 
 For example:
 
+```
 remote_tmp = ~/.ansible/tmp
+```
 
 ## Important Notes
 
