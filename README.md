@@ -1,4 +1,5 @@
-
+> [!IMPORTANT]
+> Starting with version 2.0.1, DEB822 sources format is used in all the roles in the collection.
 
 # Bacula Enterprise Collection for Ansible - baculasystems.bacula_enterprise
 
