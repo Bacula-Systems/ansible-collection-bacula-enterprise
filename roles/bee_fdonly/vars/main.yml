@@ -7,3 +7,20 @@ keys:
   - packages: community
     packages_signatures:
       - None
+
+bee_additional_packages:
+  debian:
+    - apt-transport-https
+    - sudo
+    - openssl
+    - ca-certificates
+    - gnupg
+    - acl
+    - lsb-release
+  ubuntu:
+    - apt-transport-https
+    - sudo
+    - acl
+    - lsb-release
+    - gnupg
+    - python3-debian

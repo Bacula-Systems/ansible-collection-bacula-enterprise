@@ -1,0 +1,20 @@
+---
+- name: update repositories cache
+  apt:
+    update_cache: true
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
+
+- name: install additional packages for Debian/Ubuntu
+  apt:
+    name: "{{ bee_additional_packages[ansible_distribution|lower] }}"
+    state: latest
+    force: true
+  retries: 3
+  delay: 10
+  failed_when:
+    - result.stderr is defined
+    - result.stderr | length > 0
