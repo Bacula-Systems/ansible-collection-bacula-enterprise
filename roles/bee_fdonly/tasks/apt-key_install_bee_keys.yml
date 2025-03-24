@@ -2,7 +2,7 @@
 - name: install package signatures for Debian/Ubuntu
   ansible.builtin.get_url:
     url: "{{ dl_area }}/{{ key_item.1 }}"
-    dest: /etc/apt/trusted.gpg.d/
+    dest: /etc/apt/trusted.gpg.d/BaculaSystems-Public-Signature.asc
   register: result
   retries: 3
   delay: 10

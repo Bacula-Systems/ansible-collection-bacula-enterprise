@@ -2,7 +2,6 @@
 keys:
   - packages: bee
     packages_signatures:
-      - BaculaSystems-Public-Signature.asc
       - BaculaSystems-Public-Signature-08-2017.asc
   - packages: community
     packages_signatures:

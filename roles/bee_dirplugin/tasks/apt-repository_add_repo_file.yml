@@ -21,7 +21,7 @@
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ dirplugin_name }}"
-    signed_by: /etc/apt/trusted.gpg.d/BaculaSystems-Public-Signature-08-2017.asc
+    signed_by: /etc/apt/trusted.gpg.d/BaculaSystems-Public-Signature.asc
 
 # we do the cache update after adding the repository to get better the error
 - name: update repositories cache
