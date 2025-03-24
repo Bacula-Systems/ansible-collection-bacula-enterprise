@@ -12,15 +12,18 @@ keys:
 # Valid operator values are: eq, le, lt, ge, gt
 
 bee_additional_packages:
-  - os_distribution: Debian
-    package_name:
-      - apt-transport-https
-      - sudo
-      - openssl
-      - ca-certificates
-      - gnupg
-
-  - os_distribution: Ubuntu
-    package_name:
-      - apt-transport-https
-      - sudo
+  debian:
+    - apt-transport-https
+    - sudo
+    - openssl
+    - ca-certificates
+    - gnupg
+    - acl
+    - lsb-release
+  ubuntu:
+    - apt-transport-https
+    - sudo
+    - acl
+    - lsb-release
+    - gnupg
+    - python3-debian
