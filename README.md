@@ -1,3 +1,5 @@
+
+
 # Bacula Enterprise Collection for Ansible - baculasystems.bacula_enterprise
 
 An Ansible Collection of roles to install one or more of the following Bacula Enterprise Edition components: A Director (using a PostgreSQL catalog), a File Daemon (FD) only, a Storage Daemon (SD) only, FD plugins, SD plugins, and/or BWeb in RHEL/CentOS/Debian/Ubuntu/OracleLinux/SLES Linux distributions.
@@ -14,7 +16,8 @@ This collection has been tested against following Ansible versions: **>=2.9,<2.1
 
 - The `remote_tmp` variable should be set in your Ansible configuration to avoid the warning:
 
-`[WARNING]: Module remote_tmp ... did not exist and was created with a mode of 0700, this may cause issues when running as another user. To avoid this, create the remote_tmp dir with the correct permissions manually`
+> [!WARNING]
+>  Module remote_tmp ... did not exist and was created with a mode of 0700, this may cause issues when running as another user. To avoid this, create the remote_tmp dir with the correct permissions manually
 
 For example:
 
