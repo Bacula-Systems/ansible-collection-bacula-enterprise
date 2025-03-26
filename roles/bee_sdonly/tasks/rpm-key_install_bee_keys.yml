@@ -1,9 +1,8 @@
----
 - name: Add BEE package signatures for CentOS/RedHat/SLES
   rpm_key:
-    key: "{{ dl_area }}/{{ key_item.1 }}"
+    key: "{{ dl_area }}/{{ key_item.value }}"
     state: present
-  when: key_item[0].packages == 'bee'
-  loop: "{{ keys|subelements('packages_signatures') }}"
+  when: key_item.key == build
+  loop: "{{ lookup('dict', keys) }}"
   loop_control:
     loop_var: key_item

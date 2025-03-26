@@ -1,8 +1,8 @@
 ---
 keys:
-  - packages: bee
-    packages_signatures:
-      - BaculaSystems-Public-Signature-08-2017.asc
+  release: BaculaSystems-Public-Signature-08-2017.asc
+  beta: BaculaSystems-Public-Signature-08-2017.asc
+  nightly: nightly-misc/BaculaSystems-Nightly-Signature.asc
 
 # This is the dictionary to add any additional package that
 # need to be installed before BEE is installed
@@ -23,6 +23,7 @@ bee_additional_packages:
     - apt-transport-https
     - sudo
     - acl
-    - lsb-release
     - gnupg
+    - lsb-release
+# package required by ansible deb822_repository module
     - python3-debian
