@@ -1,7 +1,7 @@
 ---
 - include_tasks: apt_update_package_manager.yml
 - include_tasks: apt_install_additional_packages.yml
-- include_tasks: apt-key_install_bee_keys.yml
+- include_tasks: deb_install_bee_keys.yml
 - include_tasks: apt-repository_add_repo_file.yml
 - include_tasks: apt_update_and_upgrade_packages.yml
 - include_tasks: apt_install_postgresql.yml

@@ -1,6 +1,6 @@
 ---
 - include_tasks: apt_update_repositories.yml
-- include_tasks: apt-key_install_bee_keys.yml
+- include_tasks: deb_install_bee_keys.yml
 - include_tasks: apt-repository_add_repo_file.yml
 - include_tasks: apt_install_bee_fdonly.yml
 - include_tasks: All-platforms_config_fdonly.yml

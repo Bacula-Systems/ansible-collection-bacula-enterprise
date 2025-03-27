@@ -14,9 +14,3 @@
   loop: "{{ lookup('dict', keys) }}"
   loop_control:
     loop_var: key_item
-
-#- debug: msg="{{ result.results.key_item.dest }}"
-
-#- name: get the Bacula Systems public signature path and filename downloaded
-#  ansible.builtin.set_fact:
-#    keyring_file: "{{ result.dest }}"
