@@ -19,6 +19,8 @@ bee_additional_packages:
     - gnupg
     - acl
     - lsb-release
+# package required by ansible deb822_repository module
+    - python3-debian
   ubuntu:
     - apt-transport-https
     - sudo

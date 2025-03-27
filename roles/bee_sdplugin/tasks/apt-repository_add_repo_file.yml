@@ -22,7 +22,11 @@
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/debs/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ codename }}-{{ architecture }}"
     components: {{ sdplugin_name }}
-    signed_by: /etc/apt/trusted.gpg.d/BaculaSystems-Public-Signature.asc
+    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+  when: key_item.key == build
+  loop: "{{ lookup('dict', keys) }}"
+  loop_control:
+    loop_var: key_item
 
 # we do the cache update after adding the repository to get better the error
 - name: update repositories cache
