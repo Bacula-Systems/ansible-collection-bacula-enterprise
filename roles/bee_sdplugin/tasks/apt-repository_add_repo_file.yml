@@ -21,8 +21,8 @@
     types: deb
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/debs/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ codename }}-{{ architecture }}"
-    components: {{ sdplugin_name }}
-    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+    components: "{{ sdplugin_name }}"
+    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
   when: key_item.key == build
   loop: "{{ lookup('dict', keys) }}"
   loop_control:

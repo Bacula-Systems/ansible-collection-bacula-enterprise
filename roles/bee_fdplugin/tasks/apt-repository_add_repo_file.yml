@@ -21,8 +21,8 @@
     types: deb
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/debs/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
-    components: {{ fdplugin_name }}
-    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+    components: "{{ fdplugin_name }}"
+    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
   when: key_item.key == build
   loop: "{{ lookup('dict', keys) }}"
   loop_control:

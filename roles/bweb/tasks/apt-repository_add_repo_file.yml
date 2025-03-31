@@ -13,7 +13,7 @@
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/debs/bweb/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: bweb
-    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
   when: key_item.key == build
   loop: "{{ lookup('dict', keys) }}"
   loop_control:
