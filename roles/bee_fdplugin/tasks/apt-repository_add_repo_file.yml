@@ -15,16 +15,53 @@
     loop_var: fdplugins_item
   when: fdplugins_item.key == fdplugin
 
-- name: Add BEE DEB822 repository
+- name: set fdplugin repository component
+  set_fact:
+    fdplugin_component: "main"
+  when: fdplugin_directory == "bin"
+
+- name: Add BEE release DEB822 repository
   ansible.builtin.deb822_repository:
     name: "{{ repo_filename }}"
     types: deb
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/debs/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
-    components: "{{ fdplugin_name }}"
+    components: "{{ fdplugin_component }}"
     signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
-  when: key_item.key == build
-  loop: "{{ lookup('dict', keys) }}"
+  when: 
+    - key_item.key == build
+    - build == "release"
+  loop: "{{ keys|dict2items }}"
+  loop_control:
+    loop_var: key_item
+
+- name: Add BEE beta DEB822 repository
+  ansible.builtin.deb822_repository:
+    name: "{{ repo_filename }}"
+    types: deb
+    suites: "{{ codename }}"
+    uris: "{{ dl_area }}/beta-debs/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    components: "{{ fdplugin_component }}"
+    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
+  when: 
+    - key_item.key == build
+    - build == "beta"
+  loop: "{{ keys|dict2items }}"
+  loop_control:
+    loop_var: key_item
+
+- name: Add BEE nightly DEB822 repository
+  ansible.builtin.deb822_repository:
+    name: "{{ repo_filename }}"
+    types: deb
+    suites: "{{ codename }}"
+    uris: "{{ dl_area }}/nightly-debs/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    components: "{{ fdplugin_component }}"
+    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
+  when: 
+    - key_item.key == build
+    - build == "nightly"
+  loop: "{{ keys|dict2items }}"
   loop_control:
     loop_var: key_item
 

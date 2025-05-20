@@ -4,9 +4,20 @@
     update_cache: true
   retries: 3
   delay: 10
+  register: apt_update_result
   failed_when:
-    - result.stderr is defined
-    - result.stderr | length > 0
+    - apt_update_result.stderr is defined
+    - apt_update_result.stderr | length > 0
+
+- name: display the update respositories cache result
+  ansible.builtin.debug:
+    msg: "{{ apt_update_result.stdout.split('\n') }}"
+  when: apt_update_result.stdout is defined
+
+- name: display any update repositories cache error or warning
+  ansible.builtin.debug:
+    msg: "{{ apt_update_result.stderr.split('\n') }}"
+  when: apt_update_result.stderr is defined
 
 - name: install additional packages
   apt:

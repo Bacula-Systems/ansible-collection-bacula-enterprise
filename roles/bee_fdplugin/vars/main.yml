@@ -1,4 +1,9 @@
 ---
+keys:
+  release: BaculaSystems-Public-Signature-08-2017.asc
+  beta: BaculaSystems-Public-Signature-08-2017.asc
+  nightly: BaculaSystems-Nightly-Signature.asc
+
 fdplugins:
   amazon-ec2:
     directory: amazon-ec2
