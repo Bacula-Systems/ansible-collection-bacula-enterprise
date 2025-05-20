@@ -3,15 +3,18 @@
   ansible.builtin.apt:
     name:
       - wget
-      - apt-transport-https
-      - software-properties-common
     state: present
   register: result
 
-- name: Download the Microsoft repository keys
+- name: Download the Microsoft repository
   ansible.builtin.get_url:
-    url: "https://packages.microsoft.com/config/{{ ansible_distribution|lower }}/{{ ansible_distribution_version }}/packages-microsoft-prod.deb"
+    url: "https://packages.microsoft.com/config/{{ ansible_distribution|lower }}/{{ ansible_distribution_version}}/packages-microsoft-prod.deb"
     dest: /tmp/packages-microsoft-prod.deb
+
+- name: Install Microsoft GPG key
+  ansible.builtin.apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
 
 - name: Register the Microsoft repository keys
   ansible.builtin.apt:
