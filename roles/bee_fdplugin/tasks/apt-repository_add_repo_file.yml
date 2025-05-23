@@ -10,15 +10,25 @@
   set_fact:
     fdplugin_name: "{{ fdplugins_item.value.name }}"
     fdplugin_directory: "{{ fdplugins_item.value.directory }}"
+    fdplugin_component: "main"
   loop: "{{ fdplugins|dict2items }}"
   loop_control:
     loop_var: fdplugins_item
-  when: fdplugins_item.key == fdplugin
+  when:
+    - fdplugins_item.key == fdplugin
+    - fdplugins_item.value.directory == "bin"
 
-- name: set fdplugin repository component
+- name: get plugin variables
   set_fact:
-    fdplugin_component: "main"
-  when: fdplugin_directory == "bin"
+    fdplugin_name: "{{ fdplugins_item.value.name }}"
+    fdplugin_directory: "{{ fdplugins_item.value.directory }}"
+    fdplugin_component: "{{ fdplugins_item.value.name }}"
+  loop: "{{ fdplugins|dict2items }}"
+  loop_control:
+    loop_var: fdplugins_item
+  when:
+    - fdplugins_item.key == fdplugin
+    - fdplugins_item.value.directory != "bin"
 
 - name: Add BEE release DEB822 repository
   ansible.builtin.deb822_repository:

@@ -250,4 +250,4 @@ This is the `tests/bee.yml` file referenced in the command line above:
 
 ## Licensing
 
-License: Copyright (C) 2000-2020 Kern Sibbald / BSD 2-Clause; see file [LICENSE](./LICENSE)
+License: Copyright (C) 2000-2025 Kern Sibbald / BSD 2-Clause; see file [LICENSE](./LICENSE)

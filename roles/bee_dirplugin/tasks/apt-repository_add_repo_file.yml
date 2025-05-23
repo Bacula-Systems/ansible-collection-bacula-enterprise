@@ -9,20 +9,67 @@
   set_fact:
     dirplugin_name: "{{ dirplugins_item.value.name }}"
     dirplugin_directory: "{{ dirplugins_item.value.directory }}"
+    dirplugin_component: "main"
   loop: "{{ dirplugins|dict2items }}"
   loop_control:
     loop_var: dirplugins_item
-  when: dirplugins_item.key == dirplugin
+  when:
+    - dirplugins_item.key == dirplugin
+    - dirplugins_item.value.directory == "bin"
 
-- name: Add BEE DEB822 repository
+- name: get plugin variables
+  set_fact:
+    dirplugin_name: "{{ dirplugins_item.value.name }}"
+    dirplugin_directory: "{{ dirplugins_item.value.directory }}"
+    dirplugin_component: "{{ dirplugins_item.value.name }}"
+  loop: "{{ dirplugins|dict2items }}"
+  loop_control:
+    loop_var: dirplugins_item
+  when:
+    - dirplugins_item.key == dirplugin
+    - dirplugins_item.value.directory != "bin"
+
+- name: Add BEE release DEB822 repository
   ansible.builtin.deb822_repository:
     name: "{{ repo_filename }}"
     types: deb
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
-    components: "{{ dirplugin_name }}"
+    components: "{{ dirplugin_component }}"
     signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
-  when: key_item.key == build
+  when:
+    - key_item.key == build
+    - build == "release"
+  loop: "{{ lookup('dict', keys) }}"
+  loop_control:
+    loop_var: key_item
+
+- name: Add BEE beta DEB822 repository
+  ansible.builtin.deb822_repository:
+    name: "{{ repo_filename }}"
+    types: deb
+    suites: "{{ codename }}"
+    uris: "{{ dl_area }}/beta-debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    components: "{{ dirplugin_component }}"
+    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+  when:
+    - key_item.key == build
+    - build == "beta"
+  loop: "{{ lookup('dict', keys) }}"
+  loop_control:
+    loop_var: key_item
+
+- name: Add BEE nightly DEB822 repository
+  ansible.builtin.deb822_repository:
+    name: "{{ repo_filename }}"
+    types: deb
+    suites: "{{ codename }}"
+    uris: "{{ dl_area }}/nighty-debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    components: "{{ dirplugin_component }}"
+    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+  when:
+    - key_item.key == build
+    - build == "nightly"
   loop: "{{ lookup('dict', keys) }}"
   loop_control:
     loop_var: key_item
