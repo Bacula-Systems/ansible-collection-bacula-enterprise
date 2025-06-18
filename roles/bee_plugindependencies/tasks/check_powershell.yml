@@ -1,5 +1,5 @@
 - name: Start PowerShell and Install PnP.Powershell
-  shell: Install-Module -Name 'PnP.PowerShell' -Force | ConvertTo-Json
+  ansible.builtin.shell: Install-Module -Name 'PnP.PowerShell' -Force | ConvertTo-Json
   args:
     executable: /usr/bin/pwsh
   register: PnP_powershell_status
@@ -7,12 +7,16 @@
     - PnP_powershell_status.stderr is defined
     - PnP_powershell_status.stderr | length > 0
 
-- debug: "{{ PnP_powershell_status.stdout }}"
+- name: Print the PowerShell version
+  ansible.builtin.debug:
+    msg: "{{ PnP_powershell_status.stdout }}"
   when:
     - PnP_powershell_status.stdout is defined
     - PnP_powershell_status.stdout | length > 0
 
-- debug: "{{ PnP_powershell_status.stderr }}"
+- name: Print the PowerShell version
+  ansible.builtin.debug:
+    msg: "{{ PnP_powershell_status.stderr }}"
   when:
     - PnP_powershell_status.stderr is defined
     - PnP_powershell_status.stderr | length > 0

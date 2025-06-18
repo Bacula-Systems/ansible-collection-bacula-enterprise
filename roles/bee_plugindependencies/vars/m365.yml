@@ -6,7 +6,7 @@
 dependencies:
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -15,7 +15,7 @@ dependencies:
      os_distribution_major_version: 7
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -24,7 +24,7 @@ dependencies:
      os_distribution_major_version: 8
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -33,7 +33,7 @@ dependencies:
      os_distribution_major_version: 9
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -42,7 +42,7 @@ dependencies:
      os_distribution_major_version: 8
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -51,7 +51,7 @@ dependencies:
      os_distribution_major_version: 9
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -60,7 +60,7 @@ dependencies:
      os_distribution_major_version: 8
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -69,7 +69,7 @@ dependencies:
      os_distribution_major_version: 9
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -78,7 +78,7 @@ dependencies:
      os_distribution_major_version: 8
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -87,7 +87,7 @@ dependencies:
      os_distribution_major_version: 9
    - package_name: powershell
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -97,7 +97,7 @@ dependencies:
    - package_name: powershell
      use_deb_package: no
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -107,7 +107,7 @@ dependencies:
    - package_name: powershell
      use_deb_package: no
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -117,7 +117,7 @@ dependencies:
    - package_name: powershell
      use_deb_package: no
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -127,7 +127,7 @@ dependencies:
    - package_name: powershell
      use_deb_package: no
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -137,7 +137,7 @@ dependencies:
    - package_name: powershell
      use_deb_package: no
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -147,7 +147,7 @@ dependencies:
    - package_name: powershell
      use_deb_package: no
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no
@@ -157,7 +157,7 @@ dependencies:
    - package_name: powershell
      use_deb_package: no
      install_gpgkey: false
-     check_dependency_install: false
+     check_dependency_install: true
      bee_version: 12.7.0
      operator: ge
      add_repo: no

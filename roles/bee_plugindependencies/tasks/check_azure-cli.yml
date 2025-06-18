@@ -1,0 +1,20 @@
+- name: Check the Azure CLI version installed
+  ansible.builtin.shell: az version
+  register: azurecli_status
+  failed_when:
+    - azurecli.stderr is defined
+    - azurecli.stderr | length > 0
+
+- name: Print the Azure CLI version
+  ansible.builtin.debug:
+    msg: "{{ azurecli_status.stdout }}"
+  when:
+    - azurecli_status.stdout is defined
+    - azurecli_status.stdout | length > 0
+
+- name: Print Azure CLI version error
+  ansible.builtin.debug:
+    msg: "{{ azurecli_status.stderr }}"
+  when:
+    - azurecli_status.stderr is defined
+    - azurecli_status.stderr | length > 0
