@@ -34,6 +34,11 @@
   register: jobdefs_name
   delegate_to: "{{ director_hostname }}"
 
+- name: set the jobdefs_name value
+  set_fact:
+    jobdefs_name: "{{ jobdefs_name.stdout }}"
+  delegate_to: "{{ director_hostname }}"
+
 - name: generate the resource definition to be included in the bacula-dir.conf file
   template:
     src: "client_conf_in_bacula_dir.j2"
