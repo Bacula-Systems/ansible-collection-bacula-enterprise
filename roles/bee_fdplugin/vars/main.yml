@@ -10,6 +10,11 @@ fdplugins:
     name: amazon-ec2
     package_name: bacula-enterprise-amazon-ec2-plugin
 
+  amazon-rds:
+    directory: amazon-rds
+    name: amazon-rds
+    package_name: bacula-enterprise-amazon-rds-plugin
+
   antivirus:
     directory: bin
     name: antivirus
@@ -24,6 +29,11 @@ fdplugins:
     name: bcloud
     directory: bcloud
     package_name: bacula-enterprise-bcloud-service
+
+  big-fs:
+    name: big-fs
+    directory: big-fs
+    package_name: bacula-enterprise-big-fs-plugin
 
   db2:
     name: db2
@@ -119,6 +129,11 @@ fdplugins:
     name: openshift
     directory: openshift
     package_name: bacula-enterprise-openshift-plugin
+
+  openstack:
+    name: openstack
+    directory: openstack
+    package_name: bacula-enterprise-openstack-plugin
 
   openstack-vm:
     name: openstack-vm
