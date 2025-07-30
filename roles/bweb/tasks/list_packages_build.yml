@@ -2,7 +2,7 @@
   ansible.builtin.package_facts:
     manager: auto
 
-- name: list bacula enterprise BWeb packages
+- name: list Bacula Enterprise BWeb packages
   ansible.builtin.debug:
     msg: "{{ ansible_facts.packages['bacula-enterprise-bweb'] }}"
   when: "'bacula-enterprise-bweb' in ansible_facts.packages"

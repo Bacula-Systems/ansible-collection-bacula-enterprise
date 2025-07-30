@@ -9,6 +9,7 @@
   failed_when:
     - result.stderr is defined
     - result.stderr | length > 0
+    - "'bacula-enterprise-postgresql failed to preconfigure, with exit status 127' not in result.stderr"
   vars:
     packages:
       - postgresql

@@ -1,4 +1,9 @@
 ---
+keys:
+  release: BaculaSystems-Public-Signature-08-2017.asc
+  beta: BaculaSystems-Public-Signature-08-2017.asc
+  nightly: nightly-misc/BaculaSystems-Nightly-Signature.asc
+
 sdplugins:
   acsls:
     directory: acsls 

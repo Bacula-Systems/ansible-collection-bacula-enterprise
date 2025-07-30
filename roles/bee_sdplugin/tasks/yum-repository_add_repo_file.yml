@@ -1,4 +1,3 @@
----
 - name: gather variables
   include_vars: "{{ repo_item }}"
   with_first_found:
@@ -14,6 +13,26 @@
   loop_control:
     loop_var: sdplugins_item
   when: sdplugins_item.key == sdplugin
+- name: Add BEE nightly YUM repository
+  yum_repository:
+    name: "{{ repo_name }}"
+    file: "{{ repo_filename }}"
+    description: "{{ description }}"
+    baseurl: "{{ dl_area }}/nightly-rpms/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ rhel_version }}-{{ architecture }}/"
+    enabled: "{{ enabled }}"
+    protect: "{{ protect }}"
+    gpgcheck: "{{ gpgcheck }}"
+  when: build == "nightly"
+- name: Add BEE beta YUM repository
+  yum_repository:
+    name: "{{ repo_name }}"
+    file: "{{ repo_filename }}"
+    description: "{{ description }}"
+    baseurl: "{{ dl_area }}/beta-rpms/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ rhel_version }}-{{ architecture }}/"
+    enabled: "{{ enabled }}"
+    protect: "{{ protect }}"
+    gpgcheck: "{{ gpgcheck }}"
+  when: build == "beta"
 - name: Add BEE YUM repository
   yum_repository:
     name: "{{ repo_name }}"
@@ -23,3 +42,4 @@
     enabled: "{{ enabled }}"
     protect: "{{ protect }}"
     gpgcheck: "{{ gpgcheck }}"
+  when: build == "release"

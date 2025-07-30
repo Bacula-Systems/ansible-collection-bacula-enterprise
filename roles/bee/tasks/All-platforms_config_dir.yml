@@ -29,6 +29,7 @@
     mode: '0770'
     owner: bacula
     group: bacula
+  failed_when: false
 
 - name: include the line to include all configuration files in the ansible.conf.d directory in the bacula-dir.conf file
   blockinfile:
@@ -49,7 +50,7 @@
 - name: generate the linuxbmr rescue-fd client and console definitions to be included in the bacula-dir.conf file
   template:
     src: "linuxbmr_config_in_bacula_dir.j2"
-    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ vm_name }}-linuxbmr-config.conf"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ director_name }}-linuxbmr-config.conf"
     owner: bacula
     group: bacula
     mode: '0660'
@@ -57,7 +58,7 @@
 - name: generate the /dev/null autochanger to be included in the bacula-dir.conf file
   template:
     src: "autochanger-dev-null_conf_in_bacula_dir.j2"
-    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ vm_name }}_dev_null_autochanger.conf"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ director_name }}_dev_null_autochanger.conf"
     owner: bacula
     group: bacula
     mode: '0660'
@@ -65,7 +66,7 @@
 - name: generate the job to /dev/null to be included in the bacula-dir.conf file
   template:
     src: "dev_null_job.j2"
-    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ vm_name }}_dev_null_job.conf"
+    dest: "/opt/bacula/etc/ansible.conf.d/director/{{ director_name }}_dev_null_job.conf"
     owner: bacula
     group: bacula
     mode: '0660'
