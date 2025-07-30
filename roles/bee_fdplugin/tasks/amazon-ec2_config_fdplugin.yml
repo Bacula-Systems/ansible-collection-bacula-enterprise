@@ -1,7 +1,7 @@
 ---
 - name: copy the Amazon EC2 config file with region, access key and secret key to be used
   copy:
-    src: "{{ fdplugin }}/amazon-ec2_config.settings"
+    src: "{{ fdplugin }}/amazon-ec2.settings"
     dest: /opt/bacula/etc
     owner: bacula
     group: bacula

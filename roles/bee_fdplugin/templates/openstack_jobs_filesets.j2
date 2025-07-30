@@ -1,0 +1,15 @@
+{# This configuration will be included in the Director bacula-dir.conf file #}
+Job {
+  Name = "{{ fdplugin }}-All-{{ client_name }}-job"
+  JobDefs = {{ jobdefs_name }}
+  Client = {{ client_name }}
+  FileSet = {{ fdplugin }}-All-{{ client_name }}-fileset
+  Schedule = Manual
+}
+
+FileSet {
+  Name = "{{ fdplugin }}-All-{{ client_name }}-fileset"
+  Include {
+    Plugin = "openstack: OS_AUTH_URL=http://10.0.100.35/identity/v3 OS_USERNAME=admin OS_PASSWORD=Bacula18 OS_USER_DOMAIN_NAME=Default OS_PROJECT_NAME=demo proxy_server=212f33d6-d0af-4da7-97d6-fb312bbd1652 server=cirros-instance1 nova_flavor_backup=no verbose=1 debug=3"
+  }
+}
