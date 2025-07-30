@@ -1,8 +1,13 @@
 ---
-- name: Download the Microsoft repository keys
+- name: Download the Microsoft repository
   ansible.builtin.get_url:
     url: "https://packages.microsoft.com/config/rhel/{{ ansible_distribution_major_version }}/packages-microsoft-prod.rpm"
     dest: /tmp/packages-microsoft-prod.rpm
+
+- name: Install Microsoft GPG key
+  ansible.builtin.rpm_key:
+    key: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
 
 - name: Register the Microsoft repository keys and update the list of packages after we added packages.microsoft.com
   ansible.builtin.dnf:
