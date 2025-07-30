@@ -91,6 +91,14 @@ dependencies:
      add_repo: no
      use_package_manager: yes
      os_distribution: RedHat
+     os_distribution_major_version: 10
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 10.2.0
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: RedHat
      os_distribution_major_version: 9
    - package_name: wget
      package_dependency_name: wget
