@@ -4,8 +4,8 @@
     name: '*'
     state: latest
     update_cache: true
+  register: result
   retries: 3
   delay: 10
   failed_when:
-    - result.stderr is defined
-    - result.stderr | length > 0
+    - (result.rc != 0) or (result.stderr | length > 0)
