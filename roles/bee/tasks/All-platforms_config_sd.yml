@@ -19,14 +19,6 @@
   loop_control:
     loop_var: directories
 
-- name: Modify the Storage name, if defined
-  ansible.builtin.replace:
-    path: /opt/bacula/etc/bacula-sd.conf
-    after: 'Storage {'
-    regexp: "{{ storage_hostname.split('.')[0] }}-sd"
-    replace: "{{ storage_name }}"
-  when: storage_name is defined
-
 - name: add null devices to the Storage Daemon
   block:
   - name: generate the /dev/null autochanger resource definition to be included in the bacula-sd.conf file
