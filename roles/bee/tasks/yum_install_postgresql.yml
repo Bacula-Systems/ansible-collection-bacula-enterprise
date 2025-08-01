@@ -7,4 +7,4 @@
   retries: 3
   delay: 10
   failed_when:
-    - (result.rc != 0) or (result.stderr | length > 0)
+    - (result.rc != 0) or (result.stderr is defined and result.stderr | length > 0)
