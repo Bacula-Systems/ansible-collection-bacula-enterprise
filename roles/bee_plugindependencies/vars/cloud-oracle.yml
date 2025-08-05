@@ -11,6 +11,30 @@ dependencies:
      add_repo: no
      use_package_manager: yes
      os_distribution: Debian
+     os_distribution_major_version: 13
+   - package_name: wget
+     package_dependency_name: wget
+     bee_version: 16.0.7
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 13
+   - package_name: python3-venv
+     package_dependency_name: python3-venv
+     bee_version: 16.0.7
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 13
+   - package_name: curl
+     package_dependency_name: curl
+     bee_version: 16.0.7
+     operator: ge
+     add_repo: no
+     use_package_manager: yes
+     os_distribution: Debian
      os_distribution_major_version: 12
    - package_name: wget
      package_dependency_name: wget

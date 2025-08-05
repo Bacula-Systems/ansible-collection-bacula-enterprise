@@ -126,6 +126,14 @@ dependencies:
      os_distribution_major_version: 8
    - package_name: google-cloud-sdk
      package_dependency_name: google-cloud-sdk
+     bee_version: 18.0.8
+     operator: ge
+     add_repo: yes
+     use_package_manager: yes
+     os_distribution: Debian
+     os_distribution_major_version: 13
+   - package_name: google-cloud-sdk
+     package_dependency_name: google-cloud-sdk
      bee_version: 16.0.7
      operator: ge
      add_repo: yes
