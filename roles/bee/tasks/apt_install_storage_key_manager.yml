@@ -3,8 +3,8 @@
 # available in the repository files added
 # This will allow the upgrade of existent BEE install by
 # adding the new repo file and using this same role to update
-- name: install Bacula Enteprise Edition postgresql
-  apt:
+- name: install Storage Encryption package
+  ansible.builtin.apt:
     name: bacula-enterprise-storage-key-manager
     state: present
   register: result
@@ -12,14 +12,19 @@
     DEBIAN_FRONTEND: noninteractive
   retries: 3
   delay: 10
-  failed_when:
-    - result.stderr is defined
-    - result.stderr | length > 0
-    - '"debconf: delaying package configuration, since apt-utils is not installed" not in result.stderr'
+  failed_when: >
+    (result.stderr is defined and result.stderr | length > 0 and
+    '"debconf: delaying package configuration, since apt-utils is not installed" not in result.stderr') or
+    '"No package matching" in result.msg'
 
-- name: format error output
+- name: display error output
   debug: msg="{{ result.stderr.split('\n') }}"
   when:
     - result.stderr is defined
     - result.stderr | length > 0
     - '"debconf: delaying package configuration, since apt-utils is not installed" not in result.stderr'
+
+- name: display error output
+  debug: msg="{{ result.msg.split('\n') }}"
+  when:
+    - '"No package matching" in result.msg'
