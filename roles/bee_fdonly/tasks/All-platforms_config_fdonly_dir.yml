@@ -9,8 +9,8 @@
     path: "{{ directories }}"
     state: directory
     mode: '0770'
-    owner: root
-    group: root
+    owner: bacula
+    group: bacula
   loop:
     - /opt/bacula/etc/ansible.conf.d
     - /opt/bacula/etc/ansible.conf.d/director
@@ -43,8 +43,8 @@
   template:
     src: "client_conf_in_bacula_dir.j2"
     dest: "/opt/bacula/etc/ansible.conf.d/director/clients/{{ client_name }}-client.conf"
-    owner: root
-    group: root
+    owner: bacula
+    group: bacula
     mode: '0660'
   delegate_to: "{{ director_hostname }}"
 
@@ -61,8 +61,18 @@
   shell: echo "reload" | /opt/bacula/bin/bconsole
   register: reload_result
   delegate_to: "{{ director_hostname }}"
-- debug: msg="{{ reload_result.stdout.split('\n') }}"
-- debug: msg="{{ reload_result.stderr.split('\n') }}"
+
+- name: display error message
+  ansible.builtin.fail: msg="{{ reload_result.stdout.split('\n') }}"
+  when: 
+    - reload_result.stdout is defined
+    - '"Resetting previous configuration" in reload_result.stdout'
+
+- name: display error message
+  ansible.builtin.fail: msg="{{ reload_result.stderr.split('\n') }}"
+  when:
+    - reload_result.stderr is defined
+    - reload_result.stderr| length > 0
 
 - name: status client in Director
   shell: echo "status client={{ client_name }}" | /opt/bacula/bin/bconsole
