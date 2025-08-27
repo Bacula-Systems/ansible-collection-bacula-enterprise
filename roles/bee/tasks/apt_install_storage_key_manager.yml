@@ -12,10 +12,6 @@
     DEBIAN_FRONTEND: noninteractive
   retries: 3
   delay: 10
-  failed_when: >
-    (result.stderr is defined and result.stderr | length > 0 and
-    '"debconf: delaying package configuration, since apt-utils is not installed" not in result.stderr') or
-    '"No package matching" in result.msg'
 
 - name: display error output
   debug: msg="{{ result.stderr.split('\n') }}"
@@ -27,4 +23,5 @@
 - name: display error output
   debug: msg="{{ result.msg.split('\n') }}"
   when:
+    - result.msg is defined
     - '"No package matching" in result.msg'
