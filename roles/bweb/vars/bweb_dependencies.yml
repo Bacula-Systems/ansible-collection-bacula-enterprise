@@ -3,6 +3,15 @@ bweb_dependencies:
   RedHat:
     dependency_name: epel-release
     package_dependency_name: epel-release
+    bee_version: 18.0.9
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: RedHat
+    os_distribution_major_version: 10
+  RedHat:
+    dependency_name: epel-release
+    package_dependency_name: epel-release
     bee_version: 14.1
     operator: ge
     add_repo: yes
