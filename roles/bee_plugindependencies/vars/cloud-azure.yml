@@ -226,6 +226,7 @@ dependencies:
     os_distribution_major_version: 13
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -237,6 +238,7 @@ dependencies:
     os_distribution_major_version: 12
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -248,6 +250,7 @@ dependencies:
     os_distribution_major_version: 11
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -259,6 +262,7 @@ dependencies:
     os_distribution_major_version: 10
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -270,6 +274,7 @@ dependencies:
     os_distribution_major_version: 9
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -281,6 +286,7 @@ dependencies:
     os_distribution_major_version: 24
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -292,6 +298,7 @@ dependencies:
     os_distribution_major_version: 22
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -303,6 +310,7 @@ dependencies:
     os_distribution_major_version: 20
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -314,6 +322,7 @@ dependencies:
     os_distribution_major_version: 18
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -325,6 +334,7 @@ dependencies:
     os_distribution_major_version: 15
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
@@ -336,3 +346,4 @@ dependencies:
     os_distribution_major_version: 12
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgkey_name: "microsoft.gpg"
