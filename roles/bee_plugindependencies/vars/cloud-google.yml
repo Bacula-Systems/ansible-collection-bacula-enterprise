@@ -130,6 +130,9 @@ dependencies:
      operator: ge
      add_repo: yes
      use_package_manager: yes
+     install_gpgkey: true
+     gpgkey: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+     gpgkey_name: "cloud.google.gpg"
      os_distribution: Debian
      os_distribution_major_version: 13
    - package_name: google-cloud-sdk
@@ -138,6 +141,9 @@ dependencies:
      operator: ge
      add_repo: yes
      use_package_manager: yes
+     install_gpgkey: true
+     gpgkey: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+     gpgkey_name: "cloud.google.gpg"
      os_distribution: Debian
      os_distribution_major_version: 12
    - package_name: google-cloud-sdk
@@ -146,6 +152,9 @@ dependencies:
      operator: ge
      add_repo: yes
      use_package_manager: yes
+     install_gpgkey: true
+     gpgkey: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+     gpgkey_name: "cloud.google.gpg"
      os_distribution: Debian
      os_distribution_major_version: 11
    - package_name: google-cloud-sdk
@@ -154,6 +163,9 @@ dependencies:
      operator: ge
      add_repo: yes
      use_package_manager: yes
+     install_gpgkey: true
+     gpgkey: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+     gpgkey_name: "cloud.google.gpg"
      os_distribution: Debian
      os_distribution_major_version: 10
    - package_name: google-cloud-sdk
@@ -162,6 +174,9 @@ dependencies:
      operator: ge
      add_repo: yes
      use_package_manager: yes
+     install_gpgkey: true
+     gpgkey: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+     gpgkey_name: "cloud.google.gpg"
      os_distribution: Ubuntu
      os_distribution_major_version: 24
    - package_name: google-cloud-sdk
@@ -170,6 +185,9 @@ dependencies:
      operator: ge
      add_repo: yes
      use_package_manager: yes
+     install_gpgkey: true
+     gpgkey: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+     gpgkey_name: "cloud.google.gpg"
      os_distribution: Ubuntu
      os_distribution_major_version: 22
    - package_name: google-cloud-sdk
@@ -178,6 +196,9 @@ dependencies:
      operator: ge
      add_repo: yes
      use_package_manager: yes
+     install_gpgkey: true
+     gpgkey: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+     gpgkey_name: "cloud.google.gpg"
      os_distribution: Ubuntu
      os_distribution_major_version: 20
    - package_name: google-cloud-sdk
@@ -186,5 +207,8 @@ dependencies:
      operator: ge
      add_repo: yes
      use_package_manager: yes
+     install_gpgkey: true
+     gpgkey: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+     gpgkey_name: "cloud.google.gpg"
      os_distribution: Ubuntu
      os_distribution_major_version: 18
