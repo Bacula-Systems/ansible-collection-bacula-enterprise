@@ -16,9 +16,19 @@
     loop_var: fdplugins_item
   when: fdplugins_item.key == fdplugin
 
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "rpms"
+  when: build == "release"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "{{ build }}-rpms"
+  when: build != "release"
+
 - name: Add BEE ZYPPER repository
   zypper_repository:
     name: "{{ repo_filename }}"
     description: "{{ description }}"
-    repo: "{{ dl_area }}/rpms/{{ fdplugin_directory }}/{{ bee_version }}/{{ sles_version }}-{{ architecture }}/"
+    repo: "{{ dl_area }}/{{ repo_build }}/{{ fdplugin_directory }}/{{ bee_version }}/{{ sles_version }}-{{ architecture }}/"
     auto_import_keys: "{{ auto_import_keys }}"
