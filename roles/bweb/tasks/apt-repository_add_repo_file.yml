@@ -6,14 +6,24 @@
   loop_control:
     loop_var: repo_item
 
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "debs"
+  when: build == "release"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "{{ build }}-debs"
+  when: build != "release"
+
 - name: Add BWeb DEB822 repository
   ansible.builtin.deb822_repository:
     name: "{{ repo_filename }}"
     types: deb
     suites: "{{ codename }}"
-    uris: "{{ dl_area }}/debs/bweb/{{ bee_version }}/{{ codename }}-{{ architecture }}"
-    components: bweb
-    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
+    uris: "{{ dl_area }}/{{ repo_build }}/bweb/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    components: main
+    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
   when: key_item.key == build
   loop: "{{ lookup('dict', keys) }}"
   loop_control:

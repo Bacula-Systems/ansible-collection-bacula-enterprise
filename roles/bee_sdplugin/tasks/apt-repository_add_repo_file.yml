@@ -15,12 +15,22 @@
     loop_var: sdplugins_item
   when: sdplugins_item.key == sdplugin
 
-- name: Add BEE DEB822 repository
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "debs"
+  when: build == "release"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "{{ build }}-debs"
+  when: build != "release"
+
+- name: Add Storage Daemon Plugin DEB822 repository
   ansible.builtin.deb822_repository:
     name: "{{ repo_filename }}"
     types: deb
     suites: "{{ codename }}"
-    uris: "{{ dl_area }}/debs/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ codename }}-{{ architecture }}"
+    uris: "{{ dl_area }}/{{ repo_build }}/{{ sdplugin_directory }}/{{ sdplugin_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ sdplugin_name }}"
     signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
   when: key_item.key == build

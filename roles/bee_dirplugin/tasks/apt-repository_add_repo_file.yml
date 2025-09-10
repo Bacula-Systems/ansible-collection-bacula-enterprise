@@ -29,12 +29,22 @@
     - dirplugins_item.key == dirplugin
     - dirplugins_item.value.directory != "bin"
 
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "debs"
+  when: build == "release"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "{{ build }}-debs"
+  when: build != "release"
+
 - name: Add BEE release DEB822 repository
   ansible.builtin.deb822_repository:
     name: "{{ repo_filename }}"
     types: deb
     suites: "{{ codename }}"
-    uris: "{{ dl_area }}/debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    uris: "{{ dl_area }}/{{ repo_build }}/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ dirplugin_component }}"
     signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
   when:

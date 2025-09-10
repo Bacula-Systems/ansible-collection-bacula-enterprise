@@ -4,6 +4,7 @@
   - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ansible_userspace_bits}}-repo.yml"
   loop_control:
     loop_var: repo_item
+
 - name: get plugin variables
   set_fact:
     dirplugin_name: "{{ dirplugins_item.value.name }}"
@@ -12,33 +13,23 @@
   loop_control:
     loop_var: dirplugins_item
   when: dirplugins_item.key == dirplugin
-- name: Add BEE nightly YUM repository
-  yum_repository:
-    name: "{{ repo_name }}"
-    file: "{{ repo_filename }}"
-    description: "{{ description }}"
-    baseurl: "{{ dl_area }}/nightly-rpms/{{ dirplugin_directory }}/{{ bee_version }}/{{ rhel_version }}-{{ architecture }}/"
-    enabled: "{{ enabled }}"
-    protect: "{{ protect }}"
-    gpgcheck: "{{ gpgcheck }}"
-  when: build == "nightly"
-- name: Add BEE beta YUM repository
-  yum_repository:
-    name: "{{ repo_name }}"
-    file: "{{ repo_filename }}"
-    description: "{{ description }}"
-    baseurl: "{{ dl_area }}/beta-rpms/{{ dirplugin_directory }}/{{ bee_version }}/{{ rhel_version }}-{{ architecture }}/"
-    enabled: "{{ enabled }}"
-    protect: "{{ protect }}"
-    gpgcheck: "{{ gpgcheck }}"
-  when: build == "beta"
-- name: Add BEE release YUM repository
-  yum_repository:
-    name: "{{ repo_name }}"
-    file: "{{ repo_filename }}"
-    description: "{{ description }}"
-    baseurl: "{{ dl_area }}/rpms/{{ dirplugin_directory }}/{{ bee_version }}/{{ rhel_version }}-{{ architecture }}/"
-    enabled: "{{ enabled }}"
-    protect: "{{ protect }}"
-    gpgcheck: "{{ gpgcheck }}"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "rpms"
   when: build == "release"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "{{ build }}-rpms"
+  when: build != "release"
+
+- name: Add DIR Plugin YUM repository
+  yum_repository:
+    name: "{{ repo_name }}"
+    file: "{{ repo_filename }}"
+    description: "{{ description }}"
+    baseurl: "{{ dl_area }}/{{ repo_build }}/{{ dirplugin_directory }}/{{ bee_version }}/{{ rhel_version }}-{{ architecture }}/"
+    enabled: "{{ enabled }}"
+    protect: "{{ protect }}"
+    gpgcheck: "{{ gpgcheck }}"

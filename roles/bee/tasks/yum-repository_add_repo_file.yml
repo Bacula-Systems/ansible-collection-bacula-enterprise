@@ -5,12 +5,23 @@
   - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}-{{ ansible_userspace_bits }}-repo.yml"
   loop_control:
     loop_var: repo_item
-- name: Add BEE repository for CentOS hosts
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "rpms"
+  when: build == "release"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "{{ build }}-rpms"
+  when: build != "release"
+
+- name: Add BEE repository for Red Hat/OracleLinux/AlmaLinux/RockyLinux hosts
   yum_repository:
     name: "{{ repo_name }}"
     file: "{{ repo_filename }}"
     description: "{{ description }}"
-    baseurl: "{{ dl_area }}/rpms/bin/{{ bee_version }}/{{ rhel_version }}-{{ architecture }}/"
+    baseurl: "{{ dl_area }}/{{ repo_build }}/bin/{{ bee_version }}/{{ rhel_version }}-{{ architecture }}/"
     enabled: "{{ enabled }}"
     protect: "{{ protect }}"
     gpgcheck: "{{ gpgcheck }}"

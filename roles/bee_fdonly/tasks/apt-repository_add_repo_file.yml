@@ -6,14 +6,24 @@
   loop_control:
     loop_var: repo_item
 
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "debs"
+  when: build == "release"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "{{ build }}-debs"
+  when: build != "release"
+
 - name: Add BEE DEB822 repository
   ansible.builtin.deb822_repository:
     name: "{{ repo_filename }}"
     types: deb
     suites: "{{ codename }}"
-    uris: "{{ dl_area }}/debs/bin/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    uris: "{{ dl_area }}/{{ repo_build }}/bin/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: main
-    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
+    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
   when: key_item.key == build
   loop: "{{ lookup('dict', keys) }}"
   loop_control:
@@ -23,8 +33,11 @@
 - name: update repositories cache
   apt:
     update_cache: true
+    allow_unauthenticated: false
   register: apt_update_result
+
 - debug: msg="{{ apt_update_result.stdout.split('\n') }}"
   when: apt_update_result.stdout is defined
+
 - debug: msg="{{ apt_update_result.stderr.split('\n') }}"
   when: apt_update_result.stderr is defined

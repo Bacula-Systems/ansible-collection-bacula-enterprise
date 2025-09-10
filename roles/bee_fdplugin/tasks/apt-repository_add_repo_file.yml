@@ -30,47 +30,27 @@
     - fdplugins_item.key == fdplugin
     - fdplugins_item.value.directory != "bin"
 
-- name: Add BEE release DEB822 repository
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "debs"
+  when: build == "release"
+
+- name: set the repository build value
+  ansible.builtin.set_fact:
+    repo_build: "{{ build }}-debs"
+  when: build != "release"
+
+- name: Add File Daemon Plugin DEB822 repository
   ansible.builtin.deb822_repository:
     name: "{{ repo_filename }}"
     types: deb
     suites: "{{ codename }}"
-    uris: "{{ dl_area }}/debs/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    uris: "{{ dl_area }}/{{ repo-build }}/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ fdplugin_component }}"
     signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
   when: 
     - key_item.key == build
     - build == "release"
-  loop: "{{ keys|dict2items }}"
-  loop_control:
-    loop_var: key_item
-
-- name: Add BEE beta DEB822 repository
-  ansible.builtin.deb822_repository:
-    name: "{{ repo_filename }}"
-    types: deb
-    suites: "{{ codename }}"
-    uris: "{{ dl_area }}/beta-debs/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
-    components: "{{ fdplugin_component }}"
-    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
-  when: 
-    - key_item.key == build
-    - build == "beta"
-  loop: "{{ keys|dict2items }}"
-  loop_control:
-    loop_var: key_item
-
-- name: Add BEE nightly DEB822 repository
-  ansible.builtin.deb822_repository:
-    name: "{{ repo_filename }}"
-    types: deb
-    suites: "{{ codename }}"
-    uris: "{{ dl_area }}/nightly-debs/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
-    components: "{{ fdplugin_component }}"
-    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
-  when: 
-    - key_item.key == build
-    - build == "nightly"
   loop: "{{ keys|dict2items }}"
   loop_control:
     loop_var: key_item
