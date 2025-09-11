@@ -45,7 +45,7 @@
     name: "{{ repo_filename }}"
     types: deb
     suites: "{{ codename }}"
-    uris: "{{ dl_area }}/{{ repo-build }}/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
+    uris: "{{ dl_area }}/{{ repo_build }}/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ fdplugin_component }}"
     signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
   when: 
