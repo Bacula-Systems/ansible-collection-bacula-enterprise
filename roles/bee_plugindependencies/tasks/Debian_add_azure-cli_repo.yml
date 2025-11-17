@@ -15,5 +15,18 @@
     - lsb-release
     - gnupg
 
+#- name: downaload and install the Microsoft signing key
+#  command: >
+#    curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
+#    gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+#  shell: echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+
 - name: add azure-cli repo
-  shell: echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+  command: |
+#     AZ_DIST=$(lsb_release -cs) &&
+     echo "Types: deb
+     URIs: https://packages.microsoft.com/repos/azure-cli/
+     Suites: $(lsb_release -cs)
+     Components: main
+     Architectures: $(dpkg --print-architecture)
+     Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
