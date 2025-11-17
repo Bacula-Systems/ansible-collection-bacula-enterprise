@@ -1,17 +1,47 @@
 - name: install Bacula Enteprise plugin for Storage Daemon dependencies and package key if required
   block:
+    - name: create the /etc/apt/keyrings directory if it does not exist
+      ansible.builtin.file:
+        path: /etc/apt/keyrings
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
 
     - name: Install the GPG Public Key if needed
       ansible.builtin.get_url:
         url: "{{ item.gpgkey }}"
-        dest: "/etc/apt/trusted.gpg.d/{{ (item.gpgkey | basename | splitext)[0] }}.gpg"
+        dest: "/etc/apt/keyrings/{{ (item.gpgkey | basename | splitext)[0] }}.gpg"
       register: result
       retries: 3
       delay: 10
-      until: result.status_code == 200 or result.status_code == 304
+      when:
+        - item.gpgkey is defined
+        - item.convert_key is not defined
       failed_when:
         - result.status_code != 200
         - result.status_code != 304
+
+    - name: Install the GPG Public Key if needed
+      ansible.builtin.get_url:
+        url: "{{ item.gpgkey }}"
+        dest: "/tmp/{{ (item.gpgkey | basename | splitext)[0] }}.asc"
+      register: result_convert
+      retries: 3
+      delay: 10
+      when:
+        - item.gpgkey is defined
+        - item.convert_key is defined
+      failed_when:
+        - result_convert.status_code != 200
+        - result_convert.status_code != 304
+
+    - name: Dearmor and save the key to the final location if needed
+      ansible.builtin.shell:
+        cmd: "gpg --dearmor /tmp/{{ (item.gpgkey | basename | splitext)[0] }}.asc | tee /etc/apt/keyrings/microsoft.gpg > /dev/null"
+      when:
+        - item.gpgkey is defined
+        - item.convert_key is defined
 
     - name: add Plugin dependencies repository if required
       include_tasks: add_repo_dependency.yml
