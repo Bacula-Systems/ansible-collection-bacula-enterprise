@@ -22,7 +22,7 @@
     types: deb
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/{{ repo_build }}/bweb/{{ bee_version }}/{{ codename }}-{{ architecture }}"
-    components: main
+    components: bweb
     signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
   when: key_item.key == build
   loop: "{{ lookup('dict', keys) }}"
