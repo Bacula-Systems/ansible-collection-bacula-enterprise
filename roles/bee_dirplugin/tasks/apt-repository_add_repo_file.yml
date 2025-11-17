@@ -46,7 +46,7 @@
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/{{ repo_build }}/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ dirplugin_component }}"
-    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+    signed_by: /etc/apt/keyrings/{{ key_item.value }}
   when:
     - key_item.key == build
     - build == "release"
@@ -61,7 +61,7 @@
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/beta-debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ dirplugin_component }}"
-    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+    signed_by: /etc/apt/keyrings/{{ key_item.value }}
   when:
     - key_item.key == build
     - build == "beta"
@@ -76,7 +76,7 @@
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/nighty-debs/{{ dirplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ dirplugin_component }}"
-    signed_by: /etc/apt/trusted.gpg.d/{{ key_item.value }}
+    signed_by: /etc/apt/keyrings/{{ key_item.value }}
   when:
     - key_item.key == build
     - build == "nightly"

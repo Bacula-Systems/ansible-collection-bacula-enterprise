@@ -47,7 +47,7 @@
     suites: "{{ codename }}"
     uris: "{{ dl_area }}/{{ repo_build }}/{{ fdplugin_directory }}/{{ bee_version }}/{{ codename }}-{{ architecture }}"
     components: "{{ fdplugin_component }}"
-    signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
+    signed_by: "/etc/apt/keyrings/{{ key_item.value }}"
   when: 
     - key_item.key == build
   loop: "{{ keys|dict2items }}"
