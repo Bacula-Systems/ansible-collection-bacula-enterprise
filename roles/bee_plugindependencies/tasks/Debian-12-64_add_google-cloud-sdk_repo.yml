@@ -1,12 +1,33 @@
 ---
-- name: Add Google Cloud SDK signing key to specific keyring file
-  ansible.builtin.apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    keyring: /usr/share/keyrings/cloud.google.gpg
-    state: present
+
+- name: install additional packages
+  apt:
+    name: "{{ packages }}"
+    state: latest
+    force: true
+  vars:
+    packages:
+    - apt-transport-https
+    - curl
+    - lsb-release
+    - gnupg
+
+- name: create the /etc/apt/keyrings directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Import Google Cloud GPG key
+  ansible.builtin.shell: |
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/cloud.google.gpg
+  args:
+    creates: /etc/apt/keyrings/cloud.google.gpg
 
 - name: Enable Google Cloud SDK repository
   ansible.builtin.apt_repository:
-    repo: deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
+    repo: deb [signed-by=/etc/apt/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
     filename: google-cloud-sdk
     state: present
