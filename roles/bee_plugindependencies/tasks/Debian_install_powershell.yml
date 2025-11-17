@@ -11,10 +11,19 @@
     url: "https://packages.microsoft.com/config/{{ ansible_distribution|lower }}/{{ ansible_distribution_major_version }}/packages-microsoft-prod.deb"
     dest: /tmp/packages-microsoft-prod.deb
 
-- name: Install Microsoft GPG key
-  ansible.builtin.apt_key:
-    url: https://packages.microsoft.com/keys/microsoft.asc
-    state: present
+- name: create the /etc/apt/keyrings directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Import Microsoft GPG key
+  ansible.builtin.shell: |
+    curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+  args:
+    creates: /etc/apt/keyrings/microsoft.gpg
 
 - name: Register the Microsoft repository keys
   ansible.builtin.apt:
