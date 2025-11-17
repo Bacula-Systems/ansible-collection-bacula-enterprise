@@ -11,7 +11,7 @@
     remote_src: true
 
 - name: install the awscli program
-  ansible.builtin.shell: /tmp/aws/install
+  ansible.builtin.command: /tmp/aws/install
   become: true
   become_user: root
   register: awscli_install_status
@@ -23,7 +23,7 @@
 - debug: msg="{{ awscli_install_status.stderr.split('\n') }}"
 
 - name: update the awscli program
-  ansible.builtin.shell: /tmp/aws/install --update
+  ansible.builtin.command: /tmp/aws/install --update
   become: true
   become_user: root
   register: awscli_update_status
@@ -38,7 +38,9 @@
     - '"Found preexisting AWS CLI installation" in awscli_install_status.stderr'
 
 - name: check awscli version installed
-  ansible.builtin.shell: aws --version
+  become: true
+  become_user: root
+  ansible.builtin.command: /usr/local/bin/aws --version
   register: awscli_version
 
 - debug: msg="{{ awscli_version.stdout.split('\n') }}"
