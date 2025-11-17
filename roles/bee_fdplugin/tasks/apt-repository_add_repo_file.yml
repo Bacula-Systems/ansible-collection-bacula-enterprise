@@ -50,7 +50,6 @@
     signed_by: "/etc/apt/trusted.gpg.d/{{ key_item.value }}"
   when: 
     - key_item.key == build
-    - build == "release"
   loop: "{{ keys|dict2items }}"
   loop_control:
     loop_var: key_item
