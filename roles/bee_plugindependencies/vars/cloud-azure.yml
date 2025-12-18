@@ -43,7 +43,7 @@ dependencies:
     os_distribution: Rocky
     os_distribution_major_version: 10
     install_gpgkey: true
-    gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9"
+    gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-10"
   - package_name: epel-release
     package_dependency_name: epel-release
     bee_version: 10.2.0
@@ -73,7 +73,7 @@ dependencies:
     os_distribution: AlmaLinux
     os_distribution_major_version: 10
     install_gpgkey: true
-    gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9"
+    gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-10"
   - package_name: epel-release
     package_dependency_name: epel-release
     bee_version: 10.2.0

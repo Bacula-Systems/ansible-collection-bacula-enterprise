@@ -1,3 +1,4 @@
+---
 - name: import Microsoft key
   shell: sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 - name: add azure-cli repo
