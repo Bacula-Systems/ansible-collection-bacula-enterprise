@@ -36,6 +36,16 @@ dependencies:
     gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8"
   - package_name: epel-release
     package_dependency_name: epel-release
+    bee_version: 18.2.2
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: Rocky
+    os_distribution_major_version: 10
+    install_gpgkey: true
+    gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9"
+  - package_name: epel-release
+    package_dependency_name: epel-release
     bee_version: 10.2.0
     operator: ge
     add_repo: yes
@@ -54,6 +64,16 @@ dependencies:
     os_distribution_major_version: 8
     install_gpgkey: true
     gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8"
+  - package_name: epel-release
+    package_dependency_name: epel-release
+    bee_version: 18.2.2
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: AlmaLinux
+    os_distribution_major_version: 10
+    install_gpgkey: true
+    gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9"
   - package_name: epel-release
     package_dependency_name: epel-release
     bee_version: 10.2.0
@@ -108,6 +128,17 @@ dependencies:
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
+    bee_version: 18.2.2
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: RedHat
+    os_distribution_major_version: 10
+    install_gpgkey: true
+    gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+  - package_name: azure-cli
+    package_dependency_name: azure-cli
+    check_dependency_install: true
     bee_version: 12.0.0
     operator: ge
     add_repo: yes
@@ -130,6 +161,17 @@ dependencies:
   - package_name: azure-cli
     package_dependency_name: azure-cli
     check_dependency_install: true
+    bee_version: 18.2.2
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: Rocky
+    os_distribution_major_version: 10
+    install_gpgkey: true
+    gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+  - package_name: azure-cli
+    package_dependency_name: azure-cli
+    check_dependency_install: true
     bee_version: 12.0.0
     operator: ge
     add_repo: yes
@@ -147,6 +189,17 @@ dependencies:
     use_package_manager: yes
     os_distribution: Rocky
     os_distribution_major_version: 8
+    install_gpgkey: true
+    gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+  - package_name: azure-cli
+    package_dependency_name: azure-cli
+    check_dependency_install: true
+    bee_version: 18.2.2
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: AlmaLinux
+    os_distribution_major_version: 10
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
   - package_name: azure-cli
@@ -191,6 +244,17 @@ dependencies:
     use_package_manager: yes
     os_distribution: CentOS
     os_distribution_major_version: 7
+    install_gpgkey: true
+    gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+  - package_name: azure-cli
+    package_dependency_name: azure-cli
+    check_dependency_install: true
+    bee_version: 12.0.0
+    operator: ge
+    add_repo: yes
+    use_package_manager: yes
+    os_distribution: OracleLinux
+    os_distribution_major_version: 10
     install_gpgkey: true
     gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
   - package_name: azure-cli
