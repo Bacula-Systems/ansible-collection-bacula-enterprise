@@ -14,7 +14,7 @@
   register: result
   retries: 3
   delay: 10
-#  until: result.status_code == 200 or result.status_code == 304
+  until: result.status_code == 200 or result.status_code == 304
   failed_when:
     - result.status_code != 200
     - result.status_code != 304

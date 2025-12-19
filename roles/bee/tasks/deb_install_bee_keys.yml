@@ -1,4 +1,12 @@
 ---
+- name: create the /etc/apt/keyrings directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
 - name: install package signatures for Debian/Ubuntu
   ansible.builtin.get_url:
     url: "{{ dl_area }}/{{ key_item.value }}"
