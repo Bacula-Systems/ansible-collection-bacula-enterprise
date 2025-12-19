@@ -1,0 +1,9 @@
+---
+repo_name: Bacula-Enterprise-dag
+repo_filename: Bacula-Enterprise-dag
+description: Bacula Systems dag for BWeb repository
+rhel_version: rhel10
+architecture: 64
+enabled: 1
+protect: 0
+gpgcheck: 0
